@@ -279,416 +279,384 @@ export default function HomeClient() {
       </section>
 
       {/* ================= UNIT OVERVIEW ================= */}
-      <section className="bg-[#f5f2ee] px-4 sm:px-6 md:px-12 py-10 sm:py-12 md:py-16">
-        <div className="max-w-[1400px] mx-auto">
-          {/* TOP TEXT ROW */}
-          <div className="grid md:grid-cols-2 gap-5 sm:gap-6 items-center">
-            {/* LEFT */}
-            <div>
-              <p className="text-[11px] sm:text-xs tracking-[2.5px] sm:tracking-[3px] uppercase text-[#7b7f7d] mb-2 sm:mb-3">
-                UNIT OVERVIEW
+<section className="bg-[#f5f2ee] px-4 sm:px-6 md:px-12 py-10 sm:py-12 md:py-16 overflow-x-hidden">
+  <div className="max-w-[1400px] mx-auto min-w-0">
+    {/* TOP TEXT ROW */}
+    <div className="grid md:grid-cols-2 gap-5 sm:gap-6 items-center min-w-0">
+      <div className="min-w-0">
+        <p className="text-[11px] sm:text-xs tracking-[2px] sm:tracking-[3px] uppercase text-[#7b7f7d] mb-2 sm:mb-3">
+          UNIT OVERVIEW
+        </p>
+        <h2 className="text-[26px] leading-[1.1] sm:text-3xl md:text-5xl font-serif text-[#2d3230] break-words">
+          Unified Living Hub
+        </h2>
+      </div>
+
+      <p className="text-[13px] sm:text-sm md:text-base text-[#5a6260] leading-relaxed max-w-[700px] min-w-0">
+        Explore your future home with detailed floor plans, interactive 3D virtual tours, and unit photography — all in one convenient module.
+      </p>
+    </div>
+
+    {/* ORANGE STRIP */}
+    <div className="mt-6 sm:mt-8 bg-gradient-to-r from-[#e59a2e] to-[#c9791c] rounded-[18px] sm:rounded-[20px] px-3 sm:px-4 md:px-6 py-4 flex flex-col gap-2.5 sm:gap-3 md:gap-4 min-w-0">
+      <div className="flex flex-wrap items-start gap-2 sm:gap-3 min-w-0">
+        <span className="w-fit max-w-full border border-white/40 text-white px-3 sm:px-4 py-2 rounded-full text-[10px] sm:text-xs tracking-wide">
+          LOOK &amp; LEASE SPECIAL
+        </span>
+
+        <span className="text-white font-serif text-[15px] sm:text-lg leading-snug break-words">
+          Only $99 Total to Move In
+        </span>
+      </div>
+
+      <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 min-w-0">
+        <span className="bg-white/20 text-white px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm w-fit max-w-full break-words">
+          1BR from $799 · A1–A3
+        </span>
+
+        <span className="bg-white/20 text-white px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm w-fit max-w-full break-words">
+          2BR from $999 · B1–B3
+        </span>
+      </div>
+
+      <div className="w-full sm:w-auto sm:self-end">
+        <span className="inline-flex max-w-full bg-white text-[#b45d2a] px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium break-words">
+          📞 (903) 961–6391
+        </span>
+      </div>
+    </div>
+
+    {/* TABS + FILTERS */}
+    <div className="mt-6 sm:mt-8 flex flex-col gap-4 min-w-0">
+      <div className="grid grid-cols-2 gap-3 w-full md:flex md:w-auto">
+        <button
+          onClick={() => {
+            setBedroomType("1bed");
+            setSelectedPlan("A1");
+          }}
+          className={`min-w-0 px-3 sm:px-5 py-3 rounded-xl text-sm text-left transition ${
+            bedroomType === "1bed"
+              ? "bg-[#1e3872] text-white"
+              : "bg-[#e7e3dc] text-[#2d3230]"
+          }`}
+        >
+          <span className="block truncate">1 Bedroom</span>
+          <span className="block text-[11px] sm:text-xs opacity-80 truncate">
+            from $799/mo
+          </span>
+        </button>
+
+        <button
+          onClick={() => {
+            setBedroomType("2bed");
+            setSelectedPlan("B1");
+          }}
+          className={`min-w-0 px-3 sm:px-5 py-3 rounded-xl text-sm text-left transition ${
+            bedroomType === "2bed"
+              ? "bg-[#1e3872] text-white"
+              : "bg-[#e7e3dc] text-[#2d3230]"
+          }`}
+        >
+          <span className="block truncate">2 Bedrooms</span>
+          <span className="block text-[11px] sm:text-xs opacity-80 truncate">
+            from $999/mo
+          </span>
+        </button>
+      </div>
+
+      {/* RIGHT FILTER PILLS */}
+      <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden min-w-0">
+        {bedroomType === "1bed" ? (
+          <>
+            <button
+              onClick={() => setSelectedPlan("A1")}
+              className={`shrink-0 px-4 py-2 rounded-full border text-xs sm:text-sm whitespace-nowrap ${
+                selectedPlan === "A1"
+                  ? "border-[#1e3872] text-[#1e3872]"
+                  : "border-gray-300 text-[#2d3230]"
+              }`}
+            >
+              A1 · 625 sqft · $799/mo
+            </button>
+            <button
+              onClick={() => setSelectedPlan("A2")}
+              className={`shrink-0 px-4 py-2 rounded-full border text-xs sm:text-sm whitespace-nowrap ${
+                selectedPlan === "A2"
+                  ? "border-[#1e3872] text-[#1e3872]"
+                  : "border-gray-300 text-[#2d3230]"
+              }`}
+            >
+              A2 · 724 sqft · $849/mo
+            </button>
+            <button
+              onClick={() => setSelectedPlan("A3")}
+              className={`shrink-0 px-4 py-2 rounded-full border text-xs sm:text-sm whitespace-nowrap ${
+                selectedPlan === "A3"
+                  ? "border-[#1e3872] text-[#1e3872]"
+                  : "border-gray-300 text-[#2d3230]"
+              }`}
+            >
+              A3 · 724 sqft · $849/mo
+            </button>
+          </>
+        ) : (
+          <>
+            <button
+              onClick={() => setSelectedPlan("B1")}
+              className={`shrink-0 px-4 py-2 rounded-full border text-xs sm:text-sm whitespace-nowrap ${
+                selectedPlan === "B1"
+                  ? "border-[#1e3872] text-[#1e3872]"
+                  : "border-gray-300 text-[#2d3230]"
+              }`}
+            >
+              B1 · 850 sqft · $999/mo
+            </button>
+            <button
+              onClick={() => setSelectedPlan("B2")}
+              className={`shrink-0 px-4 py-2 rounded-full border text-xs sm:text-sm whitespace-nowrap ${
+                selectedPlan === "B2"
+                  ? "border-[#1e3872] text-[#1e3872]"
+                  : "border-gray-300 text-[#2d3230]"
+              }`}
+            >
+              B2 · 886 sqft · $1,049/mo
+            </button>
+            <button
+              onClick={() => setSelectedPlan("B3")}
+              className={`shrink-0 px-4 py-2 rounded-full border text-xs sm:text-sm whitespace-nowrap ${
+                selectedPlan === "B3"
+                  ? "border-[#1e3872] text-[#1e3872]"
+                  : "border-gray-300 text-[#2d3230]"
+              }`}
+            >
+              B3 · 1,003 sqft · $1,099/mo
+            </button>
+          </>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ================= FLOOR + PREVIEW SECTION ================= */}
+<section className="bg-[#f5f2ee] px-4 sm:px-6 md:px-12 pb-12 sm:pb-16 overflow-x-hidden">
+  <div className="max-w-[1400px] mx-auto min-w-0">
+    <div className="bg-[#f8f6f2] rounded-[20px] sm:rounded-2xl border overflow-hidden min-w-0">
+      <div className="grid md:grid-cols-2 min-w-0">
+        {/* LEFT: FLOOR PLAN */}
+        <div className="min-w-0">
+          <div className="flex flex-col gap-3 p-4 sm:p-5 md:p-6 border-b min-w-0">
+            <div className="min-w-0">
+              <p className="text-[11px] sm:text-xs uppercase text-[#7b7f7d] break-words">
+                {plans[selectedPlan].title}
               </p>
-              <h2 className="text-[28px] leading-[1.1] sm:text-3xl md:text-5xl font-serif text-[#2d3230]">
-                Unified Living Hub
-              </h2>
+              <h3 className="text-xl sm:text-2xl font-serif break-words">
+                {plans[selectedPlan].bed}, {plans[selectedPlan].bath}
+              </h3>
             </div>
 
-            {/* RIGHT */}
-            <p className="text-[13px] sm:text-sm md:text-base text-[#5a6260] leading-relaxed max-w-[700px]">
-              Explore your future home with detailed floor plans, interactive 3D virtual tours, and unit photography — all in one convenient module.
+            <div className="w-fit max-w-full bg-[#1e3872] text-white px-4 py-2 rounded-full text-sm break-words">
+              {plans[selectedPlan].price}
+            </div>
+          </div>
+
+          {/* IMPORTANT: remove inner padding when using fill image */}
+          <div className="relative h-[240px] xs:h-[260px] sm:h-[320px] md:h-[440px]">
+            <div className="absolute inset-0 p-3 sm:p-4">
+              <div className="relative h-full w-full">
+                <Image
+                  src={plans[selectedPlan].img}
+                  alt={`${plans[selectedPlan].bed} ${plans[selectedPlan].bath} apartment floor plan ${selectedPlan} at Parks on Taylor Sherman TX`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-contain opacity-80"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* RIGHT: PREVIEW */}
+        <div className="border-t md:border-t-0 md:border-l flex flex-col min-w-0">
+          <div className="flex p-3 sm:p-4 bg-[#edeae4] gap-2 border-b min-w-0">
+            <button
+              onClick={() => setTab("photos")}
+              className={`flex-1 min-w-0 py-2.5 sm:py-3 px-2 rounded-xl text-[11px] sm:text-sm font-medium transition ${
+                tab === "photos"
+                  ? "bg-[#1e3872] text-white"
+                  : "text-[#5a6260]"
+              }`}
+            >
+              <span className="block truncate">Interior Photos</span>
+            </button>
+
+            <button
+              onClick={() => setTab("amenities")}
+              className={`flex-1 min-w-0 py-2.5 sm:py-3 px-2 rounded-xl text-[11px] sm:text-sm font-medium transition ${
+                tab === "amenities"
+                  ? "bg-[#1e3872] text-white"
+                  : "text-[#5a6260]"
+              }`}
+            >
+              <span className="block truncate">Amenities</span>
+            </button>
+          </div>
+
+          <div className="flex gap-2 sm:gap-3 p-3 sm:p-4 border-b bg-[#f8f6f2] overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden min-w-0">
+            {tab === "photos" ? (
+              <>
+                {(["Living Room", "Bedroom", "Kitchen", "Bathroom"] as const).map((item) => (
+                  <button
+                    key={item}
+                    onClick={() => setPreviewCategory(item)}
+                    className={`shrink-0 px-4 sm:px-5 py-2 rounded-full border text-xs sm:text-sm whitespace-nowrap ${
+                      previewCategory === item
+                        ? "bg-[#1e3872] text-white border-[#1e3872]"
+                        : "text-[#5a6260] border-gray-300"
+                    }`}
+                  >
+                    {item}
+                  </button>
+                ))}
+              </>
+            ) : null}
+          </div>
+
+          {tab === "amenities" && (
+            <div className="flex gap-3 px-3 sm:px-4 py-3 border-b bg-[#f8f6f2] overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden min-w-0">
+              {Object.entries(amenityPhotos).map(([label, src]) => {
+                const isActive = amenityCategory === label;
+
+                return (
+                  <button
+                    key={label}
+                    onClick={() =>
+                      setAmenityCategory(label as keyof typeof amenityPhotos)
+                    }
+                    className={`relative shrink-0 w-[88px] h-[46px] sm:w-[110px] sm:h-[56px] rounded-xl overflow-hidden border-2 transition ${
+                      isActive ? "border-[#1e3872]" : "border-transparent"
+                    }`}
+                  >
+                    <Image
+                      src={src}
+                      alt={`${label} amenities at Parks on Taylor apartments Sherman TX`}
+                      fill
+                      className="object-cover"
+                    />
+                  </button>
+                );
+              })}
+            </div>
+          )}
+
+          <div className="relative h-[220px] xs:h-[240px] sm:h-[300px] md:h-[440px] min-w-0">
+            <Image
+              src={
+                tab === "photos"
+                  ? interiorPhotos[previewCategory]
+                  : amenityPhotos[amenityCategory]
+              }
+              alt={
+                tab === "photos"
+                  ? `Modern ${previewCategory.toLowerCase()} interior at Parks on Taylor apartments Sherman TX`
+                  : `${amenityCategory} amenities at Parks on Taylor apartments Sherman TX`
+              }
+              fill
+              className="object-cover"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* ================= BOTTOM: DETAILS ================= */}
+      <div className="grid md:grid-cols-2 gap-6 p-4 sm:p-5 md:p-6 border-t min-w-0">
+        <div className="min-w-0">
+          <div className="grid grid-cols-2 sm:grid-cols-4 text-center border-b pb-4 mb-4 gap-y-4">
+            <div>
+              <p className="font-serif text-sm sm:text-base break-words">{plans[selectedPlan].bed}</p>
+              <p className="text-[10px] sm:text-xs text-[#7b7f7d]">BEDROOM</p>
+            </div>
+            <div>
+              <p className="font-serif text-sm sm:text-base break-words">{plans[selectedPlan].bath}</p>
+              <p className="text-[10px] sm:text-xs text-[#7b7f7d]">BATHROOM</p>
+            </div>
+            <div>
+              <p className="font-serif text-sm sm:text-base break-words">{plans[selectedPlan].area}</p>
+              <p className="text-[10px] sm:text-xs text-[#7b7f7d]">AREA</p>
+            </div>
+            <div>
+              <p className="font-serif text-sm sm:text-base">Apr 1</p>
+              <p className="text-[10px] sm:text-xs text-[#7b7f7d]">AVAILABLE</p>
+            </div>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 text-sm min-w-0">
+            <div className="min-w-0">
+              <p className="text-xs uppercase text-[#1e3872] mb-2">Highlights</p>
+              <ul className="list-disc ml-4 space-y-1 text-[13px] sm:text-sm break-words">
+                <li>High Speed Internet</li>
+                <li>Washer/Dryer Hookup</li>
+                <li>Air Conditioning</li>
+                <li>Heating</li>
+                <li>Ceiling Fans</li>
+                <li>Cable Ready</li>
+                <li>Tub/Shower</li>
+                <li>Fireplace</li>
+              </ul>
+            </div>
+
+            <div className="min-w-0">
+              <p className="text-xs uppercase text-[#1e3872] mb-2">Kitchen</p>
+              <ul className="list-disc ml-4 space-y-1 text-[13px] sm:text-sm break-words">
+                <li>Dishwasher</li>
+                <li>Disposal</li>
+                <li>Microwave</li>
+                <li>Range</li>
+              </ul>
+            </div>
+
+            <div className="min-w-0">
+              <p className="text-xs uppercase text-[#1e3872] mb-2">Interior</p>
+              <ul className="list-disc ml-4 space-y-1 text-[13px] sm:text-sm break-words">
+                <li>Carpet</li>
+                <li>Vinyl Flooring</li>
+                <li>Dining Room</li>
+                <li>Walk-In Closets</li>
+                <li>Window Coverings</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col justify-between min-w-0">
+          <div className="min-w-0">
+            <p className="text-lg sm:text-xl font-serif mb-2 break-words">
+              {plans[selectedPlan].title}
+            </p>
+
+            <p className="text-sm text-[#5a6260] mb-4 break-words">
+              {plans[selectedPlan].area} · Available Apr 1, 2026
+            </p>
+
+            <p className="text-2xl sm:text-3xl font-serif text-[#1e3872] mb-6 break-words">
+              {plans[selectedPlan].price}
             </p>
           </div>
 
-          {/* ORANGE STRIP */}
-          <div className="mt-6 sm:mt-8 bg-gradient-to-r from-[#e59a2e] to-[#c9791c] rounded-[20px] px-3 sm:px-4 md:px-6 py-4 flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-2 sm:gap-3 md:gap-4">
-            <span className="w-fit border border-white/40 text-white px-3 sm:px-4 py-2 rounded-full text-[10px] sm:text-xs tracking-wide">
-              LOOK & LEASE SPECIAL
-            </span>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <button className="flex-1 border border-[#1e3872] text-[#1e3872] py-3 rounded-full text-sm sm:text-base px-4">
+              Schedule Tour
+            </button>
 
-            <span className="text-white font-serif text-base sm:text-lg leading-snug">
-              Only $99 Total to Move In
-            </span>
-
-            <div className="flex flex-wrap gap-2">
-              <span className="bg-white/20 text-white px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm">
-                1BR from $799 · A1–A3
-              </span>
-
-              <span className="bg-white/20 text-white px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm">
-                2BR from $999 · B1–B3
-              </span>
-            </div>
-
-            <div className="sm:ml-auto">
-              <span className="inline-flex bg-white text-[#b45d2a] px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium">
-                📞 (903) 961–6391
-              </span>
-            </div>
-          </div>
-
-          {/* TABS + FILTERS */}
-          <div className="mt-6 sm:mt-8 flex flex-col gap-4">
-            {/* LEFT TABS */}
-            <div className="grid grid-cols-2 gap-3 w-full md:flex md:w-auto">
-              <button
-                onClick={() => {
-                  setBedroomType("1bed");
-                  setSelectedPlan("A1");
-                }}
-                className={`px-4 sm:px-5 py-3 rounded-xl text-sm text-left transition ${
-                  bedroomType === "1bed"
-                    ? "bg-[#1e3872] text-white"
-                    : "bg-[#e7e3dc] text-[#2d3230]"
-                }`}
-              >
-                1 Bedroom
-                <span className="block text-[11px] sm:text-xs opacity-80">
-                  from $799/mo
-                </span>
-              </button>
-
-              <button
-                onClick={() => {
-                  setBedroomType("2bed");
-                  setSelectedPlan("B1");
-                }}
-                className={`px-4 sm:px-5 py-3 rounded-xl text-sm text-left transition ${
-                  bedroomType === "2bed"
-                    ? "bg-[#1e3872] text-white"
-                    : "bg-[#e7e3dc] text-[#2d3230]"
-                }`}
-              >
-                2 Bedrooms
-                <span className="block text-[11px] sm:text-xs opacity-80">
-                  from $999/mo
-                </span>
-              </button>
-            </div>
-
-            {/* RIGHT FILTER PILLS */}
-            <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-1 md:flex-wrap md:overflow-visible md:pb-0 md:ml-auto">
-              {bedroomType === "1bed" ? (
-                <>
-                  <button
-                    onClick={() => setSelectedPlan("A1")}
-                    className={`shrink-0 px-4 py-2 rounded-full border text-xs sm:text-sm whitespace-nowrap ${
-                      selectedPlan === "A1"
-                        ? "border-[#1e3872] text-[#1e3872]"
-                        : "border-gray-300 text-[#2d3230]"
-                    }`}
-                  >
-                    A1 · 625 sqft · $799/mo
-                  </button>
-
-                  <button
-                    onClick={() => setSelectedPlan("A2")}
-                    className={`shrink-0 px-4 py-2 rounded-full border text-xs sm:text-sm whitespace-nowrap ${
-                      selectedPlan === "A2"
-                        ? "border-[#1e3872] text-[#1e3872]"
-                        : "border-gray-300 text-[#2d3230]"
-                    }`}
-                  >
-                    A2 · 724 sqft · $849/mo
-                  </button>
-
-                  <button
-                    onClick={() => setSelectedPlan("A3")}
-                    className={`shrink-0 px-4 py-2 rounded-full border text-xs sm:text-sm whitespace-nowrap ${
-                      selectedPlan === "A3"
-                        ? "border-[#1e3872] text-[#1e3872]"
-                        : "border-gray-300 text-[#2d3230]"
-                    }`}
-                  >
-                    A3 · 724 sqft · $849/mo
-                  </button>
-                </>
-              ) : (
-                <>
-                  <button
-                    onClick={() => setSelectedPlan("B1")}
-                    className={`shrink-0 px-4 py-2 rounded-full border text-xs sm:text-sm whitespace-nowrap ${
-                      selectedPlan === "B1"
-                        ? "border-[#1e3872] text-[#1e3872]"
-                        : "border-gray-300 text-[#2d3230]"
-                    }`}
-                  >
-                    B1 · 850 sqft · $999/mo
-                  </button>
-
-                  <button
-                    onClick={() => setSelectedPlan("B2")}
-                    className={`shrink-0 px-4 py-2 rounded-full border text-xs sm:text-sm whitespace-nowrap ${
-                      selectedPlan === "B2"
-                        ? "border-[#1e3872] text-[#1e3872]"
-                        : "border-gray-300 text-[#2d3230]"
-                    }`}
-                  >
-                    B2 · 886 sqft · $1,049/mo
-                  </button>
-
-                  <button
-                    onClick={() => setSelectedPlan("B3")}
-                    className={`shrink-0 px-4 py-2 rounded-full border text-xs sm:text-sm whitespace-nowrap ${
-                      selectedPlan === "B3"
-                        ? "border-[#1e3872] text-[#1e3872]"
-                        : "border-gray-300 text-[#2d3230]"
-                    }`}
-                  >
-                    B3 · 1,003 sqft · $1,099/mo
-                  </button>
-                </>
-              )}
-            </div>
+            <button className="flex-1 bg-[#1e3872] text-white py-3 rounded-full text-sm sm:text-base px-4">
+              Apply Now →
+            </button>
           </div>
         </div>
-      </section>
-
-      {/* ================= FLOOR + PREVIEW SECTION ================= */}
-      <section className="bg-[#f5f2ee] px-4 sm:px-6 md:px-12 pb-12 sm:pb-16">
-        <div className="max-w-[1400px] mx-auto">
-          {/* MAIN CARD */}
-          <div className="bg-[#f8f6f2] rounded-[20px] sm:rounded-2xl border overflow-hidden">
-            {/* ================= TOP: IMAGES ================= */}
-            <div className="grid md:grid-cols-2">
-              {/* LEFT: FLOOR PLAN */}
-              <div>
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 sm:p-5 md:p-6 border-b">
-                  <div>
-                    <p className="text-[11px] sm:text-xs uppercase text-[#7b7f7d]">
-                      {plans[selectedPlan].title}
-                    </p>
-                    <h3 className="text-xl sm:text-2xl font-serif">
-                      {plans[selectedPlan].bed}, {plans[selectedPlan].bath}
-                    </h3>
-                  </div>
-
-                  <div className="w-fit bg-[#1e3872] text-white px-4 py-2 rounded-full text-sm">
-                    {plans[selectedPlan].price}
-                  </div>
-                </div>
-
-                <div className="relative h-[280px] sm:h-[360px] md:h-[480px] p-3 sm:p-4">
-                  <Image
-                    src={plans[selectedPlan].img}
-                    alt={`${plans[selectedPlan].bed} ${plans[selectedPlan].bath} apartment floor plan ${selectedPlan} at Parks on Taylor Sherman TX`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-contain opacity-80"
-                  />
-                </div>
-              </div>
-
-              {/* RIGHT: PREVIEW */}
-              <div className="border-t md:border-t-0 md:border-l flex flex-col">
-                {/* TOP TABS */}
-                <div className="flex p-3 sm:p-4 bg-[#edeae4] gap-2 border-b">
-                  <button
-                    onClick={() => setTab("photos")}
-                    className={`flex-1 py-2.5 sm:py-3 rounded-xl text-xs sm:text-sm font-medium transition ${
-                      tab === "photos"
-                        ? "bg-[#1e3872] text-white"
-                        : "text-[#5a6260]"
-                    }`}
-                  >
-                    Interior Photos
-                  </button>
-
-                  <button
-                    onClick={() => setTab("amenities")}
-                    className={`flex-1 py-2.5 sm:py-3 rounded-xl text-xs sm:text-sm font-medium transition ${
-                      tab === "amenities"
-                        ? "bg-[#1e3872] text-white"
-                        : "text-[#5a6260]"
-                    }`}
-                  >
-                    Amenities
-                  </button>
-                </div>
-
-                {/* SUB FILTERS */}
-                <div className="flex gap-2 sm:gap-3 p-3 sm:p-4 border-b bg-[#f8f6f2] overflow-x-auto">
-                  {tab === "photos" ? (
-                    <>
-                      {(["Living Room", "Bedroom", "Kitchen", "Bathroom"] as const).map((item) => (
-                        <button
-                          key={item}
-                          onClick={() => setPreviewCategory(item)}
-                          className={`shrink-0 px-4 sm:px-5 py-2 rounded-full border text-xs sm:text-sm whitespace-nowrap ${
-                            previewCategory === item
-                              ? "bg-[#1e3872] text-white border-[#1e3872]"
-                              : "text-[#5a6260] border-gray-300"
-                          }`}
-                        >
-                          {item}
-                        </button>
-                      ))}
-                    </>
-                  ) : (
-                    <>
-                      {([] as const).map((item) => (
-                        <button
-                          key={item}
-                          onClick={() => setAmenityCategory(item)}
-                          className={`shrink-0 px-4 sm:px-5 py-2 rounded-full border text-xs sm:text-sm whitespace-nowrap ${
-                            amenityCategory === item
-                              ? "bg-[#1e3872] text-white border-[#1e3872]"
-                              : "text-[#5a6260] border-gray-300"
-                          }`}
-                        >
-                          {item}
-                        </button>
-                      ))}
-                    </>
-                  )}
-                </div>
-
-                {/* THUMBNAILS */}
-                {tab === "amenities" && (
-                  <div className="flex gap-3 px-3 sm:px-4 py-3 border-b bg-[#f8f6f2] overflow-x-auto">
-                    {Object.entries(amenityPhotos).map(([label, src]) => {
-                      const isActive = amenityCategory === label;
-
-                      return (
-                        <button
-                          key={label}
-                          onClick={() =>
-                            setAmenityCategory(label as keyof typeof amenityPhotos)
-                          }
-                          className={`relative shrink-0 w-[96px] h-[48px] sm:w-[110px] sm:h-[56px] rounded-xl overflow-hidden border-2 transition ${
-                            isActive ? "border-[#1e3872]" : "border-transparent"
-                          }`}
-                        >
-                          <Image
-                            src={src}
-                            alt={`${label} amenities at Parks on Taylor apartments Sherman TX`}
-                            fill
-                            className="object-cover"
-                          />
-                        </button>
-                      );
-                    })}
-                  </div>
-                )}
-
-                {/* MAIN PREVIEW IMAGE */}
-                <div className="relative h-[260px] sm:h-[340px] md:h-[480px]">
-                  <Image
-                    src={
-                      tab === "photos"
-                        ? interiorPhotos[previewCategory]
-                        : amenityPhotos[amenityCategory]
-                    }
-                    alt={
-                      tab === "photos"
-                        ? `Modern ${previewCategory.toLowerCase()} interior at Parks on Taylor apartments Sherman TX`
-                        : `${amenityCategory} amenities at Parks on Taylor apartments Sherman TX`
-                    }
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* ================= BOTTOM: DETAILS ================= */}
-            <div className="grid md:grid-cols-2 gap-6 p-4 sm:p-5 md:p-6 border-t">
-              {/* LEFT: FEATURES */}
-              <div>
-                {/* STATS */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 text-center border-b pb-4 mb-4 gap-y-4">
-                  <div>
-                    <p className="font-serif text-sm sm:text-base">{plans[selectedPlan].bed}</p>
-                    <p className="text-[10px] sm:text-xs text-[#7b7f7d]">BEDROOM</p>
-                  </div>
-                  <div>
-                    <p className="font-serif text-sm sm:text-base">{plans[selectedPlan].bath}</p>
-                    <p className="text-[10px] sm:text-xs text-[#7b7f7d]">BATHROOM</p>
-                  </div>
-                  <div>
-                    <p className="font-serif text-sm sm:text-base">{plans[selectedPlan].area}</p>
-                    <p className="text-[10px] sm:text-xs text-[#7b7f7d]">AREA</p>
-                  </div>
-                  <div>
-                    <p className="font-serif text-sm sm:text-base">Apr 1</p>
-                    <p className="text-[10px] sm:text-xs text-[#7b7f7d]">AVAILABLE</p>
-                  </div>
-                </div>
-
-                {/* FEATURES */}
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 text-sm">
-                  <div>
-                    <p className="text-xs uppercase text-[#1e3872] mb-2">
-                      Highlights
-                    </p>
-                    <ul className="list-disc ml-4 space-y-1 text-[13px] sm:text-sm">
-                      <li>High Speed Internet</li>
-                      <li>Washer/Dryer Hookup</li>
-                      <li>Air Conditioning</li>
-                      <li>Heating</li>
-                      <li>Ceiling Fans</li>
-                      <li>Cable Ready</li>
-                      <li>Tub/Shower</li>
-                      <li>Fireplace</li>
-                    </ul>
-                  </div>
-
-                  <div>
-                    <p className="text-xs uppercase text-[#1e3872] mb-2">
-                      Kitchen
-                    </p>
-                    <ul className="list-disc ml-4 space-y-1 text-[13px] sm:text-sm">
-                      <li>Dishwasher</li>
-                      <li>Disposal</li>
-                      <li>Microwave</li>
-                      <li>Range</li>
-                    </ul>
-                  </div>
-
-                  <div>
-                    <p className="text-xs uppercase text-[#1e3872] mb-2">
-                      Interior
-                    </p>
-                    <ul className="list-disc ml-4 space-y-1 text-[13px] sm:text-sm">
-                      <li>Carpet</li>
-                      <li>Vinyl Flooring</li>
-                      <li>Dining Room</li>
-                      <li>Walk-In Closets</li>
-                      <li>Window Coverings</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              {/* RIGHT: CTA */}
-              <div className="flex flex-col justify-between">
-                <div>
-                  <p className="text-lg sm:text-xl font-serif mb-2">
-                    {plans[selectedPlan].title}
-                  </p>
-
-                  <p className="text-sm text-[#5a6260] mb-4">
-                    {plans[selectedPlan].area} · Available Apr 1, 2026
-                  </p>
-
-                  <p className="text-2xl sm:text-3xl font-serif text-[#1e3872] mb-6">
-                    {plans[selectedPlan].price}
-                  </p>
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <button className="flex-1 border border-[#1e3872] text-[#1e3872] py-3 rounded-full text-sm sm:text-base">
-                    Schedule Tour
-                  </button>
-
-                  <button className="flex-1 bg-[#1e3872] text-white py-3 rounded-full text-sm sm:text-base">
-                    Apply Now →
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* ================= AMENITIES SECTION ================= */}
       <section className="bg-[#0c2340] px-6 md:px-12 py-16 md:py-20">
