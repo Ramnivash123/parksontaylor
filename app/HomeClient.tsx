@@ -1,0 +1,1293 @@
+"use client";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import HeaderTop from "./_components/header_top";
+import { useState } from "react";
+
+export default function HomeClient() {
+
+  const [tab, setTab] = useState("amenities");
+  const [reviewIndex, setReviewIndex] = useState(0);
+
+  const plans = {
+    A1: {
+      title: "Plan A1 · 1 Bed · 1 Bath",
+      price: "$799/mo",
+      area: "625 sq ft",
+      img: "/webp/plan/a1.webp",
+      bed: "1 Bed",
+      bath: "1 Bath",
+    },
+    A2: {
+      title: "Plan A2 · 1 Bed · 1 Bath",
+      price: "$849/mo",
+      area: "724 sq ft",
+      img: "/webp/plan/a2.webp",
+      bed: "1 Bed",
+      bath: "1 Bath",
+    },
+    A3: {
+      title: "Plan A3 · 1 Bed · 1 Bath",
+      price: "$849/mo",
+      area: "724 sq ft",
+      img: "/webp/plan/a3.webp",
+      bed: "1 Bed",
+      bath: "1 Bath",
+    },
+    B1: {
+      title: "Plan B1 · 2 Bed · 1 Bath",
+      price: "$999/mo",
+      area: "850 sq ft",
+      img: "/webp/plan/b1.webp",
+      bed: "2 Bed",
+      bath: "1 Bath",
+    },
+    B2: {
+      title: "Plan B2 · 2 Bed · 2 Bath",
+      price: "$1049/mo",
+      area: "886 sq ft",
+      img: "/webp/plan/b2.webp",
+      bed: "2 Bed",
+      bath: "2 Bath",
+    },
+    B3: {
+      title: "Plan B3 · 2 Bed · 2 Bath",
+      price: "$1099/mo",
+      area: "1003 sq ft",
+      img: "/webp/plan/b3.webp",
+      bed: "2 Bed",
+      bath: "2 Bath",
+    },
+  };
+
+  const reviews = [
+    {
+      name: "John B.",
+      role: "2–Bedroom Resident",
+      years: "Resident for 3 Years",
+      initials: "JB",
+      rating: 4,
+      text: `The new management team genuinely turned things around here. I was close to leaving after the old issues, but when LiveNJoy took over, maintenance actually showed up same-day and they knew my name within the first week. It's not perfect — nothing is — but the effort is real, and that goes a long way.`
+    },
+    {
+      name: "Maria T.",
+      role: "2–Bed Townhome",
+      years: "Resident for 2 Years",
+      initials: "MT",
+      rating: 5,
+      text: `We moved in right after the management transition and were a little nervous given some of the old reviews. The team reassured us from day one — fixed our A/C within hours of move-in. Our neighbors who stayed through the change say it's like a completely different community now.`
+    },
+    {
+      name: "DeShawn L.",
+      role: "1–Bedroom Resident",
+      years: "Resident for 3+ Years",
+      initials: "DL",
+      rating: 5,
+      text: `I'll be honest — I thought about leaving when things weren't great here. But I gave the new team a real chance. Three-plus years later, I'm still here, and genuinely glad I stayed. It finally feels like a real community. The staff actually cares, and you feel that difference every day.`
+    }
+  ];
+
+  const interiorPhotos = {
+    "Living Room": "/webp/amenities/13.webp",
+    Bedroom: "/webp/amenities/10.webp",
+    Kitchen: "/webp/amenities/5.webp",
+    Bathroom: "/webp/amenities/6.webp",
+  } as const;
+
+  const amenityPhotos = {
+    Pool: "/webp/banner/amenities-banner.webp",
+    Fitness: "/webp/banner/plan-banner.webp",
+    "Dog Park": "/webp/features/community.webp",
+    Laundry: "/webp/features/home.webp",
+  } as const;
+
+  type PlanKey = keyof typeof plans;
+  const [selectedPlan, setSelectedPlan] = useState<PlanKey>("A1");
+
+  const [bedroomType, setBedroomType] = useState<"1bed" | "2bed">("1bed");
+
+  const defaultPreviewImg = "/webp/banner/amenities.webp";
+
+  const [previewCategory, setPreviewCategory] = useState<
+    "Living Room" | "Bedroom" | "Kitchen" | "Bathroom"
+  >("Living Room");
+
+  const [amenityCategory, setAmenityCategory] = useState<
+    "Pool" | "Fitness" | "Dog Park" | "Laundry"
+  >("Pool");
+
+  const stories = [
+    {
+      image: "/webp/amenities/5.webp",
+      category: "Local Eats",
+      time: "4 min",
+      author: "Maya Chen",
+      date: "Jan 18",
+      title: "The 7 Best Farm-to-Table Spots Near Sherman",
+      desc: "From field to fork — the freshest seasonal menus nearby.",
+    },
+    {
+      image: "/webp/landscape/11.webp",
+      category: "Outdoors",
+      time: "6 min",
+      author: "Alex Torres",
+      date: "Jan 12",
+      title: "Hidden Trails at Eisenhower State Park",
+      desc: "Six routes most visitors never find.",
+    },
+    {
+      image: "/webp/landscape/3.webp",
+      category: "Community",
+      time: "3 min",
+      author: "Sara Kim",
+      date: "Jan 5",
+      title: "Sherman Farmers Market: A Weekend Essential",
+      desc: "Every stall worth knowing.",
+    },
+
+    // NEXT PAGE (this is what shows on arrow click)
+    {
+      image: "/webp/amenities/4.webp",
+      category: "Local Life",
+      time: "5 min",
+      author: "James Park",
+      date: "Dec 28",
+      title: "Best Coffee Spots to Work Remotely",
+      desc: "Reliable Wi-Fi and great espresso.",
+    },
+    {
+      image: "/webp/landscape/1.webp",
+      category: "Culture",
+      time: "7 min",
+      author: "Nadia Ali",
+      date: "Dec 21",
+      title: "5 Architecture & Gallery Tours Worth the Drive",
+      desc: "Texas's creative corridor.",
+    },
+    {
+      image: "/webp/landscape/6.webp",
+      category: "City Life",
+      time: "4 min",
+      author: "Chris Moore",
+      date: "Dec 15",
+      title: "Sunset Views: Taylor's Best Spots",
+      desc: "Golden hour perfection.",
+    },
+  ];
+  
+  const [storyPage, setStoryPage] = useState(0);
+  const totalStoryPages = Math.ceil(stories.length / 3);
+
+  const amenities = [
+    {
+      title: "Responsive Maintenance",
+      tag: "SAME-DAY RESPONSE",
+      img: "/webp/amenities/10.webp",
+    },
+    {
+      title: "Convenient On-site Management",
+      tag: "MON–SAT · OFFICE ON-SITE",
+      img: "/webp/office/3.webp",
+    },
+    {
+      title: "Swimming Pools",
+      tag: "2 POOLS · SUNDECK",
+      img: "/webp/pool/2.webp",
+    },
+    {
+      title: "Covered Parking",
+      tag: "RESERVED · COVERED",
+      img: "/webp/landscape/10.webp",
+    },
+    {
+      title: "Dog Park",
+      tag: "ON-SITE · FENCED",
+      img: "/webp/landscape/12.webp",
+    },
+    {
+      title: "On-Site Laundry",
+      tag: "ON-SITE · CONVENIENT",
+      img: "/webp/features/community.webp",
+    },
+  ];
+
+  return (
+    <>
+      <HeaderTop />
+      {/* ================= HERO SECTION ================= */}
+      <section className="relative h-[100vh] w-full pt-28 md:pt-32">
+
+        <Image
+          src="/webp/office/1.webp"
+          alt="Parks on Taylor apartments exterior in Sherman TX with modern residential buildings"
+          fill
+          className="object-cover"
+        />
+
+        <div className="absolute inset-0 bg-black/50"></div>
+
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4 md:px-8">
+          
+          <div className="block md:hidden">
+            <p className="text-[10px] tracking-[2px] uppercase mb-1 opacity-80 text-[#a49e99]">
+              PARKS ON TAYLOR · SHERMAN, TX NOW
+            </p>
+            <p className="text-[10px] tracking-[2px] uppercase mb-2 opacity-80 text-[#a49e99]">
+              LEASING
+            </p>
+          </div>
+
+          <p className="hidden md:block text-xs tracking-[3px] uppercase mb-4 opacity-80 text-[#a49e99]">
+            PARKS ON TAYLOR · SHERMAN, TX · NOW LEASING
+          </p>
+
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-serif leading-[1.1] tracking-wide">
+            Affordable, Safe, and
+          </h1>
+
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-serif italic text-[#E09428] whitespace-nowrap">
+            Clean Living in Sherman.
+          </h1>
+
+          <div className="flex items-center gap-2 my-4 md:my-6">
+            <div className="w-6 md:w-10 h-[1px] bg-[#E09428]"></div>
+            <span className="text-lg md:text-xl text-[#E09428]">•••</span>
+            <div className="w-6 md:w-10 h-[1px] bg-[#E09428]"></div>
+          </div>
+
+          <p className="max-w-sm md:max-w-2xl text-sm md:text-lg lg:text-xl opacity-80 leading-relaxed text-[#a49e99]">
+            Responsive management and a community you can trust.
+            <br className="hidden md:block" />
+            Conveniently located near Fairway Park.
+          </p>
+
+          <div className="flex flex-col md:flex-row gap-3 md:gap-4 mt-5 md:mt-6 w-full max-w-xs md:max-w-none justify-center">
+            
+            <Button className="bg-[#1e3872] hover:bg-[#0c2457] px-6 py-3 rounded-full w-full md:w-auto">
+              View Available Units →
+            </Button>
+
+            <Button
+              variant="outline"
+              className="bg-black/30 border-[#a49e99] text-white px-6 py-3 rounded-full w-full md:w-auto hover:!bg-black/30 hover:!text-white"
+            >
+              Schedule a Tour
+            </Button>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ================= UNIT OVERVIEW ================= */}
+      <section className="bg-[#f5f2ee] px-6 md:px-12 py-12 md:py-16">
+        
+        {/* TOP TEXT ROW */}
+        <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-6 items-center">
+          
+          {/* LEFT */}
+          <div>
+            <p className="text-xs tracking-[3px] uppercase text-[#7b7f7d] mb-3">
+              UNIT OVERVIEW
+            </p>
+            <h2 className="text-3xl md:text-5xl font-serif text-[#2d3230]">
+              Unified Living Hub
+            </h2>
+          </div>
+
+          {/* RIGHT */}
+          <p className="text-sm md:text-base text-[#5a6260] leading-relaxed">
+            Explore your future home with detailed floor plans, interactive 3D virtual tours, and unit photography — all in one convenient module.
+          </p>
+        </div>
+
+        {/* ORANGE STRIP */}
+        <div className="max-w-[1400px] mx-auto mt-8 bg-gradient-to-r from-[#e59a2e] to-[#c9791c] rounded-2xl px-4 md:px-6 py-4 flex flex-wrap items-center gap-3 md:gap-4">
+
+          <span className="border border-white/40 text-white px-4 py-2 rounded-full text-xs tracking-wide">
+            LOOK & LEASE SPECIAL
+          </span>
+
+          <span className="text-white font-serif text-lg whitespace-nowrap">
+            Only $99 Total to Move In
+          </span>
+
+          <span className="bg-white/20 text-white px-4 py-2 rounded-full text-sm">
+            1BR from $799 · A1–A3
+          </span>
+
+          <span className="bg-white/20 text-white px-4 py-2 rounded-full text-sm">
+            2BR from $999 · B1–B3
+          </span>
+
+          <div className="ml-auto">
+            <span className="bg-white text-[#b45d2a] px-5 py-2 rounded-full text-sm font-medium">
+              📞 (903) 961–6391
+            </span>
+          </div>
+        </div>
+
+        {/* TABS + FILTERS */}
+        <div className="max-w-[1400px] mx-auto mt-8 flex flex-col md:flex-row md:items-center gap-4">
+
+          {/* LEFT TABS */}
+          <div className="flex gap-3">
+            <button
+              onClick={() => {
+                setBedroomType("1bed");
+                setSelectedPlan("A1");
+              }}
+              className={`px-5 py-3 rounded-xl text-sm ${
+                bedroomType === "1bed"
+                  ? "bg-[#1e3872] text-white"
+                  : "bg-[#e7e3dc] text-[#2d3230]"
+              }`}
+            >
+              1 Bedroom <span className="block text-xs opacity-80">from $799/mo</span>
+            </button>
+
+            <button
+              onClick={() => {
+                setBedroomType("2bed");
+                setSelectedPlan("B1");
+              }}
+              className={`px-5 py-3 rounded-xl text-sm ${
+                bedroomType === "2bed"
+                  ? "bg-[#1e3872] text-white"
+                  : "bg-[#e7e3dc] text-[#2d3230]"
+              }`}
+            >
+              2 Bedrooms <span className="block text-xs opacity-80">from $999/mo</span>
+            </button>
+          </div>
+
+          {/* RIGHT FILTER PILLS */}
+          <div className="flex flex-wrap gap-3 md:ml-auto">
+            {bedroomType === "1bed" ? (
+              <>
+                <button
+                  onClick={() => setSelectedPlan("A1")}
+                  className={`px-4 py-2 rounded-full border text-sm ${
+                    selectedPlan === "A1"
+                      ? "border-[#1e3872] text-[#1e3872]"
+                      : "border-gray-300 text-[#2d3230]"
+                  }`}
+                >
+                  A1 · 625 sqft · $799/mo
+                </button>
+
+                <button
+                  onClick={() => setSelectedPlan("A2")}
+                  className={`px-4 py-2 rounded-full border text-sm ${
+                    selectedPlan === "A2"
+                      ? "border-[#1e3872] text-[#1e3872]"
+                      : "border-gray-300 text-[#2d3230]"
+                  }`}
+                >
+                  A2 · 724 sqft · $849/mo
+                </button>
+
+                <button
+                  onClick={() => setSelectedPlan("A3")}
+                  className={`px-4 py-2 rounded-full border text-sm ${
+                    selectedPlan === "A3"
+                      ? "border-[#1e3872] text-[#1e3872]"
+                      : "border-gray-300 text-[#2d3230]"
+                  }`}
+                >
+                  A3 · 724 sqft · $849/mo
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  onClick={() => setSelectedPlan("B1")}
+                  className={`px-4 py-2 rounded-full border text-sm ${
+                    selectedPlan === "B1"
+                      ? "border-[#1e3872] text-[#1e3872]"
+                      : "border-gray-300 text-[#2d3230]"
+                  }`}
+                >
+                  B1 · 850 sqft · $999/mo
+                </button>
+
+                <button
+                  onClick={() => setSelectedPlan("B2")}
+                  className={`px-4 py-2 rounded-full border text-sm ${
+                    selectedPlan === "B2"
+                      ? "border-[#1e3872] text-[#1e3872]"
+                      : "border-gray-300 text-[#2d3230]"
+                  }`}
+                >
+                  B2 · 886 sqft · $1,049/mo
+                </button>
+
+                <button
+                  onClick={() => setSelectedPlan("B3")}
+                  className={`px-4 py-2 rounded-full border text-sm ${
+                    selectedPlan === "B3"
+                      ? "border-[#1e3872] text-[#1e3872]"
+                      : "border-gray-300 text-[#2d3230]"
+                  }`}
+                >
+                  B3 · 1,003 sqft · $1,099/mo
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+
+      </section>
+
+      {/* ================= FLOOR + PREVIEW SECTION ================= */}
+      <section className="bg-[#f5f2ee] px-6 md:px-12 pb-16">
+        <div className="max-w-[1400px] mx-auto">
+
+          {/* MAIN CARD */}
+          <div className="bg-[#f8f6f2] rounded-2xl border overflow-hidden">
+
+            {/* ================= TOP: IMAGES ================= */}
+            <div className="grid md:grid-cols-2">
+
+              {/* LEFT: FLOOR PLAN */}
+              <div>
+                <div className="flex justify-between p-6 border-b">
+                  <div>
+                    <p className="text-xs uppercase text-[#7b7f7d]">
+                      {plans[selectedPlan].title}
+                    </p>
+                    <h3 className="text-2xl font-serif">
+                      {plans[selectedPlan].bed}, {plans[selectedPlan].bath}
+                    </h3>
+                  </div>
+
+                  <div className="bg-[#1e3872] text-white px-4 py-2 rounded-full">
+                    {plans[selectedPlan].price}
+                  </div>
+                </div>
+
+                <div className="relative h-[400px] md:h-[480px]">
+                  <div className="relative h-[400px] md:h-[480px] p-4">
+                    <Image
+                      src={plans[selectedPlan].img}
+                      alt={`${plans[selectedPlan].bed} ${plans[selectedPlan].bath} apartment floor plan ${selectedPlan} at Parks on Taylor Sherman TX`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-contain opacity-80"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* RIGHT: PREVIEW */}
+              <div className="border-l flex flex-col">
+                {/* TOP TABS */}
+                <div className="flex p-4 bg-[#edeae4] gap-2 border-b">
+                  <button
+                    onClick={() => setTab("photos")}
+                    className={`flex-1 py-3 rounded-xl text-sm font-medium transition ${
+                      tab === "photos"
+                        ? "bg-[#1e3872] text-white"
+                        : "text-[#5a6260]"
+                    }`}
+                  >
+                    Interior Photos
+                  </button>
+
+                  <button
+                    onClick={() => setTab("amenities")}
+                    className={`flex-1 py-3 rounded-xl text-sm font-medium transition ${
+                      tab === "amenities"
+                        ? "bg-[#1e3872] text-white"
+                        : "text-[#5a6260]"
+                    }`}
+                  >
+                    Amenities
+                  </button>
+                </div>
+
+                {/* SUB FILTERS */}
+                <div className="flex flex-wrap gap-3 p-4 border-b bg-[#f8f6f2]">
+                  {tab === "photos" ? (
+                    <>
+                      {(["Living Room", "Bedroom", "Kitchen", "Bathroom"] as const).map((item) => (
+                        <button
+                          key={item}
+                          onClick={() => setPreviewCategory(item)}
+                          className={`px-5 py-2 rounded-full border text-sm ${
+                            previewCategory === item
+                              ? "bg-[#1e3872] text-white border-[#1e3872]"
+                              : "text-[#5a6260] border-gray-300"
+                          }`}
+                        >
+                          {item}
+                        </button>
+                      ))}
+                    </>
+                  ) : (
+                    <>
+                      {([] as const).map((item) => (
+                        <button
+                          key={item}
+                          onClick={() => setAmenityCategory(item)}
+                          className={`px-5 py-2 rounded-full border text-sm ${
+                            amenityCategory === item
+                              ? "bg-[#1e3872] text-white border-[#1e3872]"
+                              : "text-[#5a6260] border-gray-300"
+                          }`}
+                        >
+                          {item}
+                        </button>
+                      ))}
+                    </>
+                  )}
+                </div>
+
+                {/* THUMBNAILS */}
+                <div className="flex gap-3 px-4 py-3 border-b bg-[#f8f6f2] overflow-x-auto">
+                  {/* THUMBNAILS (ONLY FOR AMENITIES) */}
+                  {tab === "amenities" && (
+                    <div className="flex gap-3 px-4 py-3 border-b bg-[#f8f6f2] overflow-x-auto">
+                      {Object.entries(amenityPhotos).map(([label, src]) => {
+                        const isActive = amenityCategory === label;
+
+                        return (
+                          <button
+                            key={label}
+                            onClick={() =>
+                              setAmenityCategory(label as keyof typeof amenityPhotos)
+                            }
+                            className={`relative min-w-[110px] h-[48px] rounded-xl overflow-hidden border-2 transition ${
+                              isActive ? "border-[#1e3872]" : "border-transparent"
+                            }`}
+                          >
+                            <Image
+                              src={src}
+                              alt={`${label} amenities at Parks on Taylor apartments Sherman TX`}
+                              fill
+                              className="object-cover"
+                            />
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+
+                {/* MAIN PREVIEW IMAGE */}
+                <div className="relative h-[400px] md:h-[480px]">
+                  <Image
+                    src={
+                      tab === "photos"
+                        ? interiorPhotos[previewCategory]
+                        : amenityPhotos[amenityCategory]
+                    }
+                    alt={
+                      tab === "photos"
+                        ? `Modern ${previewCategory.toLowerCase()} interior at Parks on Taylor apartments Sherman TX`
+                        : `${amenityCategory} amenities at Parks on Taylor apartments Sherman TX`
+                    }
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* ================= BOTTOM: DETAILS ================= */}
+            <div className="grid md:grid-cols-2 gap-6 p-6 border-t">
+
+              {/* LEFT: FEATURES */}
+              <div>
+
+                {/* STATS */}
+                <div className="grid grid-cols-2 md:grid-cols-4 text-center border-b pb-4 mb-4">
+                  <div>
+                    <p className="font-serif">{plans[selectedPlan].bed}</p>
+                    <p className="text-xs text-[#7b7f7d]">BEDROOM</p>
+                  </div>
+                  <div>
+                    <p className="font-serif">{plans[selectedPlan].bath}</p>
+                    <p className="text-xs text-[#7b7f7d]">BATHROOM</p>
+                  </div>
+                  <div>
+                    <p className="font-serif">{plans[selectedPlan].area}</p>
+                    <p className="text-xs text-[#7b7f7d]">AREA</p>
+                  </div>
+                  <div>
+                    <p className="font-serif">Apr 1</p>
+                    <p className="text-xs text-[#7b7f7d]">AVAILABLE</p>
+                  </div>
+                </div>
+
+                {/* FEATURES */}
+                <div className="grid md:grid-cols-3 gap-6 text-sm">
+
+                  <div>
+                    <p className="text-xs uppercase text-[#1e3872] mb-2">
+                      Highlights
+                    </p>
+                    <ul className="list-disc ml-4 space-y-1">
+                      <li>High Speed Internet</li>
+                      <li>Washer/Dryer Hookup</li>
+                      <li>Air Conditioning</li>
+                      <li>Heating</li>
+                      <li>Ceiling Fans</li>
+                      <li>Cable Ready</li>
+                      <li>Tub/Shower</li>
+                      <li>Fireplace</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <p className="text-xs uppercase text-[#1e3872] mb-2">
+                      Kitchen
+                    </p>
+                    <ul className="list-disc ml-4 space-y-1">
+                      <li>Dishwasher</li>
+                      <li>Disposal</li>
+                      <li>Microwave</li>
+                      <li>Range</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <p className="text-xs uppercase text-[#1e3872] mb-2">
+                      Interior
+                    </p>
+                    <ul className="list-disc ml-4 space-y-1">
+                      <li>Carpet</li>
+                      <li>Vinyl Flooring</li>
+                      <li>Dining Room</li>
+                      <li>Walk-In Closets</li>
+                      <li>Window Coverings</li>
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+
+              {/* RIGHT: CTA */}
+              <div className="flex flex-col justify-between">
+                <div>
+                  <p className="text-lg font-serif mb-2">
+                    {plans[selectedPlan].title}
+                  </p>
+
+                  <p className="text-sm text-[#5a6260] mb-4">
+                    {plans[selectedPlan].area} · Available Apr 1, 2026
+                  </p>
+
+                  <p className="text-2xl font-serif text-[#1e3872] mb-6">
+                    {plans[selectedPlan].price}
+                  </p>
+                </div>
+
+                <div className="flex gap-3">
+                  <button className="flex-1 border border-[#1e3872] text-[#1e3872] py-3 rounded-full">
+                    Schedule Tour
+                  </button>
+
+                  <button className="flex-1 bg-[#1e3872] text-white py-3 rounded-full">
+                    Apply Now →
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ================= AMENITIES SECTION ================= */}
+      <section className="bg-[#0c2340] px-6 md:px-12 py-16 md:py-20">
+        <div className="max-w-[1400px] mx-auto">
+
+          {/* TOP TEXT */}
+          <div className="grid md:grid-cols-2 gap-8 mb-10">
+            
+            {/* LEFT */}
+            <div>
+              <p className="text-xs tracking-[3px] uppercase text-[#E09428] mb-3">
+                Amenities
+              </p>
+
+              <h2 className="text-3xl md:text-5xl font-serif text-white leading-[1.2]">
+                Everything You Need,
+                <br />
+                Right Where You Live
+              </h2>
+            </div>
+
+            {/* RIGHT */}
+            <p className="text-sm md:text-base text-[#c7cbd1] leading-relaxed">
+              Responsive maintenance and convenient on-site management are the backbone of life here — backed by covered parking, two pools, and a full appliance package to keep everyday living simple and reliable.
+            </p>
+          </div>
+
+          {/* GRID */}
+          <div className="grid md:grid-cols-3 gap-6">
+            
+
+            {amenities.map((item, i) => (
+              <div
+                key={i}
+                className="relative h-[220px] md:h-[260px] rounded-2xl overflow-hidden group"
+              >
+                <Image
+                  src={item.img}
+                  alt={`${item.title} at Parks on Taylor apartments in Sherman TX`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover"
+                />
+
+                <div className="absolute top-4 left-4 z-10 bg-white/20 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full">
+                  {item.tag}
+                </div>
+
+                <div className="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition"></div>
+
+                <div className="absolute bottom-4 left-4 right-4 z-10">
+                  <p className="text-white text-lg md:text-xl font-serif">
+                    {item.title}
+                  </p>
+                </div>
+              </div>
+            ))}
+
+          </div>
+        </div>
+        {/* ================= ALSO INCLUDED ================= */}
+        <div className="mt-10 bg-[#112a4d] rounded-2xl p-6 md:p-8 border border-white/10">
+
+          <div className="flex flex-col md:flex-row md:items-center gap-4">
+
+            {/* LABEL */}
+            <p className="text-xs tracking-[2px] uppercase text-[#7fa3d6] whitespace-nowrap">
+              Also Included
+            </p>
+
+            {/* PILLS */}
+            <div className="flex flex-wrap gap-3">
+
+              {[
+                "Granite Countertops",
+                "Ceiling Fans — Living Room & Bedrooms",
+                "Intercom Entry",
+                "Den / Home Office",
+                "Central Heat & Air Conditioning",
+                "Condominium Style",
+                "2-Bedroom Town Homes Available"
+              ].map((item, i) => (
+                <span
+                  key={i}
+                  className="flex items-center gap-2 text-sm text-[#c7cbd1] border border-[#2a4466] px-4 py-2 rounded-full"
+                >
+                  <span className="w-2 h-2 rounded-full bg-[#4da3ff]"></span>
+                  {item}
+                </span>
+              ))}
+
+            </div>
+          </div>
+        </div>
+
+        {/* ================= CTA ================= */}
+        <div className="flex justify-center mt-8">
+          <button className="border border-[#2a4466] text-white px-8 py-4 rounded-full hover:bg-white/5 transition">
+            Explore All Home Features & Amenities →
+          </button>
+        </div>
+      </section>
+
+      {/* ================= LOCATION SECTION ================= */}
+      <section className="bg-[#f1eee9] px-6 md:px-12 py-14 md:py-20">
+        <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-10 items-center">
+          
+          {/* LEFT */}
+          <div>
+            <p className="text-xs tracking-[3px] uppercase text-[#7b7f7d] mb-4">
+              Location · Sherman, TX
+            </p>
+
+            <h2 className="text-3xl md:text-5xl font-serif text-[#2d3230] leading-[1.2]">
+              Fall in Love <br />
+              With the Location.
+            </h2>
+          </div>
+
+          {/* RIGHT */}
+          <p className="text-sm md:text-base text-[#5a6260] leading-relaxed max-w-xl">
+            Parks on Taylor is literally across the street from Fairway Park and its beloved Splash Pad — 
+            and just 5 minutes from Sherman Town Center's restaurants, retail, and entertainment. 
+            The address sells itself.
+          </p>
+
+        </div>
+      </section>
+      
+      {/* ================= LOCATION MAP + DESTINATIONS ================= */}
+      <section className="bg-[#f1eee9] px-6 md:px-12 pb-16">
+        <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-8 items-start">
+
+          {/* LEFT: MAP (using hero image) */}
+          <div className="relative h-[350px] md:h-[520px] rounded-3xl overflow-hidden border bg-[#f3efe8]">
+
+            {/* MAP GRID BACKGROUND */}
+            <div className="absolute inset-0">
+              {/* vertical roads */}
+              <div className="absolute left-[12%] top-0 h-full w-[3px] bg-[#d7d1c7]" />
+              <div className="absolute left-[26%] top-0 h-full w-[3px] bg-[#d7d1c7]" />
+              <div className="absolute left-[43%] top-0 h-full w-[4px] bg-[#d7d1c7]" />
+              <div className="absolute left-[58%] top-0 h-full w-[3px] bg-[#d7d1c7]" />
+              <div className="absolute left-[70%] top-0 h-full w-[3px] bg-[#d7d1c7]" />
+              <div className="absolute left-[78%] top-0 h-full w-[8px] bg-[#d7d1c7]" />
+
+              {/* horizontal roads */}
+              <div className="absolute top-[27%] left-0 w-full h-[5px] bg-[#d7d1c7]" />
+              <div className="absolute top-[41%] left-0 w-full h-[5px] bg-[#d7d1c7]" />
+              <div className="absolute top-[53%] left-0 w-full h-[4px] bg-[#d7d1c7]" />
+              <div className="absolute top-[61%] left-0 w-full h-[8px] bg-[#d7d1c7]" />
+              <div className="absolute top-[78%] left-0 w-full h-[6px] bg-[#d7d1c7]" />
+
+              {/* blocks */}
+              <div className="absolute left-[10%] top-[13%] w-[12%] h-[9%] rounded bg-[#d8d3cc]" />
+              <div className="absolute left-[25%] top-[13%] w-[8%] h-[9%] rounded bg-[#e2ddd5]" />
+              <div className="absolute left-[35%] top-[13%] w-[14%] h-[9%] rounded bg-[#e2ddd5]" />
+              <div className="absolute left-[52%] top-[13%] w-[8%] h-[9%] rounded bg-[#e2ddd5]" />
+              <div className="absolute left-[62%] top-[13%] w-[10%] h-[9%] rounded bg-[#e2ddd5]" />
+
+              {/* highlighted zones */}
+              <div className="absolute left-[25%] top-[47%] w-[13%] h-[15%] rounded-xl border border-[#8ab4f8] bg-[#d9ecff]" />
+              <div className="absolute left-[48%] top-[42%] w-[14%] h-[16%] rounded-xl border border-[#b8c1cb] bg-[#dfe4e9]" />
+              <div className="absolute left-[60%] top-[60%] w-[17%] h-[16%] rounded-xl border border-[#f0cf91] bg-[#fff1d8]" />
+
+              {/* subtle river */}
+              <div className="absolute bottom-[14%] left-0 w-full h-[7%] bg-[#e4e6e7] opacity-70 rounded-[100%]" />
+            </div>
+
+            {/* MAIN PIN */}
+            <div className="absolute top-[39%] left-[30%] -translate-x-1/2 -translate-y-1/2">
+              <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-white px-4 py-1 rounded-full text-xs font-semibold text-[#1e3872] shadow whitespace-nowrap">
+                Parks on Taylor
+              </div>
+
+              <div className="flex flex-col items-center">
+                <div className="w-14 h-14 bg-[#1e3872] rounded-full flex items-center justify-center shadow-lg">
+                  <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
+                    <div className="w-3 h-3 bg-[#1e3872] rounded-full"></div>
+                  </div>
+                </div>
+                <div className="w-4 h-4 bg-[#1e3872] rotate-45 -mt-2"></div>
+              </div>
+            </div>
+
+            {/* FAIRWAY PARK */}
+            <div className="absolute top-[53%] left-[38%] -translate-x-1/2 -translate-y-1/2">
+              <div className="flex flex-col items-center">
+                <div className="w-8 h-8 bg-[#4da3ff] rounded-full flex items-center justify-center shadow">
+                  <div className="w-2.5 h-2.5 bg-white rounded-full"></div>
+                </div>
+                <div className="w-2.5 h-2.5 bg-[#4da3ff] rotate-45 -mt-1"></div>
+              </div>
+              <p className="mt-1 text-[10px] text-[#4da3ff] text-center whitespace-nowrap">
+                Fairway Park
+              </p>
+            </div>
+
+            {/* SHERMAN COMMONS */}
+            <div className="absolute top-[48%] left-[55%] -translate-x-1/2 -translate-y-1/2">
+              <div className="flex flex-col items-center">
+                <div className="w-9 h-9 bg-[#2f5f9f] rounded-full flex items-center justify-center shadow">
+                  <div className="w-2.5 h-2.5 bg-white rounded-full"></div>
+                </div>
+                <div className="w-2.5 h-2.5 bg-[#2f5f9f] rotate-45 -mt-1"></div>
+              </div>
+              <p className="mt-1 text-[10px] text-[#2f5f9f] text-center whitespace-nowrap">
+                Sherman Commons
+              </p>
+            </div>
+
+            {/* TOWN CENTER */}
+            <div className="absolute top-[65%] left-[67%] -translate-x-1/2 -translate-y-1/2">
+              <div className="flex flex-col items-center">
+                <div className="w-9 h-9 bg-[#E09428] rounded-full flex items-center justify-center shadow">
+                  <div className="w-2.5 h-2.5 bg-white rounded-full"></div>
+                </div>
+                <div className="w-2.5 h-2.5 bg-[#E09428] rotate-45 -mt-1"></div>
+              </div>
+              <p className="mt-1 text-[10px] text-[#E09428] text-center whitespace-nowrap">
+                Sherman Town Center
+              </p>
+            </div>
+
+            {/* COMPASS */}
+            <div className="absolute right-6 top-6 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow">
+              <span className="text-xs font-semibold text-[#1e3872]">N</span>
+            </div>
+
+            {/* SCALE */}
+            <div className="absolute bottom-6 left-6 text-[11px] text-[#5a6260]">
+              <div className="flex mb-1">
+                <div className="w-14 h-2 bg-[#1e3872]"></div>
+                <div className="w-8 h-2 bg-[#c8d0db]"></div>
+              </div>
+              <div className="flex gap-6">
+                <span>0</span>
+                <span>0.5</span>
+                <span>1 mi</span>
+              </div>
+            </div>
+
+          </div>
+
+          {/* RIGHT: DESTINATIONS */}
+          <div className="space-y-5">
+
+            <p className="text-xs tracking-[3px] uppercase text-[#7b7f7d]">
+              Key Destinations
+            </p>
+
+            {/* CARD 1 */}
+            <div className="bg-white rounded-2xl p-4 flex items-center justify-between border">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-[#eef2f7] rounded-xl flex items-center justify-center">
+                  🏠
+                </div>
+                <div>
+                  <p className="font-medium text-[#2d3230]">Parks on Taylor</p>
+                  <p className="text-xs text-[#7b7f7d]">Your New Home</p>
+                </div>
+              </div>
+              <span className="text-xs bg-[#eef2f7] px-3 py-1 rounded-full">
+                Home Base
+              </span>
+            </div>
+
+            {/* CARD 2 */}
+            <div className="bg-white rounded-2xl p-4 flex items-center justify-between border">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-[#e8f0ff] rounded-xl flex items-center justify-center">
+                  🌳
+                </div>
+                <div>
+                  <p className="font-medium text-[#2d3230]">
+                    Fairway Park & Splash Pad
+                  </p>
+                  <p className="text-xs text-[#7b7f7d]">
+                    Parks & Recreation
+                  </p>
+                </div>
+              </div>
+              <span className="text-xs bg-[#e8f0ff] text-[#1e3872] px-3 py-1 rounded-full">
+                2 min walk
+              </span>
+            </div>
+
+            {/* CARD 3 */}
+            <div className="bg-white rounded-2xl p-4 flex items-center justify-between border">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-[#eef2f7] rounded-xl flex items-center justify-center">
+                  🛒
+                </div>
+                <div>
+                  <p className="font-medium text-[#2d3230]">
+                    Sherman Commons
+                  </p>
+                  <p className="text-xs text-[#7b7f7d]">
+                    Grocery & Retail
+                  </p>
+                </div>
+              </div>
+              <span className="text-xs bg-[#eef2f7] px-3 py-1 rounded-full">
+                3 min drive
+              </span>
+            </div>
+
+            {/* CARD 4 */}
+            <div className="bg-white rounded-2xl p-4 flex items-center justify-between border">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-[#fff3e6] rounded-xl flex items-center justify-center">
+                  🏬
+                </div>
+                <div>
+                  <p className="font-medium text-[#2d3230]">
+                    Sherman Town Center
+                  </p>
+                  <p className="text-xs text-[#7b7f7d]">
+                    Dining, Shopping & Entertainment
+                  </p>
+                </div>
+              </div>
+              <span className="text-xs bg-[#fff3e6] text-[#E09428] px-3 py-1 rounded-full">
+                5 min drive
+              </span>
+            </div>
+
+            {/* NEARBY TAGS */}
+            <div className="pt-4">
+              <p className="text-xs tracking-[2px] uppercase text-[#7b7f7d] mb-3">
+                Nearby Employers & Schools
+              </p>
+
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "Sherman ISD",
+                  "Austin College",
+                  "Grayson College",
+                  "Texas Instruments",
+                  "Tyson Foods",
+                  "Kaiser Aluminum",
+                  "Camping World",
+                  "Wilson N. Jones Medical"
+                ].map((item, i) => (
+                  <span
+                    key={i}
+                    className="text-xs px-3 py-1 rounded-full bg-[#eef2f7] text-[#2d3230]"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* PET FRIENDLY */}
+            <div className="mt-3">
+              <span className="inline-block text-sm bg-[#fff3e6] text-[#E09428] px-4 py-2 rounded-full">
+                🐾 Pet friendly — cats & dogs welcome
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </section>
+      
+
+      {/* ================= RESIDENT VOICES ================= */}
+      <section className="bg-[#0c2340] px-6 md:px-12 py-16 md:py-24 text-white relative">
+
+        <div className="max-w-[1100px] mx-auto text-center mb-12">
+          <p className="text-xs tracking-[3px] uppercase text-[#E09428] mb-3">
+            Resident Voices
+          </p>
+
+          <h2 className="text-3xl md:text-5xl font-serif">
+            Real Stories. Real Residents.
+          </h2>
+
+          <p className="text-sm md:text-base text-[#c7cbd1] mt-4 max-w-xl mx-auto">
+            We're not asking you to forget the past — we're asking for the chance to show what's changed.
+          </p>
+        </div>
+
+        <div className="max-w-[1000px] mx-auto relative">
+
+          {/* CARD */}
+          <div className="bg-[#162d4f] rounded-3xl p-8 md:p-12 border border-white/10">
+
+            {/* RATING */}
+            <div className="flex items-center gap-2 mb-6 text-[#4da3ff]">
+              {"★★★★★".split("").map((star, i) => (
+                <span key={i} className={i < reviews[reviewIndex].rating ? "" : "opacity-20"}>
+                  ★
+                </span>
+              ))}
+              <span className="text-sm text-[#c7cbd1] ml-2">
+                {reviews[reviewIndex].rating}.0 / 5
+              </span>
+            </div>
+
+            {/* TEXT */}
+            <p className="text-lg md:text-xl font-serif italic leading-relaxed text-[#e5e7eb]">
+              {reviews[reviewIndex].text}
+            </p>
+
+            {/* USER */}
+            <div className="flex items-center justify-between mt-10 flex-wrap gap-4">
+
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-[#1e3872] flex items-center justify-center">
+                  {reviews[reviewIndex].initials}
+                </div>
+
+                <div>
+                  <p className="font-serif">
+                    {reviews[reviewIndex].name}
+                  </p>
+                  <p className="text-sm text-[#7b7f7d]">
+                    {reviews[reviewIndex].role}
+                  </p>
+                </div>
+              </div>
+
+              <span className="text-xs border border-[#2a4466] px-4 py-2 rounded-full text-[#c7cbd1]">
+                ⏱ {reviews[reviewIndex].years}
+              </span>
+            </div>
+          </div>
+
+          {/* ARROWS */}
+          <button
+            onClick={() =>
+              setReviewIndex((reviewIndex - 1 + reviews.length) % reviews.length)
+            }
+            className="absolute left-[-20px] md:left-[-60px] top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10"
+          >
+            ←
+          </button>
+
+          <button
+            onClick={() =>
+              setReviewIndex((reviewIndex + 1) % reviews.length)
+            }
+            className="absolute right-[-20px] md:right-[-60px] top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10"
+          >
+            →
+          </button>
+
+        </div>
+      </section>
+
+      {/* STORIES SECTION */}
+      <section className="bg-white px-6 md:px-12 py-16 md:py-24">
+
+        {/* HEADER */}
+        <div className="max-w-[1200px] mx-auto flex items-center justify-between mb-10">
+          <div>
+            <p className="text-xs tracking-[3px] uppercase text-gray-400 mb-2">
+              Sherman Living Guide
+            </p>
+            <h2 className="text-3xl md:text-5xl font-serif text-gray-900">
+              Stories from the Neighborhood
+            </h2>
+          </div>
+
+          {/* ARROWS */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() =>
+                setStoryPage((prev) =>
+                  (prev - 1 + totalStoryPages) % totalStoryPages
+                )
+              }
+              className="w-10 h-10 rounded-full border flex items-center justify-center"
+            >
+              ←
+            </button>
+
+            <button
+              onClick={() =>
+                setStoryPage((prev) => (prev + 1) % totalStoryPages)
+              }
+              className="w-10 h-10 rounded-full bg-[#0c2340] text-white flex items-center justify-center"
+            >
+              →
+            </button>
+          </div>
+        </div>
+
+        {/* CARDS */}
+        <div className="max-w-[1200px] mx-auto grid md:grid-cols-3 gap-6">
+
+          {stories
+            .slice(storyPage * 3, storyPage * 3 + 3)
+            .map((item, index) => (
+              <div
+                key={index}
+                className="rounded-2xl overflow-hidden shadow-sm border"
+              >
+                {/* IMAGE */}
+                <div className="relative">
+                  <img
+                    src={item.image}
+                    alt={`${item.title} near Parks on Taylor apartments Sherman TX`}
+                    className="w-full h-[220px] object-cover"
+                  />
+
+                  {/* CATEGORY */}
+                  <span className="absolute top-3 left-3 bg-white/90 text-xs px-3 py-1 rounded-full">
+                    {item.category}
+                  </span>
+
+                  {/* TIME */}
+                  <span className="absolute top-3 right-3 bg-black/70 text-white text-xs px-3 py-1 rounded-full">
+                    {item.time}
+                  </span>
+                </div>
+
+                {/* CONTENT */}
+                <div className="p-5">
+                  <p className="text-sm text-gray-500 mb-2">
+                    {item.author} · {item.date}
+                  </p>
+
+                  <h3 className="font-serif text-lg text-gray-900 mb-2">
+                    {item.title}
+                  </h3>
+
+                  <p className="text-sm text-gray-600 mb-4">
+                    {item.desc}
+                  </p>
+
+                  <button className="text-blue-600 text-sm font-medium">
+                    Read Article →
+                  </button>
+                </div>
+              </div>
+            ))}
+        </div>
+
+      </section>
+
+      <section className="bg-[#0f2747] px-6 md:px-12 py-20 md:py-28 text-center text-white">
+
+        {/* TOP LABEL */}
+        <p className="text-xs tracking-[3px] uppercase text-[#E09428] mb-6">
+          Ready to Begin?
+        </p>
+
+        {/* HEADING */}
+        <h2 className="text-4xl md:text-6xl font-serif leading-tight">
+          Make Parks on Taylor <br />
+          <span className="italic text-gray-300">Your Home</span>
+        </h2>
+
+        {/* SUBTEXT */}
+        <p className="mt-6 text-base md:text-lg text-[#c7cbd1] max-w-2xl mx-auto">
+          Start your application online or schedule a private tour with our leasing team — 
+          we're available 7 days a week.
+        </p>
+
+        {/* BUTTONS */}
+        <div className="mt-10 flex flex-col md:flex-row items-center justify-center gap-4">
+          <button className="bg-[#2f4e85] hover:bg-[#3a5ea3] px-8 py-4 rounded-full text-white font-medium flex items-center gap-2">
+            Apply Now →
+          </button>
+
+          <button className="border border-white/30 px-8 py-4 rounded-full text-white font-medium hover:bg-white/10">
+            Schedule Private Tour
+          </button>
+        </div>
+
+        {/* CONTACT INFO */}
+        <div className="mt-10 flex flex-col md:flex-row items-center justify-center gap-6 text-sm text-[#9aa3af]">
+
+          <div className="flex items-center gap-2">
+            📞 <span>(903) 961-6391</span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            ✉️ <span>potmanager@livenjoymgt.com</span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            ⏱ <span>Mon–Fri 8:30AM–5:30PM · Sat 10AM–4PM</span>
+          </div>
+
+        </div>
+
+      </section>     
+    </>
+  );
+}
