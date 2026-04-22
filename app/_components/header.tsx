@@ -25,12 +25,12 @@ export default function Header() {
         <Link className="whitespace-nowrap hover:text-[#1e3872]" href="/#">Neighborhood</Link>
         <Link className="whitespace-nowrap hover:text-[#1e3872]" href="/blog">Blog</Link>
         <Link className="whitespace-nowrap hover:text-[#1e3872]" href="/contact">Contact</Link>
-        <Link className="whitespace-nowrap hover:text-[#1e3872]" href="/https://livenjoy.myresman.com/Portal/Access/SignIn/POTS">Residents</Link>
+        <Link className="whitespace-nowrap hover:text-[#1e3872]" href="https://livenjoy.myresman.com/Portal/Access/SignIn/POTS">Residents</Link>
       </nav>
 
       {/* RIGHT BUTTON (desktop only) */}
       <div className="hidden md:flex">
-        <a className="bg-[#1e3872] text-white px-6 py-2 rounded-full" href="/https://livenjoy.myresman.com/Portal/Access/ApplicantRegistration?accountID=1588&propertyID=5e489ec3-e648-4775-9a6f-d94041b17010&redirectUrl=https%3A%2F%2Flivenjoy.myresman.com%2FPortal%2FApplicants%2FContinue%3FaccountID%3D1588%26propertyID%3D5e489ec3-e648-4775-9a6f-d94041b17010%26unitID%3D8166ba63-9e6c-465b-834e-7da7b21437a0%26coldApplicant%3DFalseRegistration">
+        <a className="bg-[#1e3872] text-white px-6 py-2 rounded-full" href="https://livenjoy.myresman.com/Portal/Applicants/New/POTS?a=1588">
           Apply Now →
         </a>
       </div>
@@ -52,9 +52,9 @@ export default function Header() {
           <a className="ml-6 text-[#2d3230]" href="#">Neighborhood</a>
           <a className="ml-6 text-[#2d3230]" href="/blog">Blog</a>
           <a className="ml-6 text-[#2d3230]" href="/contact">Contact</a>
-          <a className="ml-6 text-[#2d3230]" href="/https://livenjoy.myresman.com/Portal/Access/SignIn/POTS">Residents</a>
+          <a className="ml-6 text-[#2d3230]" href="https://livenjoy.myresman.com/Portal/Access/SignIn/POTS">Residents</a>
 
-          <a className="bg-[#1e3872] text-white py-3 rounded-full mt-2 mx-6 text-center font-[Plus_Jakarta_Sans]" href="/https://livenjoy.myresman.com/Portal/Access/ApplicantRegistration?accountID=1588&propertyID=5e489ec3-e648-4775-9a6f-d94041b17010&redirectUrl=https%3A%2F%2Flivenjoy.myresman.com%2FPortal%2FApplicants%2FContinue%3FaccountID%3D1588%26propertyID%3D5e489ec3-e648-4775-9a6f-d94041b17010%26unitID%3D8166ba63-9e6c-465b-834e-7da7b21437a0%26coldApplicant%3DFalseRegistration">
+          <a className="bg-[#1e3872] text-white py-3 rounded-full mt-2 mx-6 text-center font-[Plus_Jakarta_Sans]" href="https://livenjoy.myresman.com/Portal/Applicants/New/POTS?a=1588">
             Apply Now →
           </a>
         </div>
