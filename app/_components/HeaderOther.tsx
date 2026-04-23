@@ -4,16 +4,16 @@ import Link from "next/link";
 import { useState } from "react";
 
 type HeaderProps = {
-  showTopBar: boolean;
+  showTopBar?: boolean;
 };
 
-export default function Header({ showTopBar }: HeaderProps) {
+export default function HeaderOther({ showTopBar = true }: HeaderProps) {
   const [open, setOpen] = useState(false);
 
   return (
     <header
-      className={`fixed left-0 w-full z-40 px-6 md:px-12 py-4 bg-white/60 backdrop-blur-md flex items-center justify-between font-sans transition-all duration-300 ${
-        showTopBar ? "top-7" : "top-0"
+      className={`fixed left-0 w-full z-40 px-6 md:px-12 py-4 bg-white/60 backdrop-blur-md flex items-center justify-between font-sans ${
+        showTopBar ? "top-0" : "top-0"
       }`}
     >
       {/* LEFT */}

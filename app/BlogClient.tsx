@@ -1,5 +1,5 @@
 "use client";
-
+import HeaderOther from "./_components/HeaderOther";
 import { useState } from "react";
 
 type Post = {
@@ -15,6 +15,8 @@ type Post = {
 };
 
 export default function Blog() {
+  const [showTopBar, setShowTopBar] = useState(true);
+
   const posts: Post[] = [
     {
       category: "Outdoors",
@@ -125,6 +127,7 @@ export default function Blog() {
 
   return (
     <>
+      <HeaderOther />
       <section className="bg-[#1f376d] text-white pt-32 pb-24 px-6 md:px-16 relative overflow-hidden">
         <div className="relative z-10 max-w-5xl">
           <p className="text-xs tracking-[0.35em] text-[#E39B2D] mb-6 font-[Plus_Jakarta_Sans]">

@@ -1,8 +1,10 @@
 "use client";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import HeaderTop from "./_components/header_top";
 import { useState } from "react";
+import Header from "./_components/header";
+import HeaderTop from "./_components/header_top";
+import LeasePortal from "./_components/LeasePortal";
 
 export default function HomeClient() {
 
@@ -210,12 +212,14 @@ export default function HomeClient() {
       img: "/webp/features/community.webp",
     },
   ];
+  const [showTopBar, setShowTopBar] = useState(true);
 
   return (
     <>
-      <HeaderTop />
+      <HeaderTop show={showTopBar} setShow={setShowTopBar} />
+      <Header showTopBar={showTopBar} />
       {/* ================= HERO SECTION ================= */}
-      <section className="relative h-[100vh] w-full pt-28 md:pt-32">
+      <section className="relative h-[100vh] w-full">
 
         <Image
           src="/webp/office/1.webp"
@@ -226,7 +230,11 @@ export default function HomeClient() {
 
         <div className="absolute inset-0 bg-black/50"></div>
 
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4 md:px-8">
+        <div
+          className={`absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4 md:px-8 ${
+            showTopBar ? "pt-28 md:pt-32" : "pt-20 md:pt-24"
+          }`}
+        >
           
           <div className="block md:hidden">
             <p className="text-[10px] tracking-[2px] uppercase mb-1 opacity-80 text-[#a49e99]">
@@ -241,12 +249,29 @@ export default function HomeClient() {
             PARKS ON TAYLOR · SHERMAN, TX · NOW LEASING
           </p>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-serif leading-[1.1] tracking-wide">
+          <h1
+            style={{
+              fontFamily: '"Instrument Serif", Georgia, serif',
+              fontSize: 'clamp(3.2rem, 7.2vw, 6.4rem)',
+              lineHeight: 1,
+              letterSpacing: '-0.03em',
+              color: 'rgb(245, 242, 237)',
+              margin: 0,
+              maxWidth: 'none',
+              whiteSpace: 'nowrap',
+            }}
+          >
             Affordable, Safe, and
-          </h1>
-
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-serif italic text-[#E09428] whitespace-nowrap">
-            Clean Living in Sherman.
+            <br />
+            <em
+              style={{
+                fontStyle: 'italic',
+                color: 'rgba(224, 148, 40, 0.92)',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              Clean Living in Sherman.
+            </em>
           </h1>
 
           <div className="flex items-center gap-2 my-4 md:my-6">
@@ -263,400 +288,459 @@ export default function HomeClient() {
 
           <div className="flex flex-col md:flex-row gap-3 md:gap-4 mt-5 md:mt-6 w-full max-w-xs md:max-w-none justify-center">
             
-            <Button className="bg-[#1e3872] hover:bg-[#0c2457] px-6 py-3 rounded-full w-full md:w-auto">
+            <Button className="w-full md:w-auto min-h-[52px] flex items-center justify-center gap-2 px-7 py-3 rounded-full bg-[#1e3872] text-[#f5f2ed] text-[14px] font-bold font-[Plus_Jakarta_Sans] tracking-[0.01em] shadow-[0_4px_22px_rgba(30,56,114,0.5)] hover:bg-[#0c2457] transition-all duration-200">
               View Available Units →
             </Button>
 
             <Button
               variant="outline"
-              className="bg-black/30 border-[#a49e99] text-white px-6 py-3 rounded-full w-full md:w-auto hover:!bg-black/30 hover:!text-white"
+              className="w-full md:w-auto min-h-[52px] flex items-center justify-center gap-2 px-7 py-3 rounded-full bg-transparent text-[rgba(245,242,237,0.78)] text-[14px] font-semibold font-[Plus_Jakarta_Sans] tracking-[0.01em] border-[1.5px] border-[rgba(245,242,237,0.22)] hover:bg-white/10 hover:text-white transition-all duration-200"
             >
               Schedule a Tour
             </Button>
 
           </div>
+          
         </div>
+        
       </section>
 
       {/* ================= UNIT OVERVIEW ================= */}
-<section className="bg-[#f5f2ee] px-4 sm:px-6 md:px-12 py-10 sm:py-12 md:py-16 overflow-x-hidden">
-  <div className="max-w-[1400px] mx-auto min-w-0">
-    {/* TOP TEXT ROW */}
-    <div className="grid md:grid-cols-2 gap-5 sm:gap-6 items-center min-w-0">
-      <div className="min-w-0">
-        <p className="text-[11px] sm:text-xs tracking-[2px] sm:tracking-[3px] uppercase text-[#7b7f7d] mb-2 sm:mb-3">
-          UNIT OVERVIEW
-        </p>
-        <h2 className="text-[26px] leading-[1.1] sm:text-3xl md:text-5xl font-serif text-[#2d3230] break-words">
-          Unified Living Hub
-        </h2>
+      
+      
+      <div>
+        <LeasePortal />
       </div>
-
-      <p className="text-[13px] sm:text-sm md:text-base text-[#5a6260] leading-relaxed max-w-[700px] min-w-0">
-        Explore your future home with detailed floor plans, interactive 3D virtual tours, and unit photography — all in one convenient module.
-      </p>
-    </div>
-
-    {/* ORANGE STRIP */}
-    <div className="mt-6 sm:mt-8 bg-gradient-to-r from-[#e59a2e] to-[#c9791c] rounded-[18px] sm:rounded-[20px] px-3 sm:px-4 md:px-6 py-4 flex flex-col gap-2.5 sm:gap-3 md:gap-4 min-w-0">
-      <div className="flex flex-wrap items-start gap-2 sm:gap-3 min-w-0">
-        <span className="w-fit max-w-full border border-white/40 text-white px-3 sm:px-4 py-2 rounded-full text-[10px] sm:text-xs tracking-wide">
-          LOOK &amp; LEASE SPECIAL
-        </span>
-
-        <span className="text-white font-serif text-[15px] sm:text-lg leading-snug break-words">
-          Only $99 Total to Move In
-        </span>
-      </div>
-
-      <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 min-w-0">
-        <span className="bg-white/20 text-white px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm w-fit max-w-full break-words">
-          1BR from $799 · A1–A3
-        </span>
-
-        <span className="bg-white/20 text-white px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm w-fit max-w-full break-words">
-          2BR from $999 · B1–B3
-        </span>
-      </div>
-
-      <div className="w-full sm:w-auto sm:self-end">
-        <span className="inline-flex max-w-full bg-white text-[#b45d2a] px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium break-words">
-          📞 (903) 961–6391
-        </span>
-      </div>
-    </div>
-
-    {/* TABS + FILTERS */}
-    <div className="mt-6 sm:mt-8 flex flex-col gap-4 min-w-0">
-      <div className="grid grid-cols-2 gap-3 w-full md:flex md:w-auto">
-        <button
-          onClick={() => {
-            setBedroomType("1bed");
-            setSelectedPlan("A1");
-          }}
-          className={`min-w-0 px-3 sm:px-5 py-3 rounded-xl text-sm text-left transition ${
-            bedroomType === "1bed"
-              ? "bg-[#1e3872] text-white"
-              : "bg-[#e7e3dc] text-[#2d3230]"
-          }`}
-        >
-          <span className="block truncate">1 Bedroom</span>
-          <span className="block text-[11px] sm:text-xs opacity-80 truncate">
-            from $799/mo
-          </span>
-        </button>
-
-        <button
-          onClick={() => {
-            setBedroomType("2bed");
-            setSelectedPlan("B1");
-          }}
-          className={`min-w-0 px-3 sm:px-5 py-3 rounded-xl text-sm text-left transition ${
-            bedroomType === "2bed"
-              ? "bg-[#1e3872] text-white"
-              : "bg-[#e7e3dc] text-[#2d3230]"
-          }`}
-        >
-          <span className="block truncate">2 Bedrooms</span>
-          <span className="block text-[11px] sm:text-xs opacity-80 truncate">
-            from $999/mo
-          </span>
-        </button>
-      </div>
-
-      {/* RIGHT FILTER PILLS */}
-      <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden min-w-0">
-        {bedroomType === "1bed" ? (
-          <>
-            <button
-              onClick={() => setSelectedPlan("A1")}
-              className={`shrink-0 px-4 py-2 rounded-full border text-xs sm:text-sm whitespace-nowrap ${
-                selectedPlan === "A1"
-                  ? "border-[#1e3872] text-[#1e3872]"
-                  : "border-gray-300 text-[#2d3230]"
-              }`}
-            >
-              A1 · 625 sqft · $799/mo
-            </button>
-            <button
-              onClick={() => setSelectedPlan("A2")}
-              className={`shrink-0 px-4 py-2 rounded-full border text-xs sm:text-sm whitespace-nowrap ${
-                selectedPlan === "A2"
-                  ? "border-[#1e3872] text-[#1e3872]"
-                  : "border-gray-300 text-[#2d3230]"
-              }`}
-            >
-              A2 · 724 sqft · $849/mo
-            </button>
-            <button
-              onClick={() => setSelectedPlan("A3")}
-              className={`shrink-0 px-4 py-2 rounded-full border text-xs sm:text-sm whitespace-nowrap ${
-                selectedPlan === "A3"
-                  ? "border-[#1e3872] text-[#1e3872]"
-                  : "border-gray-300 text-[#2d3230]"
-              }`}
-            >
-              A3 · 724 sqft · $849/mo
-            </button>
-          </>
-        ) : (
-          <>
-            <button
-              onClick={() => setSelectedPlan("B1")}
-              className={`shrink-0 px-4 py-2 rounded-full border text-xs sm:text-sm whitespace-nowrap ${
-                selectedPlan === "B1"
-                  ? "border-[#1e3872] text-[#1e3872]"
-                  : "border-gray-300 text-[#2d3230]"
-              }`}
-            >
-              B1 · 850 sqft · $999/mo
-            </button>
-            <button
-              onClick={() => setSelectedPlan("B2")}
-              className={`shrink-0 px-4 py-2 rounded-full border text-xs sm:text-sm whitespace-nowrap ${
-                selectedPlan === "B2"
-                  ? "border-[#1e3872] text-[#1e3872]"
-                  : "border-gray-300 text-[#2d3230]"
-              }`}
-            >
-              B2 · 886 sqft · $1,049/mo
-            </button>
-            <button
-              onClick={() => setSelectedPlan("B3")}
-              className={`shrink-0 px-4 py-2 rounded-full border text-xs sm:text-sm whitespace-nowrap ${
-                selectedPlan === "B3"
-                  ? "border-[#1e3872] text-[#1e3872]"
-                  : "border-gray-300 text-[#2d3230]"
-              }`}
-            >
-              B3 · 1,003 sqft · $1,099/mo
-            </button>
-          </>
-        )}
-      </div>
-    </div>
-  </div>
-</section>
-
-{/* ================= FLOOR + PREVIEW SECTION ================= */}
-<section className="bg-[#f5f2ee] px-4 sm:px-6 md:px-12 pb-12 sm:pb-16 overflow-x-hidden">
-  <div className="max-w-[1400px] mx-auto min-w-0">
-    <div className="bg-[#f8f6f2] rounded-[20px] sm:rounded-2xl border overflow-hidden min-w-0">
-      <div className="grid md:grid-cols-2 min-w-0">
-        {/* LEFT: FLOOR PLAN */}
-        <div className="min-w-0">
-          <div className="flex flex-col gap-3 p-4 sm:p-5 md:p-6 border-b min-w-0">
-            <div className="min-w-0">
-              <p className="text-[11px] sm:text-xs uppercase text-[#7b7f7d] break-words">
-                {plans[selectedPlan].title}
+      <section className="bg-[#f5f2ee] px-4 sm:px-6 md:px-12 py-10 sm:py-12 md:py-16 overflow-x-hidden">
+        <div className="max-w-[1400px] mx-auto">
+          {/* TOP TEXT ROW */}
+          <div className="grid md:grid-cols-2 gap-6 md:gap-10 items-start">
+            <div>
+              <p className="text-[11px] sm:text-xs tracking-[2px] sm:tracking-[3px] uppercase text-[#50627a] mb-2 sm:mb-3 font-semibold">
+                UNIT OVERVIEW
               </p>
-              <h3 className="text-xl sm:text-2xl font-serif break-words">
-                {plans[selectedPlan].bed}, {plans[selectedPlan].bath}
-              </h3>
+              <h2 className="text-[34px] sm:text-[46px] md:text-[64px] leading-[0.95] font-[Instrument_Serif] text-[#2d3230]">
+                Unified Living Hub
+              </h2>
             </div>
 
-            <div className="w-fit max-w-full bg-[#1e3872] text-white px-4 py-2 rounded-full text-sm break-words">
-              {plans[selectedPlan].price}
+            <p className="text-[15px] sm:text-base md:text-[18px] text-[#5a6260] leading-relaxed max-w-[760px] md:pt-2">
+              Explore your future home with detailed floor plans, interactive 3D virtual tours, and unit photography — all in one convenient module.
+            </p>
+          </div>
+
+          {/* ORANGE STRIP */}
+          <div className="mt-8 bg-gradient-to-r from-[#df901f] to-[#cf7f14] rounded-[20px] px-4 sm:px-6 md:px-7 py-4 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 shadow-sm">
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="border border-white/45 text-white px-4 py-2 rounded-full text-[11px] sm:text-xs tracking-[0.08em] font-semibold">
+                LOOK &amp; LEASE SPECIAL
+              </span>
+
+              <span className="text-white font-[Instrument_Serif] text-[17px] sm:text-[20px] md:text-[22px] leading-none">
+                Only $99 Total to Move In
+              </span>
+
+              <span className="bg-white/16 text-white px-4 py-2 rounded-full text-xs sm:text-sm font-semibold">
+                1BR from $799 · A1–A3
+              </span>
+
+              <span className="bg-white/16 text-white px-4 py-2 rounded-full text-xs sm:text-sm font-semibold">
+                2BR from $999 · B1–B3
+              </span>
+            </div>
+
+            <div>
+              <span className="inline-flex items-center gap-2 bg-white text-[#b45d2a] px-5 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap">
+                <span>📞</span>
+                <span>(903) 961–6391</span>
+              </span>
             </div>
           </div>
 
-          {/* IMPORTANT: remove inner padding when using fill image */}
-          <div className="relative h-[240px] xs:h-[260px] sm:h-[320px] md:h-[440px]">
-            <div className="absolute inset-0 p-3 sm:p-4">
-              <div className="relative h-full w-full">
+          {/* FILTER ROW */}
+          <div className="mt-6 flex flex-col xl:flex-row xl:items-center xl:justify-between gap-4">
+            {/* LEFT TABS */}
+            <div className="flex gap-3">
+              <button
+                onClick={() => {
+                  setBedroomType("1bed");
+                  setSelectedPlan("A1");
+                }}
+                className={`min-w-[145px] rounded-[18px] border px-5 py-4 text-left transition ${
+                  bedroomType === "1bed"
+                    ? "bg-[#1e3872] border-[#1e3872] text-white shadow-[0_8px_20px_rgba(30,56,114,0.22)]"
+                    : "bg-[#ece8e1] border-[#d7d1c7] text-[#2d3230]"
+                }`}
+              >
+                <span className="block text-[15px] sm:text-[16px] font-semibold">
+                  1 Bedroom
+                </span>
+                <span className="block text-[12px] sm:text-[13px] mt-1 opacity-85">
+                  from $799/mo
+                </span>
+              </button>
+
+              <button
+                onClick={() => {
+                  setBedroomType("2bed");
+                  setSelectedPlan("B1");
+                }}
+                className={`min-w-[155px] rounded-[18px] border px-5 py-4 text-left transition ${
+                  bedroomType === "2bed"
+                    ? "bg-[#1e3872] border-[#1e3872] text-white shadow-[0_8px_20px_rgba(30,56,114,0.22)]"
+                    : "bg-[#ece8e1] border-[#d7d1c7] text-[#2d3230]"
+                }`}
+              >
+                <span className="block text-[15px] sm:text-[16px] font-semibold">
+                  2 Bedrooms
+                </span>
+                <span className="block text-[12px] sm:text-[13px] mt-1 opacity-85">
+                  from $999/mo
+                </span>
+              </button>
+            </div>
+
+            {/* RIGHT PLAN PILLS */}
+            <div className="flex gap-3 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              {bedroomType === "1bed" ? (
+                <>
+                  <button
+                    onClick={() => setSelectedPlan("A1")}
+                    className={`shrink-0 rounded-full border px-5 py-3 text-sm whitespace-nowrap transition ${
+                      selectedPlan === "A1"
+                        ? "border-[#1e3872] text-[#1e3872] bg-white font-semibold"
+                        : "border-[#cfc8bc] text-[#5a6260] bg-transparent"
+                    }`}
+                  >
+                    <span className="font-semibold mr-2">A1</span>
+                    <span>625 sq ft</span>
+                    <span className="ml-3 font-semibold">$799/mo</span>
+                  </button>
+
+                  <button
+                    onClick={() => setSelectedPlan("A2")}
+                    className={`shrink-0 rounded-full border px-5 py-3 text-sm whitespace-nowrap transition ${
+                      selectedPlan === "A2"
+                        ? "border-[#1e3872] text-[#1e3872] bg-white font-semibold"
+                        : "border-[#cfc8bc] text-[#5a6260] bg-transparent"
+                    }`}
+                  >
+                    <span className="font-semibold mr-2">A2</span>
+                    <span>724 sq ft</span>
+                    <span className="ml-3 font-semibold">$849/mo</span>
+                  </button>
+
+                  <button
+                    onClick={() => setSelectedPlan("A3")}
+                    className={`shrink-0 rounded-full border px-5 py-3 text-sm whitespace-nowrap transition ${
+                      selectedPlan === "A3"
+                        ? "border-[#1e3872] text-[#1e3872] bg-white font-semibold"
+                        : "border-[#cfc8bc] text-[#5a6260] bg-transparent"
+                    }`}
+                  >
+                    <span className="font-semibold mr-2">A3</span>
+                    <span>724 sq ft</span>
+                    <span className="ml-3 font-semibold">$849/mo</span>
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    onClick={() => setSelectedPlan("B1")}
+                    className={`shrink-0 rounded-full border px-5 py-3 text-sm whitespace-nowrap transition ${
+                      selectedPlan === "B1"
+                        ? "border-[#1e3872] text-[#1e3872] bg-white font-semibold"
+                        : "border-[#cfc8bc] text-[#5a6260] bg-transparent"
+                    }`}
+                  >
+                    <span className="font-semibold mr-2">B1</span>
+                    <span>850 sq ft</span>
+                    <span className="ml-3 font-semibold">$999/mo</span>
+                  </button>
+
+                  <button
+                    onClick={() => setSelectedPlan("B2")}
+                    className={`shrink-0 rounded-full border px-5 py-3 text-sm whitespace-nowrap transition ${
+                      selectedPlan === "B2"
+                        ? "border-[#1e3872] text-[#1e3872] bg-white font-semibold"
+                        : "border-[#cfc8bc] text-[#5a6260] bg-transparent"
+                    }`}
+                  >
+                    <span className="font-semibold mr-2">B2</span>
+                    <span>886 sq ft</span>
+                    <span className="ml-3 font-semibold">$1,049/mo</span>
+                  </button>
+
+                  <button
+                    onClick={() => setSelectedPlan("B3")}
+                    className={`shrink-0 rounded-full border px-5 py-3 text-sm whitespace-nowrap transition ${
+                      selectedPlan === "B3"
+                        ? "border-[#1e3872] text-[#1e3872] bg-white font-semibold"
+                        : "border-[#cfc8bc] text-[#5a6260] bg-transparent"
+                    }`}
+                  >
+                    <span className="font-semibold mr-2">B3</span>
+                    <span>1,003 sq ft</span>
+                    <span className="ml-3 font-semibold">$1,099/mo</span>
+                  </button>
+                </>
+              )}
+            </div>
+          </div>
+
+          {/* MAIN TWO-CARD LAYOUT */}
+          <div className="mt-6 grid xl:grid-cols-[1.55fr_1fr] gap-7 items-stretch">
+            {/* LEFT CARD */}
+            <div className="rounded-[26px] border border-[#ddd7cc] bg-[#fbfaf7] overflow-hidden shadow-[0_2px_8px_rgba(26,29,27,0.04)]">
+              {/* TOP */}
+              <div className="flex items-start justify-between gap-4 px-6 md:px-7 py-5 border-b border-[#ddd7cc]">
+                <div>
+                  <p className="text-[11px] tracking-[0.14em] uppercase text-[#5f6981] font-semibold mb-2">
+                    {plans[selectedPlan].title}
+                  </p>
+                  <h3 className="font-[Instrument_Serif] text-[28px] md:text-[36px] leading-none text-[#2d3230]">
+                    {plans[selectedPlan].bed}, {plans[selectedPlan].bath}
+                  </h3>
+                </div>
+
+                <div className="shrink-0 bg-[#1e3872] text-white px-6 py-3 rounded-full text-[18px] md:text-[20px] font-semibold shadow-[0_8px_18px_rgba(30,56,114,0.22)]">
+                  {plans[selectedPlan].price}
+                </div>
+              </div>
+
+              {/* FLOORPLAN IMAGE */}
+              <div className="relative h-[320px] sm:h-[420px] lg:h-[500px] border-b border-[#ddd7cc] bg-[#f5f3ee]">
                 <Image
                   src={plans[selectedPlan].img}
                   alt={`${plans[selectedPlan].bed} ${plans[selectedPlan].bath} apartment floor plan ${selectedPlan} at Parks on Taylor Sherman TX`}
                   fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-contain opacity-80"
+                  sizes="(max-width: 1280px) 100vw, 60vw"
+                  className="object-contain p-6 md:p-8"
                 />
+              </div>
+
+              {/* STATS */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 border-b border-[#ddd7cc]">
+                <div className="py-5 text-center border-r border-[#ddd7cc]">
+                  <p className="font-[Instrument_Serif] text-[20px] text-[#2d3230]">
+                    {plans[selectedPlan].bed}
+                  </p>
+                  <p className="text-[11px] tracking-[0.12em] uppercase text-[#50627a] font-semibold mt-1">
+                    Bedroom
+                  </p>
+                </div>
+                <div className="py-5 text-center sm:border-r border-[#ddd7cc]">
+                  <p className="font-[Instrument_Serif] text-[20px] text-[#2d3230]">
+                    {plans[selectedPlan].bath}
+                  </p>
+                  <p className="text-[11px] tracking-[0.12em] uppercase text-[#50627a] font-semibold mt-1">
+                    Bathroom
+                  </p>
+                </div>
+                <div className="py-5 text-center border-t sm:border-t-0 border-r border-[#ddd7cc]">
+                  <p className="font-[Instrument_Serif] text-[20px] text-[#2d3230]">
+                    {plans[selectedPlan].area}
+                  </p>
+                  <p className="text-[11px] tracking-[0.12em] uppercase text-[#50627a] font-semibold mt-1">
+                    Area
+                  </p>
+                </div>
+                <div className="py-5 text-center border-t sm:border-t-0">
+                  <p className="font-[Instrument_Serif] text-[20px] text-[#2d3230]">
+                    Apr 1
+                  </p>
+                  <p className="text-[11px] tracking-[0.12em] uppercase text-[#50627a] font-semibold mt-1">
+                    Available
+                  </p>
+                </div>
+              </div>
+
+              {/* FEATURES */}
+              <div className="px-6 md:px-7 py-5">
+                <p className="text-[11px] tracking-[0.16em] uppercase text-[#50627a] font-semibold mb-4">
+                  Plan Features
+                </p>
+
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                  <div>
+                    <p className="text-[12px] tracking-[0.12em] uppercase text-[#1e3872] font-semibold mb-3">
+                      Highlights
+                    </p>
+                    <ul className="space-y-1.5 text-[15px] text-[#4d5552] list-disc ml-4">
+                      <li>High Speed Internet</li>
+                      <li>Washer/Dryer Hookup</li>
+                      <li>Air Conditioning</li>
+                      <li>Heating</li>
+                      <li>Ceiling Fans</li>
+                      <li>Cable Ready</li>
+                      <li>Tub/Shower</li>
+                      <li>Fireplace</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <p className="text-[12px] tracking-[0.12em] uppercase text-[#1e3872] font-semibold mb-3">
+                      Kitchen
+                    </p>
+                    <ul className="space-y-1.5 text-[15px] text-[#4d5552] list-disc ml-4">
+                      <li>Dishwasher</li>
+                      <li>Disposal</li>
+                      <li>Microwave</li>
+                      <li>Range</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <p className="text-[12px] tracking-[0.12em] uppercase text-[#1e3872] font-semibold mb-3">
+                      Interior
+                    </p>
+                    <ul className="space-y-1.5 text-[15px] text-[#4d5552] list-disc ml-4">
+                      <li>Carpet</li>
+                      <li>Vinyl Flooring</li>
+                      <li>Dining Room</li>
+                      <li>Walk-In Closets</li>
+                      <li>Window Coverings</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* RIGHT CARD */}
+            <div className="h-full rounded-[26px] border border-[#ddd7cc] bg-[#fbfaf7] overflow-hidden shadow-[0_2px_8px_rgba(26,29,27,0.04)] flex flex-col">
+              {/* PHOTO / AMENITIES TOP SWITCH */}
+              <div className="p-3 border-b border-[#ddd7cc] bg-[#f3f0ea]">
+                <div className="grid grid-cols-2 rounded-[18px] bg-[#dde1e6] p-1">
+                  <button
+                    onClick={() => setTab("photos")}
+                    className={`rounded-[14px] py-3 text-[15px] font-semibold transition ${
+                      tab === "photos"
+                        ? "bg-[#1e3872] text-white shadow-[0_4px_12px_rgba(30,56,114,0.18)]"
+                        : "text-[#5a6260]"
+                    }`}
+                  >
+                    Interior Photos
+                  </button>
+                  <button
+                    onClick={() => setTab("amenities")}
+                    className={`rounded-[14px] py-3 text-[15px] font-semibold transition ${
+                      tab === "amenities"
+                        ? "bg-[#1e3872] text-white shadow-[0_4px_12px_rgba(30,56,114,0.18)]"
+                        : "text-[#5a6260]"
+                    }`}
+                  >
+                    Amenities
+                  </button>
+                </div>
+              </div>
+
+              {/* SECONDARY FILTERS */}
+              <div className="px-4 py-3 border-b border-[#ddd7cc] bg-[#fbfaf7]">
+                <div className="flex gap-3 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                  {tab === "photos" ? (
+                    (["Living Room", "Bedroom", "Kitchen", "Bathroom"] as const).map((item) => (
+                      <button
+                        key={item}
+                        onClick={() => setPreviewCategory(item)}
+                        className={`shrink-0 rounded-full px-6 py-3 text-[15px] border transition ${
+                          previewCategory === item
+                            ? "bg-[#1e3872] text-white border-[#1e3872]"
+                            : "bg-[#eceff3] text-[#5a6260] border-[#cbd2d9]"
+                        }`}
+                      >
+                        {item}
+                      </button>
+                    ))
+                  ) : (
+                    (["Pool", "Fitness", "Dog Park", "Laundry"] as const).map((item) => (
+                      <button
+                        key={item}
+                        onClick={() => setAmenityCategory(item)}
+                        className={`shrink-0 rounded-full px-6 py-3 text-[15px] border transition ${
+                          amenityCategory === item
+                            ? "bg-[#1e3872] text-white border-[#1e3872]"
+                            : "bg-[#eceff3] text-[#5a6260] border-[#cbd2d9]"
+                        }`}
+                      >
+                        {item}
+                      </button>
+                    ))
+                  )}
+                </div>
+              </div>
+
+              {/* IMAGE - stretched down */}
+              <div className="relative flex-1 min-h-[520px] bg-[#ece8e1]">
+                <Image
+                  src={
+                    tab === "photos"
+                      ? interiorPhotos[previewCategory]
+                      : amenityPhotos[amenityCategory]
+                  }
+                  alt={
+                    tab === "photos"
+                      ? `Modern ${previewCategory.toLowerCase()} interior at Parks on Taylor apartments Sherman TX`
+                      : `${amenityCategory} amenities at Parks on Taylor apartments Sherman TX`
+                  }
+                  fill
+                  sizes="(max-width: 1280px) 100vw, 40vw"
+                  className="object-cover"
+                />
+
+                <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-3 z-10">
+                  <button className="w-12 h-12 rounded-full bg-white/90 text-[#5a6260] shadow flex items-center justify-center text-xl">
+                    ←
+                  </button>
+                  <button className="w-12 h-12 rounded-full bg-[#1e3872] text-white shadow flex items-center justify-center">
+                    ⌂
+                  </button>
+                  <button className="w-12 h-12 rounded-full bg-white/90 text-[#5a6260] shadow flex items-center justify-center text-xl">
+                    →
+                  </button>
+                </div>
+              </div>
+
+              {/* BOTTOM CONTENT */}
+              <div className="px-6 py-5 border-t border-[#ddd7cc] bg-[#fbfaf7]">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="font-[Instrument_Serif] text-[22px] md:text-[28px] leading-none text-[#2d3230]">
+                      {plans[selectedPlan].title}
+                    </p>
+                    <p className="text-[15px] text-[#68706d] mt-2">
+                      {plans[selectedPlan].area} · Available Apr 1, 2026
+                    </p>
+                  </div>
+
+                  <div className="font-[Instrument_Serif] text-[28px] md:text-[34px] text-[#1e3872] whitespace-nowrap">
+                    {plans[selectedPlan].price}
+                    <span className="text-[18px] text-[#5a6260]">/mo</span>
+                  </div>
+                </div>
+
+                <div className="mt-6 grid sm:grid-cols-2 gap-3">
+                  <button className="w-full rounded-full border border-[#1e3872] text-[#1e3872] py-4 px-5 text-[15px] font-semibold hover:bg-[#f2f5fb] transition">
+                    Schedule Tour
+                  </button>
+
+                  <button className="w-full rounded-full bg-[#1e3872] text-white py-4 px-5 text-[15px] font-semibold shadow-[0_8px_20px_rgba(30,56,114,0.18)] hover:bg-[#15306a] transition">
+                    Apply Now →
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* RIGHT: PREVIEW */}
-        <div className="border-t md:border-t-0 md:border-l flex flex-col min-w-0">
-          <div className="flex p-3 sm:p-4 bg-[#edeae4] gap-2 border-b min-w-0">
-            <button
-              onClick={() => setTab("photos")}
-              className={`flex-1 min-w-0 py-2.5 sm:py-3 px-2 rounded-xl text-[11px] sm:text-sm font-medium transition ${
-                tab === "photos"
-                  ? "bg-[#1e3872] text-white"
-                  : "text-[#5a6260]"
-              }`}
-            >
-              <span className="block truncate">Interior Photos</span>
-            </button>
-
-            <button
-              onClick={() => setTab("amenities")}
-              className={`flex-1 min-w-0 py-2.5 sm:py-3 px-2 rounded-xl text-[11px] sm:text-sm font-medium transition ${
-                tab === "amenities"
-                  ? "bg-[#1e3872] text-white"
-                  : "text-[#5a6260]"
-              }`}
-            >
-              <span className="block truncate">Amenities</span>
-            </button>
-          </div>
-
-          <div className="flex gap-2 sm:gap-3 p-3 sm:p-4 border-b bg-[#f8f6f2] overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden min-w-0">
-            {tab === "photos" ? (
-              <>
-                {(["Living Room", "Bedroom", "Kitchen", "Bathroom"] as const).map((item) => (
-                  <button
-                    key={item}
-                    onClick={() => setPreviewCategory(item)}
-                    className={`shrink-0 px-4 sm:px-5 py-2 rounded-full border text-xs sm:text-sm whitespace-nowrap ${
-                      previewCategory === item
-                        ? "bg-[#1e3872] text-white border-[#1e3872]"
-                        : "text-[#5a6260] border-gray-300"
-                    }`}
-                  >
-                    {item}
-                  </button>
-                ))}
-              </>
-            ) : null}
-          </div>
-
-          {tab === "amenities" && (
-            <div className="flex gap-3 px-3 sm:px-4 py-3 border-b bg-[#f8f6f2] overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden min-w-0">
-              {Object.entries(amenityPhotos).map(([label, src]) => {
-                const isActive = amenityCategory === label;
-
-                return (
-                  <button
-                    key={label}
-                    onClick={() =>
-                      setAmenityCategory(label as keyof typeof amenityPhotos)
-                    }
-                    className={`relative shrink-0 w-[88px] h-[46px] sm:w-[110px] sm:h-[56px] rounded-xl overflow-hidden border-2 transition ${
-                      isActive ? "border-[#1e3872]" : "border-transparent"
-                    }`}
-                  >
-                    <Image
-                      src={src}
-                      alt={`${label} amenities at Parks on Taylor apartments Sherman TX`}
-                      fill
-                      className="object-cover"
-                    />
-                  </button>
-                );
-              })}
-            </div>
-          )}
-
-          <div className="relative h-[220px] xs:h-[240px] sm:h-[300px] md:h-[440px] min-w-0">
-            <Image
-              src={
-                tab === "photos"
-                  ? interiorPhotos[previewCategory]
-                  : amenityPhotos[amenityCategory]
-              }
-              alt={
-                tab === "photos"
-                  ? `Modern ${previewCategory.toLowerCase()} interior at Parks on Taylor apartments Sherman TX`
-                  : `${amenityCategory} amenities at Parks on Taylor apartments Sherman TX`
-              }
-              fill
-              className="object-cover"
-            />
+          {/* BOTTOM LINE */}
+          <div className="hidden md:flex items-center gap-6 mt-12 text-[#9ba9bf]">
+            <div className="h-px bg-[#d8dce2] flex-1" />
+            <span className="text-[12px] tracking-[0.22em] uppercase font-semibold whitespace-nowrap">
+              Parks on Taylor · Unit Overview
+            </span>
+            <div className="h-px bg-[#d8dce2] flex-1" />
           </div>
         </div>
-      </div>
-
-      {/* ================= BOTTOM: DETAILS ================= */}
-      <div className="grid md:grid-cols-2 gap-6 p-4 sm:p-5 md:p-6 border-t min-w-0">
-        <div className="min-w-0">
-          <div className="grid grid-cols-2 sm:grid-cols-4 text-center border-b pb-4 mb-4 gap-y-4">
-            <div>
-              <p className="font-serif text-sm sm:text-base break-words">{plans[selectedPlan].bed}</p>
-              <p className="text-[10px] sm:text-xs text-[#7b7f7d]">BEDROOM</p>
-            </div>
-            <div>
-              <p className="font-serif text-sm sm:text-base break-words">{plans[selectedPlan].bath}</p>
-              <p className="text-[10px] sm:text-xs text-[#7b7f7d]">BATHROOM</p>
-            </div>
-            <div>
-              <p className="font-serif text-sm sm:text-base break-words">{plans[selectedPlan].area}</p>
-              <p className="text-[10px] sm:text-xs text-[#7b7f7d]">AREA</p>
-            </div>
-            <div>
-              <p className="font-serif text-sm sm:text-base">Apr 1</p>
-              <p className="text-[10px] sm:text-xs text-[#7b7f7d]">AVAILABLE</p>
-            </div>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 text-sm min-w-0">
-            <div className="min-w-0">
-              <p className="text-xs uppercase text-[#1e3872] mb-2">Highlights</p>
-              <ul className="list-disc ml-4 space-y-1 text-[13px] sm:text-sm break-words">
-                <li>High Speed Internet</li>
-                <li>Washer/Dryer Hookup</li>
-                <li>Air Conditioning</li>
-                <li>Heating</li>
-                <li>Ceiling Fans</li>
-                <li>Cable Ready</li>
-                <li>Tub/Shower</li>
-                <li>Fireplace</li>
-              </ul>
-            </div>
-
-            <div className="min-w-0">
-              <p className="text-xs uppercase text-[#1e3872] mb-2">Kitchen</p>
-              <ul className="list-disc ml-4 space-y-1 text-[13px] sm:text-sm break-words">
-                <li>Dishwasher</li>
-                <li>Disposal</li>
-                <li>Microwave</li>
-                <li>Range</li>
-              </ul>
-            </div>
-
-            <div className="min-w-0">
-              <p className="text-xs uppercase text-[#1e3872] mb-2">Interior</p>
-              <ul className="list-disc ml-4 space-y-1 text-[13px] sm:text-sm break-words">
-                <li>Carpet</li>
-                <li>Vinyl Flooring</li>
-                <li>Dining Room</li>
-                <li>Walk-In Closets</li>
-                <li>Window Coverings</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex flex-col justify-between min-w-0">
-          <div className="min-w-0">
-            <p className="text-lg sm:text-xl font-serif mb-2 break-words">
-              {plans[selectedPlan].title}
-            </p>
-
-            <p className="text-sm text-[#5a6260] mb-4 break-words">
-              {plans[selectedPlan].area} · Available Apr 1, 2026
-            </p>
-
-            <p className="text-2xl sm:text-3xl font-serif text-[#1e3872] mb-6 break-words">
-              {plans[selectedPlan].price}
-            </p>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-3">
-            <button className="flex-1 border border-[#1e3872] text-[#1e3872] py-3 rounded-full text-sm sm:text-base px-4">
-              Schedule Tour
-            </button>
-
-            <button className="flex-1 bg-[#1e3872] text-white py-3 rounded-full text-sm sm:text-base px-4">
-              Apply Now →
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* ================= AMENITIES SECTION ================= */}
       <section className="bg-[#0c2340] px-6 md:px-12 py-16 md:py-20">

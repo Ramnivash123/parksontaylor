@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "./_components/header";
 import Footer from "./_components/footer";
 import Offer from "./_components/offer";  
 import LoriChatWidget from "./_components/chat";
@@ -46,7 +45,6 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Header />
         <Offer />
         {children}
         <LoriChatWidget />

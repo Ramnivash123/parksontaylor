@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import FloorPlanClient from "../FloorPlanClient";
 
+
+
 export const metadata: Metadata = {
   title: "Floor Plans & Pricing | Parks on Taylor Apartments in Sherman, TX",
   description:
@@ -15,5 +17,10 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <FloorPlanClient />;
+  
+  return (
+    <>
+    <FloorPlanClient />
+    </>
+  ); 
 }

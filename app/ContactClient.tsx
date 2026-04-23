@@ -1,6 +1,15 @@
+"use client"
+import { useState } from "react";
+import HeaderOther from "./_components/HeaderOther";
+
+
+
+
 export default function Contact() {
+  const [showTopBar, setShowTopBar] = useState(true);
   return (
     <>
+      <HeaderOther />
       {/* ===== HERO ===== */}
       <section className="bg-[#1f376d] text-white pt-32 pb-24 px-6 md:px-16 relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.08]  [background-size:18px_18px]" />

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import HomeClient from "./HomeClient";
 
+
+
 export const metadata: Metadata = {
   title: "Parks on Taylor | Modern Apartments for Rent in Sherman, TX",
   description:
@@ -15,5 +17,9 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <HomeClient />;
+  return (
+    <>
+      <HomeClient />
+    </>
+  );
 }

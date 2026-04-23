@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ContactClient from "../ContactClient";
 
+
 export const metadata: Metadata = {
   title: "Contact Parks on Taylor | Schedule a Tour in Sherman, TX Apartments",
   
@@ -28,5 +29,12 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <ContactClient />;
+  
+  return(
+    <>
+    
+    <ContactClient />;
+    </>
+  ); 
 }
+

@@ -1,4 +1,7 @@
 "use client";
+import HeaderOther from "./_components/HeaderOther";
+
+
 
 import { useEffect, useState } from "react";
 
@@ -16,6 +19,7 @@ type ImageCardProps = {
 };
 
 const gallery: GalleryItem[] = [
+  
   {
     src: "/webp/gallery/1.webp",
     name: "Community Entrance",
@@ -119,8 +123,12 @@ const gallery: GalleryItem[] = [
   },
 ];
 
+
+
 function ImageCard({ item, index, height, onView }: ImageCardProps) {
   return (
+    <>
+    
     <div
       onClick={() => onView(index)}
       className="relative group cursor-pointer overflow-hidden rounded-[22px]"
@@ -143,10 +151,12 @@ function ImageCard({ item, index, height, onView }: ImageCardProps) {
         </h3>
       </div>
     </div>
+  </>
   );
 }
 
 export default function Gallery() {
+  const [showTopBar, setShowTopBar] = useState(true);
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
 
   const closeModal = () => setCurrentIndex(null);
@@ -178,6 +188,7 @@ export default function Gallery() {
 
   return (
     <>
+      <HeaderOther />
       {/* ===== HERO SECTION ===== */}
       <section className="bg-[#1E3872] text-[#F5F2ED] px-6 md:px-16 py-24 md:py-28">
         <div className="max-w-3xl">

@@ -1,5 +1,5 @@
 "use client";
-
+import HeaderOther from "./_components/HeaderOther";
 import { useMemo, useState } from "react";
 
 type FloorPlan = {
@@ -190,7 +190,10 @@ function Card({ plan, isSelected, canSelectMore, onToggleCompare }: CardProps) {
     );
   };
 
+
   return (
+    <>
+    
     <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-[#e7e1d7]">
       {/* TOP INTERIOR SLIDER */}
       <div className="relative h-[220px] w-full overflow-hidden">
@@ -311,6 +314,7 @@ function Card({ plan, isSelected, canSelectMore, onToggleCompare }: CardProps) {
         </div>
       </div>
     </div>
+  </>
   );
 }
 
@@ -339,6 +343,7 @@ function ComparisonDrawer({
 
   return (
     <>
+      
       <div className="fixed inset-0 bg-black/30 z-40" onClick={onClear} />
 
       <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#F5F2ED] rounded-t-[28px] shadow-2xl border-t border-[#d8d2c7] max-h-[82vh] overflow-y-auto">
@@ -505,6 +510,7 @@ export default function Floor() {
 
   return (
     <>
+      <HeaderOther />
       <section className="bg-[#1f376d] text-[#F5F2ED] px-6 md:px-16 py-24">
         <p className="text-sm tracking-widest text-[#E09428] mb-6 font-[Plus_Jakarta_Sans]">
           PARKS ON TAYLOR · SHERMAN, TX
