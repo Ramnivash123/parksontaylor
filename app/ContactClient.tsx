@@ -1,30 +1,25 @@
-"use client"
-import { useState } from "react";
+"use client";
+
 import HeaderOther from "./_components/HeaderOther";
 
-
-
-
 export default function Contact() {
-  const [showTopBar, setShowTopBar] = useState(true);
   return (
     <>
       <HeaderOther />
-      {/* ===== HERO ===== */}
-      <section className="bg-[#1f376d] text-white pt-32 pb-24 px-6 md:px-16 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.08]  [background-size:18px_18px]" />
 
+      {/* ===== HERO ===== */}
+      <section className="relative overflow-hidden bg-[#1f376d] px-6 pt-32 pb-24 text-white md:px-16">
         <div className="relative z-10 max-w-4xl">
-          <p className="text-xs tracking-[0.35em] text-[#E39B2D] mb-6 font-[Plus_Jakarta_Sans]">
+          <p className="mb-6 font-[Plus_Jakarta_Sans] text-xs tracking-[0.35em] text-[#E39B2D]">
             GET IN TOUCH
           </p>
 
-          <h1 className="font-[Instrument_Serif] leading-[1.05] text-[42px] md:text-[80px]">
+          <h1 className="font-[Instrument_Serif] text-[42px] leading-[1.05] md:text-[80px]">
             We'd Love to <br />
-            <span className="text-[#E39B2D] italic">Hear From You</span>
+            <span className="italic text-[#E39B2D]">Hear From You</span>
           </h1>
 
-          <p className="mt-8 text-[#bfc6d6] text-base md:text-lg leading-relaxed max-w-2xl font-[Plus_Jakarta_Sans]">
+          <p className="mt-8 max-w-2xl font-[Plus_Jakarta_Sans] text-base leading-relaxed text-[#bfc6d6] md:text-lg">
             Ready to make Parks on Taylor your home? Our leasing team is
             standing by to answer questions, schedule tours, and walk you
             through the process.
@@ -33,23 +28,25 @@ export default function Contact() {
       </section>
 
       {/* ===== CONTACT DETAILS + FORM ===== */}
-      <section className="bg-[#f5f2ed] px-6 md:px-16 py-12 md:py-16">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 xl:grid-cols-[0.95fr_1.35fr] gap-10 md:gap-12">
-          {/* LEFT SIDE */}
+      <section className="bg-[#f5f2ed] px-6 py-12 font-[Plus_Jakarta_Sans] md:px-16 md:py-16">
+        <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-10 xl:grid-cols-[0.9fr_1.25fr] xl:gap-12">
+          {/* LEFT */}
           <div className="space-y-10">
-            {/* Address */}
+            {/* ADDRESS */}
             <div>
-              <p className="text-xs tracking-[0.3em] text-[#E39B2D] mb-4 font-semibold">
+              <p className="mb-4 font-[Plus_Jakarta_Sans] text-xs font-semibold tracking-[0.3em] text-[#E39B2D]">
                 ADDRESS
               </p>
 
               <div className="flex items-start gap-4">
-                <div className="mt-1 text-[#1E3872] text-xl">⌖</div>
+                <div className="mt-1 text-xl text-[#1E3872]">⌖</div>
+
                 <div>
-                  <h3 className="text-[20px] font-semibold text-[#1f2937]">
+                  <h3 className="text-[18px] font-semibold text-[#1f2937]">
                     Parks on Taylor
                   </h3>
-                  <p className="mt-2 text-[#4b5563] text-[18px] leading-9">
+
+                  <p className="mt-1 text-[16px] leading-[1.6] text-[#4b5563]">
                     1200 West Taylor Street
                     <br />
                     Sherman, TX 75092
@@ -58,36 +55,38 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Contact */}
+            {/* CONTACT */}
             <div>
-              <p className="text-xs tracking-[0.3em] text-[#E39B2D] mb-4 font-semibold">
+              <p className="mb-4 font-[Plus_Jakarta_Sans] text-xs font-semibold tracking-[0.3em] text-[#E39B2D]">
                 CONTACT
               </p>
 
-              <div className="space-y-6">
+              <div className="space-y-5">
                 <div className="flex items-start gap-4">
-                  <div className="h-10 w-10 rounded-xl border border-[#b9c3d7] bg-[#e8edf7] flex items-center justify-center text-[#1E3872]">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#cfd6e2] bg-[#eef2f8] text-sm text-[#1E3872]">
                     ☎
                   </div>
+
                   <div>
-                    <p className="text-sm tracking-wide text-[#6b7280] font-semibold">
+                    <p className="text-xs font-semibold tracking-[0.08em] text-[#6b7280]">
                       LEASING OFFICE
                     </p>
-                    <p className="text-[#163c84] text-[20px] font-semibold mt-1">
+                    <p className="mt-1 text-[17px] font-semibold text-[#163c84]">
                       (903) 961-6391
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="h-10 w-10 rounded-xl border border-[#b9c3d7] bg-[#e8edf7] flex items-center justify-center text-[#1E3872]">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#cfd6e2] bg-[#eef2f8] text-sm text-[#1E3872]">
                     ✉
                   </div>
+
                   <div>
-                    <p className="text-sm tracking-wide text-[#6b7280] font-semibold">
+                    <p className="text-xs font-semibold tracking-[0.08em] text-[#6b7280]">
                       LEASING INQUIRIES
                     </p>
-                    <p className="text-[#163c84] text-[20px] font-semibold mt-1 break-all">
+                    <p className="mt-1 break-all text-[17px] font-semibold text-[#163c84]">
                       potmanager@livenjoymgt.com
                     </p>
                   </div>
@@ -95,85 +94,81 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Office Hours */}
+            {/* OFFICE HOURS */}
             <div>
-              <p className="text-xs tracking-[0.3em] text-[#E39B2D] mb-4 font-semibold">
+              <p className="mb-4 font-[Plus_Jakarta_Sans] text-xs font-semibold tracking-[0.3em] text-[#E39B2D]">
                 OFFICE HOURS
               </p>
 
               <div className="flex items-start gap-4">
-                <div className="h-10 w-10 rounded-xl border border-[#b9c3d7] bg-[#e8edf7] flex items-center justify-center text-[#1E3872]">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#cfd6e2] bg-[#eef2f8] text-sm text-[#1E3872]">
                   ◔
                 </div>
 
-                <div className="w-full max-w-md space-y-2 text-[18px]">
+                <div className="w-full max-w-md space-y-1.5 text-[16px]">
                   <div className="flex justify-between gap-6 text-[#1f2937]">
                     <span>Monday – Friday</span>
-                    <span className="text-[#163c84] font-semibold">
+                    <span className="font-semibold text-[#163c84]">
                       8:30 AM – 5:30 PM
                     </span>
                   </div>
 
                   <div className="flex justify-between gap-6 text-[#1f2937]">
                     <span>Saturday</span>
-                    <span className="text-[#163c84] font-semibold">
+                    <span className="font-semibold text-[#163c84]">
                       10:00 AM – 4:00 PM
                     </span>
                   </div>
 
                   <div className="flex justify-between gap-6 text-[#1f2937]">
                     <span>Sunday</span>
-                    <span className="text-[#ef4444] font-semibold">Closed</span>
+                    <span className="font-semibold text-[#ef4444]">
+                      Closed
+                    </span>
                   </div>
 
-                  <p className="pt-3 text-[#4b5563] text-[17px]">
+                  <p className="pt-2 text-[15px] text-[#4b5563]">
                     Languages: English & Spanish
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Map box */}
-            <div className="rounded-[24px] border border-[#cfd6e2] overflow-hidden bg-white">
-              <div className="h-[320px] bg-[#eef1f7] relative">
+            {/* MAP */}
+            <div className="overflow-hidden rounded-[24px] border border-[#cfd6e2] bg-white">
+              <div className="relative h-[260px] bg-[#eef1f7]">
                 <div className="absolute inset-0 opacity-70">
-                  <div className="grid grid-cols-4 gap-4 p-4 h-full">
-                    <div className="bg-[#e5e7eb] rounded-md" />
-                    <div className="bg-[#e5e7eb] rounded-md" />
-                    <div className="bg-[#e5e7eb] rounded-md" />
-                    <div className="bg-[#e5e7eb] rounded-md" />
-                    <div className="bg-[#e5e7eb] rounded-md" />
-                    <div className="bg-[#e5e7eb] rounded-md" />
-                    <div className="bg-[#e5e7eb] rounded-md" />
-                    <div className="bg-[#e5e7eb] rounded-md" />
-                    <div className="bg-[#e5e7eb] rounded-md" />
-                    <div className="bg-[#e5e7eb] rounded-md" />
-                    <div className="bg-[#e5e7eb] rounded-md" />
-                    <div className="bg-[#e5e7eb] rounded-md" />
+                  <div className="grid h-full grid-cols-4 gap-4 p-4">
+                    {Array.from({ length: 12 }).map((_, index) => (
+                      <div
+                        key={index}
+                        className="rounded-md bg-[#e5e7eb]"
+                      />
+                    ))}
                   </div>
                 </div>
 
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                  <div className="flex flex-col items-center">
-                    <div className="w-5 h-5 rounded-full bg-[#E39B2D] border-4 border-white shadow" />
-                    <div className="mt-2 bg-[#1E3872] text-white text-sm font-semibold px-5 py-2 rounded-md whitespace-nowrap">
-                      PARKS ON TAYLOR
-                    </div>
-                    <div className="text-[#5a78b7] text-sm mt-1 whitespace-nowrap">
-                      W TAYLOR STREET
-                    </div>
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+                  <div className="mx-auto h-5 w-5 rounded-full border-4 border-white bg-[#E39B2D] shadow" />
+
+                  <div className="mt-2 rounded-md bg-[#1E3872] px-5 py-2 text-sm font-semibold text-white">
+                    PARKS ON TAYLOR
+                  </div>
+
+                  <div className="mt-1 text-[13px] text-[#5a78b7]">
+                    W TAYLOR STREET
                   </div>
                 </div>
               </div>
 
-              <div className="px-5 py-4 text-[#4b5563] text-[16px]">
+              <div className="px-5 py-3 text-[14px] text-[#4b5563]">
                 ⌖ 1200 W Taylor Street · Sherman, TX 75092
               </div>
             </div>
 
-            {/* Social */}
+            {/* SOCIAL */}
             <div>
-              <p className="text-xs tracking-[0.3em] text-[#334155] mb-5 font-semibold">
+              <p className="mb-5 font-[Plus_Jakarta_Sans] text-xs font-semibold tracking-[0.3em] text-[#334155]">
                 FOLLOW ALONG
               </p>
 
@@ -181,7 +176,7 @@ export default function Contact() {
                 {["◎", "f", "𝕏"].map((item, index) => (
                   <button
                     key={index}
-                    className="h-12 w-12 rounded-xl border border-[#c6d0e0] bg-[#edf2fb] text-[#1E3872] text-lg flex items-center justify-center"
+                    className="flex h-10 w-10 items-center justify-center rounded-lg border border-[#c6d0e0] bg-[#edf2fb] text-sm text-[#1E3872]"
                   >
                     {item}
                   </button>
@@ -190,62 +185,62 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* RIGHT SIDE FORM */}
-          <div className="rounded-[30px] bg-white border border-[#e4e1db] overflow-hidden shadow-sm">
+          {/* FORM */}
+          <div className="overflow-hidden rounded-[26px] border border-[#e4e1db] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.05)]">
             <div className="h-1 w-full bg-gradient-to-r from-[#1E3872] to-[#E39B2D]" />
 
             <div className="p-6 md:p-10">
-              <h2 className="font-[Instrument_Serif] text-[34px] md:text-[46px] text-[#1f2937] leading-none">
+              <h2 className="font-[Instrument_Serif] text-[30px] leading-[1.1] text-[#1f2937] md:text-[40px]">
                 Send Us a Message
               </h2>
 
-              <p className="mt-4 text-[#4b5563] text-[18px] leading-relaxed max-w-2xl">
+              <p className="mt-3 max-w-xl text-[16px] leading-[1.6] text-[#4b5563]">
                 Questions about availability, pricing, or scheduling a tour?
                 We're here to help.
               </p>
 
-              <form className="mt-10 space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <form className="mt-8 space-y-5">
+                <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
                   <div>
-                    <label className="block text-sm font-semibold tracking-wide text-[#4b5563] mb-3">
+                    <label className="mb-2 block text-[12px] font-semibold tracking-[0.12em] text-[#4b5563]">
                       FULL NAME *
                     </label>
                     <input
                       type="text"
                       placeholder="Jane Smith"
-                      className="w-full rounded-2xl border border-[#cfd6e2] px-5 py-4 text-[18px] outline-none focus:border-[#1E3872]"
+                      className="w-full rounded-xl border border-[#cfd6e2] px-4 py-3 text-[15px] outline-none focus:border-[#1E3872]"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold tracking-wide text-[#4b5563] mb-3">
+                    <label className="mb-2 block text-[12px] font-semibold tracking-[0.12em] text-[#4b5563]">
                       EMAIL ADDRESS *
                     </label>
                     <input
                       type="email"
                       placeholder="jane@email.com"
-                      className="w-full rounded-2xl border border-[#cfd6e2] px-5 py-4 text-[18px] outline-none focus:border-[#1E3872]"
+                      className="w-full rounded-xl border border-[#cfd6e2] px-4 py-3 text-[15px] outline-none focus:border-[#1E3872]"
                     />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
                   <div>
-                    <label className="block text-sm font-semibold tracking-wide text-[#4b5563] mb-3">
+                    <label className="mb-2 block text-[12px] font-semibold tracking-[0.12em] text-[#4b5563]">
                       PHONE NUMBER
                     </label>
                     <input
                       type="text"
                       placeholder="(555) 000-0000"
-                      className="w-full rounded-2xl border border-[#cfd6e2] px-5 py-4 text-[18px] outline-none focus:border-[#1E3872]"
+                      className="w-full rounded-xl border border-[#cfd6e2] px-4 py-3 text-[15px] outline-none focus:border-[#1E3872]"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold tracking-wide text-[#4b5563] mb-3">
+                    <label className="mb-2 block text-[12px] font-semibold tracking-[0.12em] text-[#4b5563]">
                       SUBJECT
                     </label>
-                    <select className="w-full rounded-2xl border border-[#cfd6e2] px-5 py-4 text-[18px] outline-none focus:border-[#1E3872] bg-white">
+                    <select className="w-full rounded-xl border border-[#cfd6e2] bg-white px-4 py-3 text-[15px] outline-none focus:border-[#1E3872]">
                       <option>Select a topic...</option>
                       <option>Schedule a Tour</option>
                       <option>Pricing & Availability</option>
@@ -256,24 +251,24 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold tracking-wide text-[#4b5563] mb-3">
+                  <label className="mb-2 block text-[12px] font-semibold tracking-[0.12em] text-[#4b5563]">
                     MESSAGE
                   </label>
                   <textarea
                     rows={6}
                     placeholder="Tell us what you're looking for..."
-                    className="w-full rounded-2xl border border-[#cfd6e2] px-5 py-4 text-[18px] outline-none focus:border-[#1E3872] resize-none"
+                    className="w-full resize-none rounded-xl border border-[#cfd6e2] px-4 py-3 text-[15px] outline-none focus:border-[#1E3872]"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full rounded-2xl bg-[#b7bfd0] text-white text-[20px] md:text-[22px] font-semibold py-5 hover:bg-[#a8b2c7] transition"
+                  className="w-full rounded-xl bg-[#b7bfd0] py-4 text-[17px] font-semibold text-white transition hover:bg-[#a8b2c7]"
                 >
                   → Submit Message
                 </button>
 
-                <p className="text-center text-[#9aa3b2] text-sm md:text-base">
+                <p className="mt-2 text-center text-[13px] text-[#9aa3b2]">
                   We respond to all inquiries within 1 business day. · (903)
                   961-6391
                 </p>
@@ -284,28 +279,26 @@ export default function Contact() {
       </section>
 
       {/* ===== OFFER CTA ===== */}
-      <section className="bg-[#f5f2ed] px-6 md:px-12 pb-14 md:pb-20">
-        <div className="max-w-[1600px] mx-auto rounded-[28px] bg-[#db8d1f] px-6 md:px-12 py-8 md:py-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 shadow-sm">
+      <section className="bg-[#f5f2ed] px-6 pb-14 md:px-12 md:pb-20">
+        <div className="mx-auto flex max-w-[1600px] flex-col gap-6 rounded-[26px] bg-[#db8d1f] px-8 py-7 md:px-12 md:py-9 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <p className="text-xs tracking-[0.3em] text-white/90 mb-4 font-semibold">
+            <p className="mb-4 text-xs font-semibold tracking-[0.3em] text-white/90">
               LIMITED TIME OFFER
             </p>
 
-            <h2 className="font-[Instrument_Serif] text-white text-[40px] md:text-[64px] leading-none">
+            <h2 className="font-[Instrument_Serif] text-[36px] leading-none text-white md:text-[52px]">
               Look & Lease Special
             </h2>
 
-            <p className="mt-5 text-white text-[20px] md:text-[22px] leading-relaxed">
+            <p className="font-[Plus_Jakarta_Sans] mt-3 text-[17px] text-white md:text-[18px]">
               Only <span className="font-bold">$99 total to move in</span> —
               limited units available. Contact us today!
             </p>
           </div>
 
-          <div className="shrink-0">
-            <button className="bg-[#1E3872] text-white text-[20px] md:text-[22px] font-semibold rounded-full px-10 md:px-12 py-5 shadow-[0_14px_34px_rgba(30,56,114,0.35)] hover:bg-[#193164] transition whitespace-nowrap">
-              Call Now: (903) 961-6391
-            </button>
-          </div>
+          <button className="font-[Plus_Jakarta_Sans] whitespace-nowrap rounded-full bg-[#1E3872] px-8 py-3 text-[16px] font-semibold text-white shadow-[0_10px_25px_rgba(30,56,114,0.35)] transition hover:bg-[#193164] md:text-[18px]">
+            Call Now: (903) 961-6391
+          </button>
         </div>
       </section>
     </>

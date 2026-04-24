@@ -162,10 +162,10 @@ export default function Blog() {
               />
 
               <div className="absolute top-4 left-4 flex gap-2">
-                <span className="bg-[#E39B2D] text-white text-xs px-3 py-1 rounded-full">
+                <span className="font-[Plus_Jakarta_Sans] bg-[#E39B2D] text-white text-xs px-3 py-1 rounded-full">
                   Featured
                 </span>
-                <span className="bg-[#E39B2D]/90 text-white text-xs px-3 py-1 rounded-full">
+                <span className="font-[Plus_Jakarta_Sans] bg-[#E39B2D]/90 text-white text-xs px-3 py-1 rounded-full">
                   {featuredPost.category}
                 </span>
               </div>
@@ -174,10 +174,10 @@ export default function Blog() {
             <div className="p-8 md:p-12 flex flex-col justify-between">
               <div>
                 <div className="flex items-center gap-3 text-sm">
-                  <div className="w-8 h-8 flex items-center justify-center rounded-full border border-[#e7c28d] text-xs font-semibold text-[#E39B2D] bg-[#f4eadc]">
+                  <div className="font-[Plus_Jakarta_Sans] w-8 h-8 flex items-center justify-center rounded-full border border-[#e7c28d] text-xs font-semibold text-[#E39B2D] bg-[#f4eadc]">
                     {featuredPost.initials}
                   </div>
-                  <p className="text-[#6b7280]">
+                  <p className="font-[Plus_Jakarta_Sans] text-[#6b7280]">
                     {featuredPost.author}
                     <span className="mx-2">·</span>
                     {featuredPost.date}
@@ -188,19 +188,19 @@ export default function Blog() {
                   {featuredPost.title}
                 </h2>
 
-                <p className="mt-4 text-[#6b7280] text-base md:text-lg leading-relaxed max-w-xl">
+                <p className="font-[Plus_Jakarta_Sans] mt-4 text-[#6b7280] text-base md:text-lg leading-relaxed max-w-xl">
                   {featuredPost.description}
                 </p>
               </div>
 
               <div className="mt-10">
-                <p className="text-sm text-[#6b7280] flex items-center gap-2">
+                <p className="font-[Plus_Jakarta_Sans]text-sm text-[#6b7280] flex items-center gap-2">
                   ⏱ {featuredPost.readTime} read
                 </p>
 
                 <button
                   onClick={() => setSelectedPost(featuredPost)}
-                  className="mt-4 text-[#1E3872] font-semibold hover:underline flex items-center gap-2"
+                  className="font-[Plus_Jakarta_Sans] mt-4 text-[#1E3872] font-semibold hover:underline flex items-center gap-2"
                 >
                   Read Article →
                 </button>
@@ -222,7 +222,7 @@ export default function Blog() {
                 hover:-translate-y-1
                 transition-all duration-300 ease-in-out"
               >
-                <div className="relative">
+                <div className="font-[Plus_Jakarta_Sans] relative">
                   <img
                     src={post.img}
                     alt={`${
@@ -242,14 +242,14 @@ export default function Blog() {
 
                 <div className="p-6 md:p-7">
                   <div className="flex items-center gap-3 text-sm text-[#8a8f98]">
-                    <div className="w-8 h-8 rounded-full border border-[#b7bfd0] flex items-center justify-center text-[11px] text-[#1e3872] bg-[#edf1f8]">
+                    <div className="font-[Plus_Jakarta_Sans] w-8 h-8 rounded-full border border-[#b7bfd0] flex items-center justify-center text-[11px] text-[#1e3872] bg-[#edf1f8]">
                       {post.initials}
                     </div>
                     <p>
-                      <span className="text-[#334155] font-medium">
+                      <span className="font-[Plus_Jakarta_Sans] text-[#334155] font-medium">
                         {post.author}
                       </span>
-                      <span className="mx-2 text-[#b0b4bb]">·</span>
+                      <span className="font-[Plus_Jakarta_Sans] mx-2 text-[#b0b4bb]">·</span>
                       {post.date}
                     </p>
                   </div>
@@ -258,13 +258,13 @@ export default function Blog() {
                     {post.title}
                   </h3>
 
-                  <p className="mt-4 text-[16px] leading-8 text-[#5f6773]">
+                  <p className="font-[Plus_Jakarta_Sans] mt-4 text-[16px] leading-8 text-[#5f6773]">
                     {post.description}
                   </p>
 
                   <button
                     onClick={() => setSelectedPost(post)}
-                    className="mt-6 text-[#1e3a8a] font-semibold text-[16px] flex items-center gap-2 hover:gap-3 transition-all"
+                    className="font-[Plus_Jakarta_Sans] mt-6 text-[#1e3a8a] font-semibold text-[16px] flex items-center gap-2 hover:gap-3 transition-all"
                   >
                     Read Article <span>→</span>
                   </button>
