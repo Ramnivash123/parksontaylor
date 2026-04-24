@@ -71,9 +71,11 @@ export default function Contact() {
                     <p className="text-xs font-semibold tracking-[0.08em] text-[#6b7280]">
                       LEASING OFFICE
                     </p>
-                    <p className="mt-1 text-[17px] font-semibold text-[#163c84]">
-                      (903) 961-6391
-                    </p>
+                    <a href="tel:+19039616391">
+                      <p className="mt-1 text-[17px] font-semibold text-[#163c84] hover:underline cursor-pointer">
+                        (903) 961-6391
+                      </p>
+                    </a>
                   </div>
                 </div>
 
@@ -86,9 +88,11 @@ export default function Contact() {
                     <p className="text-xs font-semibold tracking-[0.08em] text-[#6b7280]">
                       LEASING INQUIRIES
                     </p>
-                    <p className="mt-1 break-all text-[17px] font-semibold text-[#163c84]">
-                      potmanager@livenjoymgt.com
-                    </p>
+                    <a href="mailto:potmanager@livenjoymgt.com">
+                      <p className="mt-1 break-all text-[17px] font-semibold text-[#163c84]">
+                        potmanager@livenjoymgt.com
+                      </p>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -296,9 +300,11 @@ export default function Contact() {
             </p>
           </div>
 
-          <button className="font-[Plus_Jakarta_Sans] whitespace-nowrap rounded-full bg-[#1E3872] px-8 py-3 text-[16px] font-semibold text-white shadow-[0_10px_25px_rgba(30,56,114,0.35)] transition hover:bg-[#193164] md:text-[18px]">
-            Call Now: (903) 961-6391
-          </button>
+          <a href="tel:+19039616391">
+            <p className="font-[Plus_Jakarta_Sans] whitespace-nowrap rounded-full bg-[#1E3872] px-8 py-3 text-[16px] font-semibold text-white shadow-[0_10px_25px_rgba(30,56,114,0.35)] transition hover:bg-[#193164] md:text-[18px]">
+              Call Now: (903) 961-6391
+            </p>
+          </a>
         </div>
       </section>
     </>

@@ -288,16 +288,16 @@ export default function HomeClient() {
 
           <div className="flex flex-col md:flex-row gap-3 md:gap-4 mt-5 md:mt-6 w-full max-w-xs md:max-w-none justify-center">
             
-            <Button className="w-full md:w-auto min-h-[52px] flex items-center justify-center gap-2 px-7 py-3 rounded-full bg-[#1e3872] text-[#f5f2ed] text-[14px] font-bold font-[Plus_Jakarta_Sans] tracking-[0.01em] shadow-[0_4px_22px_rgba(30,56,114,0.5)] hover:bg-[#0c2457] transition-all duration-200">
+            <a href="/#unit" className="w-full md:w-auto min-h-[52px] flex items-center justify-center gap-2 px-7 py-3 rounded-full bg-[#1e3872] text-[#f5f2ed] text-[14px] font-bold font-[Plus_Jakarta_Sans] tracking-[0.01em] shadow-[0_4px_22px_rgba(30,56,114,0.5)] hover:bg-[#0c2457] transition-all duration-200">
               View Available Units →
-            </Button>
+            </a>
 
-            <Button
-              variant="outline"
+            <a
+              href="/#unit"
               className="w-full md:w-auto min-h-[52px] flex items-center justify-center gap-2 px-7 py-3 rounded-full bg-transparent text-[rgba(245,242,237,0.78)] text-[14px] font-semibold font-[Plus_Jakarta_Sans] tracking-[0.01em] border-[1.5px] border-[rgba(245,242,237,0.22)] hover:bg-white/10 hover:text-white transition-all duration-200"
             >
               Schedule a Tour
-            </Button>
+            </a>
 
           </div>
           
@@ -719,9 +719,9 @@ export default function HomeClient() {
                 </div>
 
                 <div className="mt-6 grid sm:grid-cols-2 gap-3">
-                  <button className="w-full rounded-full border border-[#1e3872] text-[#1e3872] py-4 px-5 text-[15px] font-semibold hover:bg-[#f2f5fb] transition">
+                  <a href="/#unit" className="text-center w-full rounded-full border border-[#1e3872] text-[#1e3872] py-4 px-5 text-[15px] font-semibold hover:bg-[#f2f5fb] transition">
                     Schedule Tour
-                  </button>
+                  </a>
 
                   <a
                     href="https://livenjoy.myresman.com/Portal/Applicants/New/POTS?a=1588"
@@ -840,10 +840,10 @@ export default function HomeClient() {
 
           {/* CTA */}
           <div className="flex justify-center mt-7 md:mt-8">
-            <button className="font-[Plus_Jakarta_Sans] inline-flex items-center gap-3 rounded-full border border-[#365b91] px-8 md:px-10 py-4 text-[15px] md:text-[16px] font-semibold text-white hover:bg-white/5 transition">
+            <a href="/#amenities" className="font-[Plus_Jakarta_Sans] inline-flex items-center gap-3 rounded-full border border-[#365b91] px-8 md:px-10 py-4 text-[15px] md:text-[16px] font-semibold text-white hover:bg-white/5 transition">
               Explore All Home Features & Amenities
               <span>→</span>
-            </button>
+            </a>
           </div>
         </div>
       </section>
@@ -1335,9 +1335,9 @@ export default function HomeClient() {
             Apply Now →
           </a>
 
-          <button className="border border-white/30 px-8 py-4 rounded-full text-white font-medium hover:bg-white/10">
+          <a href="/#unit" className="border border-white/30 px-8 py-4 rounded-full text-white font-medium hover:bg-white/10">
             Schedule Private Tour
-          </button>
+          </a>
         </div>
 
         {/* CONTACT INFO */}
