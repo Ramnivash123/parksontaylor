@@ -252,13 +252,11 @@ export default function HomeClient() {
           <h1
             style={{
               fontFamily: '"Instrument Serif", Georgia, serif',
-              fontSize: 'clamp(3.2rem, 7.2vw, 6.4rem)',
-              lineHeight: 1,
+              fontSize: 'clamp(2.4rem, 6vw, 6.4rem)', // ↓ slightly smaller for mobile
+              lineHeight: 1.05,
               letterSpacing: '-0.03em',
               color: 'rgb(245, 242, 237)',
               margin: 0,
-              maxWidth: 'none',
-              whiteSpace: 'nowrap',
             }}
           >
             Affordable, Safe, and
@@ -267,7 +265,7 @@ export default function HomeClient() {
               style={{
                 fontStyle: 'italic',
                 color: 'rgba(224, 148, 40, 0.92)',
-                whiteSpace: 'nowrap',
+                display: 'block', // 👈 forces proper wrap
               }}
             >
               Clean Living in Sherman.

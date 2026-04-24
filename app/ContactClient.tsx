@@ -2,6 +2,37 @@
 
 import HeaderOther from "./_components/HeaderOther";
 
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+
+  const form = e.currentTarget;
+
+  const formData = new FormData(form);
+
+  const data = {
+    fullName: formData.get("fullName"),
+    email: formData.get("email"),
+    phone: formData.get("phone"),
+    subject: formData.get("subject"),
+    message: formData.get("message"),
+  };
+
+  const res = await fetch("/api/contact", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (res.ok) {
+    alert("Message sent successfully!");
+    form.reset();
+  } else {
+    alert("Something went wrong. Please try again.");
+  }
+};
+
 export default function Contact() {
   return (
     <>
@@ -203,17 +234,20 @@ export default function Contact() {
                 We're here to help.
               </p>
 
-              <form className="mt-8 space-y-5">
+              <form onSubmit={handleSubmit} className="mt-8 space-y-5">
                 <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
                   <div>
                     <label className="mb-2 block text-[12px] font-semibold tracking-[0.12em] text-[#4b5563]">
                       FULL NAME *
                     </label>
                     <input
+                      name="fullName"
                       type="text"
                       placeholder="Jane Smith"
+                      required
                       className="w-full rounded-xl border border-[#cfd6e2] px-4 py-3 text-[15px] outline-none focus:border-[#1E3872]"
                     />
+
                   </div>
 
                   <div>
@@ -221,8 +255,10 @@ export default function Contact() {
                       EMAIL ADDRESS *
                     </label>
                     <input
+                      name="email"
                       type="email"
                       placeholder="jane@email.com"
+                      required
                       className="w-full rounded-xl border border-[#cfd6e2] px-4 py-3 text-[15px] outline-none focus:border-[#1E3872]"
                     />
                   </div>
@@ -234,6 +270,7 @@ export default function Contact() {
                       PHONE NUMBER
                     </label>
                     <input
+                      name="phone"
                       type="text"
                       placeholder="(555) 000-0000"
                       className="w-full rounded-xl border border-[#cfd6e2] px-4 py-3 text-[15px] outline-none focus:border-[#1E3872]"
@@ -244,12 +281,15 @@ export default function Contact() {
                     <label className="mb-2 block text-[12px] font-semibold tracking-[0.12em] text-[#4b5563]">
                       SUBJECT
                     </label>
-                    <select className="w-full rounded-xl border border-[#cfd6e2] bg-white px-4 py-3 text-[15px] outline-none focus:border-[#1E3872]">
-                      <option>Select a topic...</option>
-                      <option>Schedule a Tour</option>
-                      <option>Pricing & Availability</option>
-                      <option>Application Help</option>
-                      <option>General Inquiry</option>
+                    <select
+                      name="subject"
+                      className="w-full rounded-xl border border-[#cfd6e2] bg-white px-4 py-3 text-[15px] outline-none focus:border-[#1E3872]"
+                    >
+                      <option value="">Select a topic...</option>
+                      <option value="Schedule a Tour">Schedule a Tour</option>
+                      <option value="Pricing & Availability">Pricing & Availability</option>
+                      <option value="Application Help">Application Help</option>
+                      <option value="General Inquiry">General Inquiry</option>
                     </select>
                   </div>
                 </div>
@@ -259,7 +299,9 @@ export default function Contact() {
                     MESSAGE
                   </label>
                   <textarea
+                    name="message"
                     rows={6}
+                    required
                     placeholder="Tell us what you're looking for..."
                     className="w-full resize-none rounded-xl border border-[#cfd6e2] px-4 py-3 text-[15px] outline-none focus:border-[#1E3872]"
                   />
