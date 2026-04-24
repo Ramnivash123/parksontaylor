@@ -849,7 +849,7 @@ export default function HomeClient() {
           
           {/* LEFT */}
           <div>
-            <p className="text-xs tracking-[3px] uppercase text-[#7b7f7d] mb-4">
+            <p className="font-[Plus_Jakarta_Sans] text-xs tracking-[3px] uppercase text-[#7b7f7d] mb-4">
               Location · Sherman, TX
             </p>
 
@@ -860,7 +860,7 @@ export default function HomeClient() {
           </div>
 
           {/* RIGHT */}
-          <p className="text-sm md:text-base text-[#5a6260] leading-relaxed max-w-xl">
+          <p className="font-[Plus_Jakarta_Sans] text-sm md:text-base text-[#5a6260] leading-relaxed max-w-xl">
             Parks on Taylor is literally across the street from Fairway Park and its beloved Splash Pad — 
             and just 5 minutes from Sherman Town Center's restaurants, retail, and entertainment. 
             The address sells itself.
@@ -911,7 +911,7 @@ export default function HomeClient() {
 
             {/* MAIN PIN */}
             <div className="absolute top-[39%] left-[30%] -translate-x-1/2 -translate-y-1/2">
-              <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-white px-4 py-1 rounded-full text-xs font-semibold text-[#1e3872] shadow whitespace-nowrap">
+              <div className="font-[Plus_Jakarta_Sans] absolute -top-12 left-1/2 -translate-x-1/2 bg-white px-4 py-1 rounded-full text-xs font-semibold text-[#1e3872] shadow whitespace-nowrap">
                 Parks on Taylor
               </div>
 
@@ -946,7 +946,7 @@ export default function HomeClient() {
                 </div>
                 <div className="w-2.5 h-2.5 bg-[#2f5f9f] rotate-45 -mt-1"></div>
               </div>
-              <p className="mt-1 text-[10px] text-[#2f5f9f] text-center whitespace-nowrap">
+              <p className="font-[Plus_Jakarta_Sans] mt-1 text-[10px] text-[#2f5f9f] text-center whitespace-nowrap">
                 Sherman Commons
               </p>
             </div>
@@ -959,7 +959,7 @@ export default function HomeClient() {
                 </div>
                 <div className="w-2.5 h-2.5 bg-[#E09428] rotate-45 -mt-1"></div>
               </div>
-              <p className="mt-1 text-[10px] text-[#E09428] text-center whitespace-nowrap">
+              <p className="font-[Plus_Jakarta_Sans] mt-1 text-[10px] text-[#E09428] text-center whitespace-nowrap">
                 Sherman Town Center
               </p>
             </div>
@@ -987,7 +987,7 @@ export default function HomeClient() {
           {/* RIGHT: DESTINATIONS */}
           <div className="space-y-5">
 
-            <p className="text-xs tracking-[3px] uppercase text-[#7b7f7d]">
+            <p className="font-[Plus_Jakarta_Sans] text-xs tracking-[3px] uppercase text-[#7b7f7d]">
               Key Destinations
             </p>
 
@@ -998,11 +998,11 @@ export default function HomeClient() {
                   🏠
                 </div>
                 <div>
-                  <p className="font-medium text-[#2d3230]">Parks on Taylor</p>
-                  <p className="text-xs text-[#7b7f7d]">Your New Home</p>
+                  <p className="font-[Plus_Jakarta_Sans] font-medium text-[#2d3230]">Parks on Taylor</p>
+                  <p className="font-[Plus_Jakarta_Sans] text-xs text-[#7b7f7d]">Your New Home</p>
                 </div>
               </div>
-              <span className="text-xs bg-[#eef2f7] px-3 py-1 rounded-full">
+              <span className="font-[Plus_Jakarta_Sans] text-xs bg-[#eef2f7] px-3 py-1 rounded-full">
                 Home Base
               </span>
             </div>
@@ -1014,15 +1014,15 @@ export default function HomeClient() {
                   🌳
                 </div>
                 <div>
-                  <p className="font-medium text-[#2d3230]">
+                  <p className="font-[Plus_Jakarta_Sans] font-medium text-[#2d3230]">
                     Fairway Park & Splash Pad
                   </p>
-                  <p className="text-xs text-[#7b7f7d]">
+                  <p className="font-[Plus_Jakarta_Sans] text-xs text-[#7b7f7d]">
                     Parks & Recreation
                   </p>
                 </div>
               </div>
-              <span className="text-xs bg-[#e8f0ff] text-[#1e3872] px-3 py-1 rounded-full">
+              <span className="font-[Plus_Jakarta_Sans] text-xs bg-[#e8f0ff] text-[#1e3872] px-3 py-1 rounded-full">
                 2 min walk
               </span>
             </div>
@@ -1034,15 +1034,15 @@ export default function HomeClient() {
                   🛒
                 </div>
                 <div>
-                  <p className="font-medium text-[#2d3230]">
+                  <p className="font-[Plus_Jakarta_Sans] font-medium text-[#2d3230]">
                     Sherman Commons
                   </p>
-                  <p className="text-xs text-[#7b7f7d]">
+                  <p className="font-[Plus_Jakarta_Sans] text-xs text-[#7b7f7d]">
                     Grocery & Retail
                   </p>
                 </div>
               </div>
-              <span className="text-xs bg-[#eef2f7] px-3 py-1 rounded-full">
+              <span className="font-[Plus_Jakarta_Sans] text-xs bg-[#eef2f7] px-3 py-1 rounded-full">
                 3 min drive
               </span>
             </div>
@@ -1054,26 +1054,26 @@ export default function HomeClient() {
                   🏬
                 </div>
                 <div>
-                  <p className="font-medium text-[#2d3230]">
+                  <p className="font-[Plus_Jakarta_Sans] font-medium text-[#2d3230]">
                     Sherman Town Center
                   </p>
-                  <p className="text-xs text-[#7b7f7d]">
+                  <p className="font-[Plus_Jakarta_Sans] text-xs text-[#7b7f7d]">
                     Dining, Shopping & Entertainment
                   </p>
                 </div>
               </div>
-              <span className="text-xs bg-[#fff3e6] text-[#E09428] px-3 py-1 rounded-full">
+              <span className="font-[Plus_Jakarta_Sans] text-xs bg-[#fff3e6] text-[#E09428] px-3 py-1 rounded-full">
                 5 min drive
               </span>
             </div>
 
             {/* NEARBY TAGS */}
             <div className="pt-4">
-              <p className="text-xs tracking-[2px] uppercase text-[#7b7f7d] mb-3">
+              <p className="font-[Plus_Jakarta_Sans] text-xs tracking-[2px] uppercase text-[#7b7f7d] mb-3">
                 Nearby Employers & Schools
               </p>
 
-              <div className="flex flex-wrap gap-2">
+              <div className="font-[Plus_Jakarta_Sans] flex flex-wrap gap-2">
                 {[
                   "Sherman ISD",
                   "Austin College",
@@ -1096,7 +1096,7 @@ export default function HomeClient() {
 
             {/* PET FRIENDLY */}
             <div className="mt-3">
-              <span className="inline-block text-sm bg-[#fff3e6] text-[#E09428] px-4 py-2 rounded-full">
+              <span className="font-[Plus_Jakarta_Sans] inline-block text-sm bg-[#fff3e6] text-[#E09428] px-4 py-2 rounded-full">
                 🐾 Pet friendly — cats & dogs welcome
               </span>
             </div>
@@ -1126,8 +1126,21 @@ export default function HomeClient() {
         <div className="max-w-[1000px] mx-auto relative">
 
           {/* CARD */}
-          <div className="bg-[#162d4f] rounded-3xl p-8 md:p-12 border border-white/10
-                          shadow-[0_20px_60px_rgba(0,0,0,0.6),_0_0_40px_rgba(77,163,255,0.15)]">
+          <div className="
+            bg-[rgba(245,242,237,0.04)]
+            border border-[rgba(245,242,237,0.1)]
+            rounded-[24px]
+            p-[clamp(28px,4vw,46px)]
+            backdrop-blur-[18px]
+
+            shadow-[0px_24px_64px_rgba(0,0,0,0.36),inset_0px_1px_0px_rgba(255,255,255,0.05)]
+
+            transition-all duration-300 ease-in-out
+            hover:scale-[1.02]
+            hover:shadow-[0px_32px_80px_rgba(0,0,0,0.45)]
+
+            relative overflow-hidden
+          ">
 
             {/* RATING */}
             <div className="flex items-center gap-2 mb-6 text-[#4da3ff]">
@@ -1198,7 +1211,7 @@ export default function HomeClient() {
         {/* HEADER */}
         <div className="max-w-[1200px] mx-auto flex items-center justify-between mb-10">
           <div>
-            <p className="text-xs tracking-[3px] uppercase text-gray-400 mb-2">
+            <p className="font-[Plus_Jakarta_Sans] text-xs tracking-[3px] uppercase text-gray-400 mb-2">
               Sherman Living Guide
             </p>
             <h2 className="text-3xl md:text-5xl font-serif text-gray-900">
@@ -1223,7 +1236,7 @@ export default function HomeClient() {
               onClick={() =>
                 setStoryPage((prev) => (prev + 1) % totalStoryPages)
               }
-              className="w-10 h-10 rounded-full bg-[#0c2340] text-white flex items-center justify-center"
+              className="w-10 h-10 rounded-full bg-[#1e3872] text-white flex items-center justify-center"
             >
               →
             </button>
@@ -1253,19 +1266,19 @@ export default function HomeClient() {
                   />
 
                   {/* CATEGORY */}
-                  <span className="absolute top-3 left-3 bg-white/90 text-xs px-3 py-1 rounded-full">
+                  <span className="font-[Plus_Jakarta_Sans] absolute top-3 left-3 bg-white/90 text-xs px-3 py-1 rounded-full">
                     {item.category}
                   </span>
 
                   {/* TIME */}
-                  <span className="absolute top-3 right-3 bg-black/70 text-white text-xs px-3 py-1 rounded-full">
+                  <span className="font-[Plus_Jakarta_Sans] absolute top-3 right-3 bg-black/70 text-white text-xs px-3 py-1 rounded-full">
                     {item.time}
                   </span>
                 </div>
 
                 {/* CONTENT */}
                 <div className="p-5">
-                  <p className="text-sm text-gray-500 mb-2">
+                  <p className="font-[Plus_Jakarta_Sans] text-sm text-gray-500 mb-2">
                     {item.author} · {item.date}
                   </p>
 
@@ -1273,11 +1286,11 @@ export default function HomeClient() {
                     {item.title}
                   </h3>
 
-                  <p className="text-sm text-gray-600 mb-4">
+                  <p className="font-[Plus_Jakarta_Sans] text-sm text-gray-600 mb-4">
                     {item.desc}
                   </p>
 
-                  <button className="text-blue-600 text-sm font-medium">
+                  <button className="font-[Plus_Jakarta_Sans] text-[#1e3872] text-sm font-medium">
                     Read Article →
                   </button>
                 </div>

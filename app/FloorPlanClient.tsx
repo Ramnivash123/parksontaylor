@@ -190,56 +190,49 @@ function Card({ plan, isSelected, canSelectMore, onToggleCompare }: CardProps) {
     );
   };
 
-
   return (
-    <>
-    
-    <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-[#e7e1d7]">
-      {/* TOP INTERIOR SLIDER */}
-      <div className="relative h-[220px] w-full overflow-hidden">
+    <div className="bg-[#fffdf9] rounded-[26px] overflow-hidden border border-[#e5ded3] shadow-[0_18px_45px_rgba(26,29,27,0.12)]">
+      {/* TOP IMAGE */}
+      <div className="relative h-[275px] w-full overflow-hidden rounded-t-[26px]">
         <img
           src={plan.interiorImages[currentImage]}
           alt={`Modern apartment interior of ${plan.title} at Parks on Taylor Sherman TX`}
-          className="w-full h-full object-cover"
+          className="h-full w-full object-cover"
         />
 
         {plan.popular && (
-          <div className="absolute top-3 left-3 bg-[#E09428] text-white text-xs px-3 py-1 rounded-full z-10">
+          <div className="absolute left-4 top-4 rounded-full bg-[#E09428] px-4 py-2 font-[Plus_Jakarta_Sans] text-[12px] font-bold text-white shadow-md">
             Most Popular
           </div>
         )}
 
-        <div className="absolute top-3 right-3 bg-black/70 text-white text-xs px-3 py-1 rounded-full z-10">
+        <div className="absolute right-4 top-4 rounded-full bg-[#2f3642]/95 px-4 py-2 font-[Plus_Jakarta_Sans] text-[13px] font-bold text-white shadow-md">
           {plan.available}
         </div>
 
-        {plan.interiorImages.length > 1 && (
-          <>
-            <button
-              onClick={prevImage}
-              className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/30 hover:bg-black/45 text-white flex items-center justify-center z-10"
-            >
-              ←
-            </button>
+        <button
+          onClick={prevImage}
+          className="absolute left-5 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/35 text-[24px] leading-none text-white backdrop-blur-sm transition hover:bg-black/50"
+        >
+          ‹
+        </button>
 
-            <button
-              onClick={nextImage}
-              className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/30 hover:bg-black/45 text-white flex items-center justify-center z-10"
-            >
-              →
-            </button>
-          </>
-        )}
+        <button
+          onClick={nextImage}
+          className="absolute right-5 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/35 text-[24px] leading-none text-white backdrop-blur-sm transition hover:bg-black/50"
+        >
+          ›
+        </button>
 
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
+        <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2">
           {plan.interiorImages.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentImage(index)}
-              className={`transition rounded-full ${
+              className={`rounded-full transition-all ${
                 currentImage === index
-                  ? "w-5 h-2 bg-white"
-                  : "w-2.5 h-2.5 bg-white/65"
+                  ? "h-[7px] w-[23px] bg-white"
+                  : "h-[7px] w-[7px] bg-white/60"
               }`}
             />
           ))}
@@ -247,66 +240,79 @@ function Card({ plan, isSelected, canSelectMore, onToggleCompare }: CardProps) {
       </div>
 
       {/* FLOOR PLAN IMAGE */}
-      <div className="relative h-[220px] w-full bg-[#f3efe8] border-t">
+      <div className="relative h-[355px] w-full border-b border-[#eee7dc] bg-[#fbfaf7]">
         <img
           src={plan.images[0]}
           alt={`${plan.beds} ${plan.baths} apartment floor plan ${plan.title} at Parks on Taylor Sherman TX`}
-          className="w-full h-full object-contain p-4"
+          className="h-full w-full object-contain p-8"
         />
       </div>
 
       {/* CONTENT */}
-      <div className="p-6 bg-[#f8f5ef]">
-        <p className="text-xs tracking-[0.2em] text-[#E09428] mb-2">
+      <div className="bg-[#fffdf9] px-6 pb-7 pt-7 md:px-7">
+        <p className="mb-2 font-[Plus_Jakarta_Sans] text-[12px] font-bold uppercase tracking-[0.22em] text-[#E09428]">
           {plan.series}
         </p>
 
-        <h3 className="text-[44px] leading-none font-[Instrument_Serif] text-[#18315f] mb-3">
+        <h3 className="font-[Instrument_Serif] text-[31px] leading-none tracking-[-0.02em] text-[#111827]">
           {plan.title}
         </h3>
 
-        <p className="text-sm md:text-[15px] text-[#5c5752] mb-5 leading-relaxed">
+        <p className="mt-5 min-h-[48px] font-[Plus_Jakarta_Sans] text-[16px] leading-[1.45] tracking-[-0.02em] text-[#314057]">
           {plan.description}
         </p>
 
-        <div className="flex flex-wrap gap-5 text-sm mb-5 text-[#0C1A3A] font-medium">
-          <span>{plan.beds}</span>
-          <span>{plan.baths}</span>
-          <span>{plan.area}</span>
-        </div>
-
-        <div className="mb-6">
-          <span className="text-[30px] font-[Instrument_Serif] text-[#18315f]">
-            {plan.price}
+        <div className="mt-6 flex flex-wrap items-center gap-5 font-[Plus_Jakarta_Sans] text-[15px] font-bold text-[#15191f]">
+          <span className="flex items-center gap-2">
+            <span className="text-[#1f376d]">↦</span>
+            {plan.beds}
           </span>
-          <span className="text-sm text-[#5c5752] ml-2">per month</span>
+
+          <span className="flex items-center gap-2">
+            <span className="text-[#1f376d]">↪</span>
+            {plan.baths}
+          </span>
+
+          <span className="flex items-center gap-2">
+            <span className="text-[#1f376d]">↗</span>
+            {plan.area}
+          </span>
         </div>
 
-        <div className="flex flex-wrap gap-2 mb-6">
+        <div className="mt-7 flex items-end gap-2">
+          <p className="font-[Instrument_Serif] text-[39px] leading-none tracking-[-0.04em] text-[#1f376d]">
+            {plan.price}
+          </p>
+          <span className="mb-[3px] font-[Plus_Jakarta_Sans] text-[13px] text-[#555]">
+            per month
+          </span>
+        </div>
+
+        <div className="mt-7 flex min-h-[68px] flex-wrap content-start gap-2">
           {plan.tags.map((tag) => (
             <span
               key={tag}
-              className="text-xs px-3 py-1.5 bg-[#ece8df] border border-[#d8d2c7] rounded-full text-[#18315f]"
+              className="rounded-full border border-[#cbd3df] bg-[#f3f6fb] px-4 py-[7px] font-[Plus_Jakarta_Sans] text-[13px] font-bold leading-none text-[#18376f]"
             >
               {tag}
             </span>
           ))}
         </div>
 
-        <div className="flex gap-3">
-          <button className="flex-1 bg-[#1E3A8A] text-white py-3 rounded-xl font-medium">
+        <div className="mt-[105px] grid grid-cols-[1fr_105px] gap-3">
+          <button className="h-[50px] rounded-[11px] bg-[#223f82] font-[Plus_Jakarta_Sans] text-[16px] font-bold text-white transition hover:bg-[#19346f]">
             View Detail
           </button>
 
           <button
             onClick={() => onToggleCompare(plan.title)}
             disabled={!isSelected && !canSelectMore}
-            className={`px-4 py-3 rounded-xl border transition font-medium ${
+            className={`h-[50px] rounded-[11px] border font-[Plus_Jakarta_Sans] text-[15px] font-bold transition ${
               isSelected
-                ? "border-[#1E3A8A] bg-[#eef4ff] text-[#1E3A8A]"
+                ? "border-[#223f82] bg-[#223f82] text-white"
                 : canSelectMore
-                ? "border-[#d8d2c7] text-[#5c5752] bg-white"
-                : "border-[#e4ddd2] text-[#b2aaa0] bg-[#f3efe8] cursor-not-allowed"
+                ? "border-[#cbd3df] bg-white text-[#3c3c3c] hover:bg-[#f5f7fb]"
+                : "cursor-not-allowed border-[#e4ddd2] bg-[#f3efe8] text-[#b2aaa0]"
             }`}
           >
             {isSelected ? "Selected" : "Compare"}
@@ -314,7 +320,6 @@ function Card({ plan, isSelected, canSelectMore, onToggleCompare }: CardProps) {
         </div>
       </div>
     </div>
-  </>
   );
 }
 
@@ -511,68 +516,49 @@ export default function Floor() {
   return (
     <>
       <HeaderOther />
-      <section className="bg-[#1f376d] text-[#F5F2ED] px-6 md:px-16 py-24">
-        <p className="text-sm tracking-widest text-[#E09428] mb-6 font-[Plus_Jakarta_Sans]">
-          PARKS ON TAYLOR · SHERMAN, TX
-        </p>
+      <section className="relative overflow-hidden bg-[#1f376d] text-[#F5F2ED] min-h-[620px] px-6 md:px-16 lg:px-[150px] pt-[84px] pb-20">
+        {/* subtle dotted background */}
+        <div className="pointer-events-none absolute inset-0 opacity-[0.12] [background-image:radial-gradient(rgba(245,242,237,0.45)_1px,transparent_1px)] [background-size:50px_50px]" />
 
-        <h1 className="text-5xl md:text-7xl leading-tight font-[Instrument_Serif]">
-          Floor Plans & <span className="text-[#E09428] italic">Pricing</span>
-        </h1>
+        <div className="relative z-10 max-w-[680px]">
+          <p className="font-[Plus_Jakarta_Sans] text-[13px] font-bold uppercase tracking-[0.32em] text-[#E09428] mb-[22px]">
+            PARKS ON TAYLOR · SHERMAN, TX
+          </p>
 
-        <p className="mt-6 max-w-xl text-[#cfcac3] text-base md:text-lg font-[Plus_Jakarta_Sans] leading-relaxed">
-          Six thoughtfully designed layouts — from cozy 1-bedrooms to spacious
-          2-bed townhomes. All include premium finishes and in-unit connections.
-        </p>
+          <h1 className="font-[Instrument_Serif] text-[64px] md:text-[86px] leading-[0.98] tracking-[-0.04em] text-[#F5F2ED]">
+            Floor Plans & <br />
+            <span className="italic text-[#E09428]">Pricing</span>
+          </h1>
 
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-10">
-          <div>
-            <h2 className="text-3xl font-[Instrument_Serif]">6</h2>
-            <p className="text-xs tracking-widest mt-2 text-[#a8a39d] font-[Plus_Jakarta_Sans]">
-              FLOOR PLANS
-            </p>
-          </div>
+          <p className="mt-[28px] max-w-[570px] font-[Plus_Jakarta_Sans] text-[20px] leading-[1.72] text-[#b7bfd0] tracking-[-0.04em]">
+            Six thoughtfully designed layouts — from cozy 1-bedrooms
+            to spacious 2-bed townhomes. All include premium finishes
+            and in-unit connections.
+          </p>
 
-          <div>
-            <h2 className="text-3xl font-[Instrument_Serif]">15</h2>
-            <p className="text-xs tracking-widest mt-2 text-[#a8a39d] font-[Plus_Jakarta_Sans]">
-              UNITS AVAILABLE
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-3xl font-[Instrument_Serif]">625–1,003</h2>
-            <p className="text-xs tracking-widest mt-2 text-[#a8a39d] font-[Plus_Jakarta_Sans]">
-              SQ FT RANGE
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-3xl font-[Instrument_Serif]">$799</h2>
-            <p className="text-xs tracking-widest mt-2 text-[#a8a39d] font-[Plus_Jakarta_Sans]">
-              STARTING FROM
-            </p>
+          <div className="mt-[58px] grid grid-cols-2 md:grid-cols-4 gap-x-[52px] gap-y-8">
+            {[
+              ["6", "FLOOR PLANS"],
+              ["15", "UNITS AVAILABLE"],
+              ["625–1,003", "SQ FT RANGE"],
+              ["$799", "STARTING FROM"],
+            ].map(([value, label]) => (
+              <div key={label}>
+                <h2 className="font-[Instrument_Serif] text-[34px] leading-none text-white tracking-[-0.05em]">
+                  {value}
+                </h2>
+                <p className="mt-[15px] font-[Plus_Jakarta_Sans] text-[13px] font-bold uppercase tracking-[0.16em] text-[#8f9fc3] whitespace-nowrap">
+                  {label}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-[#F5F2ED] px-6 md:px-16 py-24">
-        <div className="grid md:grid-cols-3 gap-8">
-          {floorPlans.slice(0, 3).map((plan) => (
-            <Card
-              key={plan.title}
-              plan={plan}
-              isSelected={selectedCompare.includes(plan.title)}
-              canSelectMore={selectedCompare.length < 2}
-              onToggleCompare={toggleCompare}
-            />
-          ))}
-        </div>
-      </section>
-
-      <section className="bg-[#F5F2ED] px-6 md:px-16 py-24">
-        <div className="grid md:grid-cols-3 gap-8">
-          {floorPlans.slice(3, 6).map((plan) => (
+      <section className="bg-[#F5F2ED] px-5 py-16 md:px-10 md:py-24 lg:px-16">
+        <div className="mx-auto grid max-w-[1600px] grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
+          {floorPlans.map((plan) => (
             <Card
               key={plan.title}
               plan={plan}
@@ -592,21 +578,31 @@ export default function Floor() {
         />
       )}
 
-      <section className="bg-[#F5F2ED] px-6 md:px-16 pb-24">
-        <div className="border border-dashed border-[#d6d1c8] rounded-2xl bg-[#EEF4FF] p-6 md:p-8 flex items-start gap-4">
-          <div className="w-10 h-10 flex items-center justify-center rounded-full bg-[#E6E2DA] text-[#1E3A8A]">
-            ✓
+      <section className="bg-[#F5F2ED] pb-24 px-5 md:px-10 lg:px-16">
+        <div className="mx-auto max-w-[1600px]">
+          
+          <div className="rounded-[20px] border border-dashed border-[#bdc8d8] bg-[#f1eeee] px-9 py-7">
+            <div className="flex items-center gap-4">
+              
+              <div className="flex h-[45px] w-[45px] shrink-0 items-center justify-center rounded-[12px] bg-[#d9dce4]">
+                <span className="flex h-[21px] w-[21px] items-center justify-center rounded-full border-2 border-[#173a7a] text-[13px] font-bold text-[#173a7a]">
+                  ✓
+                </span>
+              </div>
+
+              <div>
+                <p className="font-[Plus_Jakarta_Sans] text-[17px] font-bold text-[#123a78]">
+                  Compare any two floor plans
+                </p>
+
+                <p className="mt-1 font-[Plus_Jakarta_Sans] text-[15px] text-[#334155]">
+                  Click "Compare" on any two cards to see a side-by-side breakdown of specs and pricing.
+                </p>
+              </div>
+
+            </div>
           </div>
 
-          <div>
-            <p className="text-base font-semibold text-[#1E3A8A] font-[Plus_Jakarta_Sans]">
-              Compare any two floor plans
-            </p>
-            <p className="text-sm text-[#5c5752] mt-1 font-[Plus_Jakarta_Sans]">
-              Click "Compare" on any two cards to see a side-by-side breakdown of
-              specs and pricing.
-            </p>
-          </div>
         </div>
       </section>
     </>
