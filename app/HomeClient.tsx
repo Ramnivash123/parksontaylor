@@ -311,7 +311,7 @@ export default function HomeClient() {
       <div>
         <LeasePortal />
       </div>
-      <section className="bg-[#f5f2ee] px-4 sm:px-6 md:px-12 py-10 sm:py-12 md:py-16 overflow-x-hidden">
+      <section id="unit" className="bg-[#f5f2ee] px-4 sm:px-6 md:px-12 py-10 sm:py-12 md:py-16 overflow-x-hidden">
         <div className="max-w-[1400px] mx-auto">
           {/* TOP TEXT ROW */}
           <div className="grid md:grid-cols-2 gap-6 md:gap-10 items-start">
@@ -723,9 +723,14 @@ export default function HomeClient() {
                     Schedule Tour
                   </button>
 
-                  <button className="w-full rounded-full bg-[#1e3872] text-white py-4 px-5 text-[15px] font-semibold shadow-[0_8px_20px_rgba(30,56,114,0.18)] hover:bg-[#15306a] transition">
+                  <a
+                    href="https://livenjoy.myresman.com/Portal/Applicants/New/POTS?a=1588"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full text-center rounded-full bg-[#1e3872] text-white py-4 px-5 text-[15px] font-semibold shadow-[0_8px_20px_rgba(30,56,114,0.18)] hover:bg-[#15306a] transition"
+                  >
                     Apply Now →
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -743,7 +748,7 @@ export default function HomeClient() {
       </section>
 
       {/* ================= AMENITIES SECTION ================= */}
-      <section className="bg-[#0c2340] px-5 md:px-10 lg:px-12 py-16 md:py-20">
+      <section id="amenities" className="bg-[#0c2340] px-5 md:px-10 lg:px-12 py-16 md:py-20">
         <div className="max-w-[1400px] mx-auto">
 
           {/* TOP TEXT */}
@@ -870,7 +875,7 @@ export default function HomeClient() {
       </section>
       
       {/* ================= LOCATION MAP + DESTINATIONS ================= */}
-      <section className="bg-[#f1eee9] px-6 md:px-12 pb-16">
+      <section id="neighborhood" className="bg-[#f1eee9] px-6 md:px-12 pb-16">
         <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-8 items-start">
 
           {/* LEFT: MAP (using hero image) */}
@@ -1321,9 +1326,14 @@ export default function HomeClient() {
 
         {/* BUTTONS */}
         <div className="mt-10 flex flex-col md:flex-row items-center justify-center gap-4">
-          <button className="bg-[#2f4e85] hover:bg-[#3a5ea3] px-8 py-4 rounded-full text-white font-medium flex items-center gap-2">
+          <a
+            href="https://livenjoy.myresman.com/Portal/Applicants/New/POTS?a=1588"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#2f4e85] hover:bg-[#3a5ea3] px-8 py-4 rounded-full text-white font-medium flex items-center gap-2 justify-center"
+          >
             Apply Now →
-          </button>
+          </a>
 
           <button className="border border-white/30 px-8 py-4 rounded-full text-white font-medium hover:bg-white/10">
             Schedule Private Tour

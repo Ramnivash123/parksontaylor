@@ -175,9 +175,16 @@ type CardProps = {
   isSelected: boolean;
   canSelectMore: boolean;
   onToggleCompare: (title: string) => void;
+  onViewDetail: (plan: FloorPlan) => void;
 };
 
-function Card({ plan, isSelected, canSelectMore, onToggleCompare }: CardProps) {
+function Card({
+    plan,
+    isSelected,
+    canSelectMore,
+    onToggleCompare,
+    onViewDetail,
+  }: CardProps) {
   const [currentImage, setCurrentImage] = useState(0);
 
   const nextImage = () => {
@@ -300,8 +307,11 @@ function Card({ plan, isSelected, canSelectMore, onToggleCompare }: CardProps) {
         </div>
 
         <div className="mt-[105px] grid grid-cols-[1fr_105px] gap-3">
-          <button className="h-[50px] rounded-[11px] bg-[#223f82] font-[Plus_Jakarta_Sans] text-[16px] font-bold text-white transition hover:bg-[#19346f]">
-            View Detail
+          <button
+            onClick={() => onViewDetail(plan)}
+            className="h-[50px] rounded-[11px] bg-[#223f82] font-[Plus_Jakarta_Sans] text-[16px] font-bold text-white transition hover:bg-[#19346f]"
+          >
+            View Unit
           </button>
 
           <button
@@ -493,8 +503,154 @@ function ComparisonDrawer({
   );
 }
 
+function UnitDetailModal({
+  plan,
+  onClose,
+}: {
+  plan: FloorPlan;
+  onClose: () => void;
+}) {
+  const [activeImage, setActiveImage] = useState(0);
+
+  const allImages = [...plan.interiorImages, plan.images[0]];
+
+  const features = [
+    "Quartz Countertops",
+    "LVP Flooring",
+    "9 ft Ceilings",
+    "In-Unit W/D Connections",
+    "Covered Patio/Balcony",
+    "Central Air & Heat",
+  ];
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#07122b]/75 px-4 py-6 backdrop-blur-[6px]">
+      <div className="relative max-h-[92vh] w-full max-w-[1080px] overflow-hidden rounded-[26px] bg-[#fffdf9] shadow-2xl">
+        <div className="flex items-start justify-between border-b border-[#e5ded3] px-6 py-6 md:px-8">
+          <div>
+            <p className="font-[Plus_Jakarta_Sans] text-[12px] font-bold uppercase tracking-[0.24em] text-[#E09428]">
+              {plan.series}
+            </p>
+            <h2 className="mt-2 font-[Instrument_Serif] text-[34px] leading-none text-[#111827]">
+              {plan.title}
+            </h2>
+          </div>
+
+          <button
+            onClick={onClose}
+            className="flex h-11 w-11 items-center justify-center rounded-[14px] bg-[#f1efec] text-[26px] text-[#222] hover:bg-[#e7e2dc]"
+          >
+            ×
+          </button>
+        </div>
+
+        <div className="max-h-[calc(92vh-105px)] overflow-y-auto">
+          <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
+            <div className="border-r border-[#e5ded3]">
+              <div className="relative h-[320px] md:h-[365px] bg-[#f7f4ee]">
+                <img
+                  src={allImages[activeImage]}
+                  alt={`${plan.title} apartment detail view at Parks on Taylor Sherman TX`}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+
+              <div className="flex gap-3 px-5 py-4">
+                {allImages.slice(0, 4).map((img, index) => (
+                  <button
+                    key={img}
+                    onClick={() => setActiveImage(index)}
+                    className={`h-[58px] w-[78px] overflow-hidden rounded-[9px] border-2 ${
+                      activeImage === index
+                        ? "border-[#1e3872]"
+                        : "border-transparent"
+                    }`}
+                  >
+                    <img
+                      src={img}
+                      alt={`${plan.title} thumbnail ${index + 1}`}
+                      className="h-full w-full object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+
+              <div className="bg-[#fbfaf7] px-6 pb-8 pt-4">
+                <img
+                  src={plan.images[0]}
+                  alt={`${plan.title} floor plan layout`}
+                  className="mx-auto max-h-[360px] w-full object-contain"
+                />
+              </div>
+            </div>
+
+            <div className="px-6 py-8 md:px-8">
+              <p className="font-[Plus_Jakarta_Sans] text-[17px] leading-[1.7] text-[#314057]">
+                {plan.description}
+              </p>
+
+              <div className="mt-7 grid grid-cols-2 gap-4">
+                {[
+                  ["BEDROOMS", plan.beds],
+                  ["BATHROOMS", plan.baths],
+                  ["SQUARE FEET", plan.area],
+                  ["STARTING FROM", plan.price],
+                  ["AVAILABLE", plan.available.replace("available", "units")],
+                ].map(([label, value]) => (
+                  <div
+                    key={label}
+                    className="rounded-[12px] bg-[#f1efec] px-4 py-4"
+                  >
+                    <p className="font-[Plus_Jakarta_Sans] text-[11px] font-bold uppercase tracking-[0.16em] text-[#4b5563]">
+                      {label}
+                    </p>
+                    <p className="mt-2 font-[Instrument_Serif] text-[24px] leading-none text-[#111827]">
+                      {value}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8">
+                <p className="font-[Plus_Jakarta_Sans] text-[12px] font-bold uppercase tracking-[0.22em] text-[#334155]">
+                  Included Features
+                </p>
+
+                <div className="mt-5 space-y-3">
+                  {features.map((item) => (
+                    <p
+                      key={item}
+                      className="flex items-center gap-3 font-[Plus_Jakarta_Sans] text-[16px] text-[#111827]"
+                    >
+                      <span className="flex h-4 w-4 items-center justify-center rounded-full border border-[#1e3872] text-[10px] text-[#1e3872]">
+                        ✓
+                      </span>
+                      {item}
+                    </p>
+                  ))}
+                </div>
+              </div>
+
+              <a
+                href="https://livenjoy.myresman.com/Portal/Applicants/New/POTS?a=1588"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-9 flex h-[62px] w-full items-center justify-center rounded-[14px] bg-[#223f82] font-[Plus_Jakarta_Sans] text-[18px] font-bold text-white shadow-[0_12px_28px_rgba(30,56,114,0.28)] transition hover:bg-[#19346f]"
+              >
+                Apply for This Unit →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
 export default function Floor() {
   const [selectedCompare, setSelectedCompare] = useState<string[]>([]);
+  const [detailPlan, setDetailPlan] = useState<FloorPlan | null>(null);
 
   const toggleCompare = (title: string) => {
     setSelectedCompare((prev) => {
@@ -565,6 +721,7 @@ export default function Floor() {
               isSelected={selectedCompare.includes(plan.title)}
               canSelectMore={selectedCompare.length < 2}
               onToggleCompare={toggleCompare}
+              onViewDetail={setDetailPlan}
             />
           ))}
         </div>
@@ -575,6 +732,13 @@ export default function Floor() {
           leftPlan={selectedPlans[0]}
           rightPlan={selectedPlans[1]}
           onClear={clearComparison}
+        />
+      )}
+
+      {detailPlan && (
+        <UnitDetailModal
+          plan={detailPlan}
+          onClose={() => setDetailPlan(null)}
         />
       )}
 

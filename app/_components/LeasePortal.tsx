@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 
 import { useMemo, useState } from "react";
 import {
@@ -391,13 +392,21 @@ export default function LeasePortal() {
 
           {/* CTA */}
           <div className="flex shrink-0 items-center border-l border-[rgba(30,56,114,0.1)] px-4 py-[12px]">
-            <button
-              type="button"
+            <Link
+              href="/#unit"
               onClick={() => setChecked(true)}
               className="flex min-w-[160px] items-center justify-center gap-[9px] whitespace-nowrap rounded-[14px] bg-[#162b5e] px-[30px] py-[14px] font-[Plus_Jakarta_Sans] text-[14px] font-bold tracking-[0.01em] text-[#f5f2ed] shadow-[0_2px_16px_rgba(30,56,114,0.38)] transition hover:bg-[#0c2457]"
             >
-              {checked ? <><CircleCheck size={15} />15 Homes Found</> : <><Search size={15} />Check Now</>}
-            </button>
+              {checked ? (
+                <>
+                  <CircleCheck size={15} /> 15 Homes Found
+                </>
+              ) : (
+                <>
+                  <Search size={15} /> Check Now
+                </>
+              )}
+            </Link>
           </div>
         </div>
 
@@ -445,7 +454,14 @@ export default function LeasePortal() {
             </div>
             <button
               type="button"
-              onClick={() => setMobileSheet(null)}
+              onClick={() => {
+                setMobileSheet(null); // close sheet
+
+                // scroll to section
+                document.getElementById("unit")?.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }}
               className="w-full rounded-[14px] bg-[#162b5e] py-3.5 font-[Plus_Jakarta_Sans] text-[14px] font-bold text-[#f5f2ed] shadow-[0_2px_12px_rgba(30,56,114,0.38)]"
             >
               Done
