@@ -131,7 +131,10 @@ function ImageCard({ item, index, height, onView }: ImageCardProps) {
     
     <div
       onClick={() => onView(index)}
-      className="relative group cursor-pointer overflow-hidden rounded-[22px]"
+      className="relative group cursor-pointer overflow-hidden rounded-[22px]
+                  shadow-sm hover:shadow-2xl
+                  hover:-translate-y-1
+                  transition-all duration-300 ease-in-out"
     >
       <img
         src={item.src}

@@ -743,104 +743,103 @@ export default function HomeClient() {
       </section>
 
       {/* ================= AMENITIES SECTION ================= */}
-      <section className="bg-[#0c2340] px-6 md:px-12 py-16 md:py-20">
+      <section className="bg-[#0c2340] px-5 md:px-10 lg:px-12 py-16 md:py-20">
         <div className="max-w-[1400px] mx-auto">
 
           {/* TOP TEXT */}
-          <div className="grid md:grid-cols-2 gap-8 mb-10">
-            
-            {/* LEFT */}
+          <div className="grid md:grid-cols-2 gap-8 md:gap-14 mb-10 md:mb-12">
             <div>
-              <p className="text-xs tracking-[3px] uppercase text-[#E09428] mb-3">
+              <p className="font-[Plus_Jakarta_Sans] text-[12px] md:text-[13px] tracking-[0.24em] uppercase text-[#E09428] mb-4 font-semibold">
                 Amenities
               </p>
 
-              <h2 className="text-3xl md:text-5xl font-serif text-white leading-[1.2]">
+              <h2 className="font-[Instrument_Serif] text-[42px] md:text-[64px] lg:text-[72px] text-white leading-[0.95] tracking-[-0.03em]">
                 Everything You Need,
                 <br />
                 Right Where You Live
               </h2>
             </div>
 
-            {/* RIGHT */}
-            <p className="text-sm md:text-base text-[#c7cbd1] leading-relaxed">
-              Responsive maintenance and convenient on-site management are the backbone of life here — backed by covered parking, two pools, and a full appliance package to keep everyday living simple and reliable.
-            </p>
+            <div className="md:flex md:items-center">
+              <p className="font-[Plus_Jakarta_Sans] text-[16px] md:text-[19px] leading-[1.75] text-[#9faac0] max-w-[680px]">
+                Responsive maintenance and convenient on-site management are the backbone of life
+                here — backed by covered parking, two pools, and a full appliance package to keep
+                everyday living simple and reliable.
+              </p>
+            </div>
           </div>
 
           {/* GRID */}
-          <div className="grid md:grid-cols-3 gap-6">
-            
-
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
             {amenities.map((item, i) => (
               <div
                 key={i}
-                className="relative h-[220px] md:h-[260px] rounded-2xl overflow-hidden group"
+                className="relative h-[230px] md:h-[270px] rounded-[26px] overflow-hidden group
+                          shadow-md hover:shadow-[0_24px_70px_rgba(0,0,0,0.45)]
+                          hover:-translate-y-1 transition-all duration-300 ease-in-out"
               >
                 <Image
                   src={item.img}
                   alt={`${item.title} at Parks on Taylor apartments in Sherman TX`}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover"
+                  className="object-cover transition duration-500 group-hover:scale-[1.04]"
                 />
 
-                <div className="absolute top-4 left-4 z-10 bg-white/20 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full">
+                <div className="absolute inset-0 bg-black/45 group-hover:bg-black/35 transition duration-300" />
+                <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
+
+                <div className="font-[Plus_Jakarta_Sans] absolute top-5 left-5 z-10 bg-white/25 backdrop-blur-md text-white text-[11px] md:text-xs font-semibold tracking-[0.13em] uppercase px-4 py-2 rounded-full">
                   {item.tag}
                 </div>
 
-                <div className="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition"></div>
-
-                <div className="absolute bottom-4 left-4 right-4 z-10">
-                  <p className="text-white text-lg md:text-xl font-serif">
+                <div className="absolute bottom-6 left-6 right-6 z-10">
+                  <p className="font-[Instrument_Serif] text-white text-[28px] md:text-[34px] leading-none tracking-[-0.03em]">
                     {item.title}
                   </p>
                 </div>
               </div>
             ))}
-
           </div>
-        </div>
-        {/* ================= ALSO INCLUDED ================= */}
-        <div className="mt-10 bg-[#112a4d] rounded-2xl p-6 md:p-8 border border-white/10">
 
-          <div className="flex flex-col md:flex-row md:items-center gap-4">
+          {/* ALSO INCLUDED */}
+          <div className="mt-9 md:mt-10 rounded-[18px] bg-[#112a4d] border border-white/10 px-5 md:px-7 py-6 md:py-7">
+            <div className="flex flex-col lg:flex-row lg:items-start gap-5 lg:gap-7">
+              <p className=" font-[Plus_Jakarta_Sans] text-[12px] tracking-[0.24em] uppercase text-[#5f86c8] font-semibold whitespace-nowrap pt-2">
+                Also Included
+              </p>
 
-            {/* LABEL */}
-            <p className="text-xs tracking-[2px] uppercase text-[#7fa3d6] whitespace-nowrap">
-              Also Included
-            </p>
-
-            {/* PILLS */}
-            <div className="flex flex-wrap gap-3">
-
-              {[
-                "Granite Countertops",
-                "Ceiling Fans — Living Room & Bedrooms",
-                "Intercom Entry",
-                "Den / Home Office",
-                "Central Heat & Air Conditioning",
-                "Condominium Style",
-                "2-Bedroom Town Homes Available"
-              ].map((item, i) => (
-                <span
-                  key={i}
-                  className="flex items-center gap-2 text-sm text-[#c7cbd1] border border-[#2a4466] px-4 py-2 rounded-full"
-                >
-                  <span className="w-2 h-2 rounded-full bg-[#4da3ff]"></span>
-                  {item}
-                </span>
-              ))}
-
+              <div className="flex flex-wrap gap-3">
+                {[
+                  "Granite Countertops",
+                  "Ceiling Fans — Living Room & Bedrooms",
+                  "Intercom Entry",
+                  "Den / Home Office",
+                  "Central Heat & Air Conditioning",
+                  "Condominium Style",
+                  "2-Bedroom Town Homes Available",
+                ].map((item, i) => (
+                  <span
+                    key={i}
+                    className="font-[Plus_Jakarta_Sans] inline-flex items-center gap-2 rounded-full border border-[#284a7a] bg-[#112f58] px-4 py-2 text-[14px] md:text-[15px] font-medium text-[#c8d1df]"
+                  >
+                    <span className="flex h-4 w-4 items-center justify-center rounded-full border border-[#4778bd] text-[9px] text-[#7fb2ff]">
+                      ✓
+                    </span>
+                    {item}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* ================= CTA ================= */}
-        <div className="flex justify-center mt-8">
-          <button className="border border-[#2a4466] text-white px-8 py-4 rounded-full hover:bg-white/5 transition">
-            Explore All Home Features & Amenities →
-          </button>
+          {/* CTA */}
+          <div className="flex justify-center mt-7 md:mt-8">
+            <button className="font-[Plus_Jakarta_Sans] inline-flex items-center gap-3 rounded-full border border-[#365b91] px-8 md:px-10 py-4 text-[15px] md:text-[16px] font-semibold text-white hover:bg-white/5 transition">
+              Explore All Home Features & Amenities
+              <span>→</span>
+            </button>
+          </div>
         </div>
       </section>
 
@@ -1127,7 +1126,8 @@ export default function HomeClient() {
         <div className="max-w-[1000px] mx-auto relative">
 
           {/* CARD */}
-          <div className="bg-[#162d4f] rounded-3xl p-8 md:p-12 border border-white/10">
+          <div className="bg-[#162d4f] rounded-3xl p-8 md:p-12 border border-white/10
+                          shadow-[0_20px_60px_rgba(0,0,0,0.6),_0_0_40px_rgba(77,163,255,0.15)]">
 
             {/* RATING */}
             <div className="flex items-center gap-2 mb-6 text-[#4da3ff]">
@@ -1238,7 +1238,11 @@ export default function HomeClient() {
             .map((item, index) => (
               <div
                 key={index}
-                className="rounded-2xl overflow-hidden shadow-sm border"
+                className="rounded-2xl overflow-hidden border bg-white
+                shadow-sm hover:shadow-2xl
+                hover:-translate-y-1
+                transition-all duration-300 ease-in-out"
+
               >
                 {/* IMAGE */}
                 <div className="relative">

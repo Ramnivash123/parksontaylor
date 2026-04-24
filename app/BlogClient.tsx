@@ -149,7 +149,11 @@ export default function Blog() {
       {/* FEATURED CARD */}
       <section className="bg-[#f5f2ed] px-6 md:px-16 pb-24 -mt-16 relative z-10">
         <div className="max-w-[1400px] mx-auto">
-          <div className="grid md:grid-cols-2 rounded-3xl overflow-hidden border bg-white shadow-sm">
+          <div className="grid md:grid-cols-2 rounded-3xl overflow-hidden border bg-white
+                shadow-sm hover:shadow-2xl
+                hover:-translate-y-1
+                transition-all duration-300 ease-in-out"
+          >
             <div className="relative min-h-[320px]">
               <img
                 src={featuredPost.img}
@@ -213,7 +217,10 @@ export default function Blog() {
             {posts.map((post, index) => (
               <article
                 key={index}
-                className="overflow-hidden rounded-[28px] border border-[#ddd7cf] bg-white shadow-sm"
+                className="overflow-hidden rounded-[28px] border border-[#ddd7cf] bg-white
+                shadow-sm hover:shadow-2xl
+                hover:-translate-y-1
+                transition-all duration-300 ease-in-out"
               >
                 <div className="relative">
                   <img
