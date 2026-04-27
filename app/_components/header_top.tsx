@@ -11,7 +11,7 @@ export default function HeaderTop({ show, setShow }: HeaderTopProps) {
   if (!show) return null;
 
   return (
-    <div className="fixed left-0 top-0 z-50 hidden h-10 w-full items-center justify-center bg-[#E09428] px-10 text-white md:flex">
+    <div id="look" className="fixed left-0 top-0 z-50 hidden h-10 w-full items-center justify-center bg-[#E09428] px-10 text-white md:flex">
       <p className="font-[Plus_Jakarta_Sans] text-center text-[12px] font-medium leading-none">
         <span className="mr-2 rounded bg-white/20 px-2 py-[3px] font-bold">
           LOOK &amp; LEASE SPECIAL

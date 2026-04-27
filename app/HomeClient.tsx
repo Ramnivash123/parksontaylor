@@ -1110,7 +1110,7 @@ export default function HomeClient() {
       
 
       {/* ================= RESIDENT VOICES ================= */}
-      <section className="bg-[#0c2340] px-6 md:px-12 py-16 md:py-24 text-white relative">
+      <section id="residents" className="bg-[#0c2340] px-6 md:px-12 py-16 md:py-24 text-white relative">
 
         <div className="max-w-[1100px] mx-auto text-center mb-12">
           <p className="text-xs tracking-[3px] uppercase text-[#E09428] mb-3">

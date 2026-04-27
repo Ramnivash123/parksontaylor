@@ -38,12 +38,16 @@ export default function Footer(){
           <div>
             <h4 className="text-sm tracking-widest text-[#E09428] mb-4">EXPLORE</h4>
             <ul className="space-y-3 text-[#9aa3af] text-sm font-[Plus_Jakarta_Sans]">
-              <li>Floor Plans</li>
-              <li>Amenities</li>
-              <li>Community & Events</li>
-              <li>Neighborhood</li>
-              <li>Virtual Tour</li>
-              <li>Photo Gallery</li>
+              <li><a href="/floor">Floor Plans</a></li>
+              <li><a href="/#amenities">Amenities</a></li>
+              <li>
+                <a href="https://livenjoy.myresman.com/Portal/Access/SignIn/POTS" target="_blank">
+                  Community & Events
+                </a>
+              </li>
+              <li><a href="/#neighborhood">Neighborhood</a></li>
+              <li><a href="/#units">Virtual Tour</a></li>
+              <li><a href="/gallery">Photo Gallery</a></li>
             </ul>
           </div>
 
@@ -51,12 +55,16 @@ export default function Footer(){
           <div>
             <h4 className="text-sm tracking-widest text-[#E09428] mb-4">LEASING</h4>
             <ul className="space-y-3 text-[#9aa3af] text-sm font-[Plus_Jakarta_Sans]">
-              <li>Apply Online</li>
-              <li>Schedule a Tour</li>
-              <li>Look & Lease Specials</li>
-              <li>Availability</li>
-              <li>Pet Policy</li>
-              <li>FAQs</li>
+              <li>
+                <a href="https://livenjoy.myresman.com/Portal/Applicants/New/POTS?a=1588" target="_blank">
+                  Apply Online
+                </a>
+              </li>
+              <li><a href="/#units">Schedule a Tour</a></li>
+              <li><a href="/#look">Look & Lease Specials</a></li>
+              <li><a href="/#units">Availability</a></li>
+              <li><a href="/#amenities">Pet Policy</a></li>
+              <li><a href="/#look">FAQs</a></li>
             </ul>
           </div>
 
